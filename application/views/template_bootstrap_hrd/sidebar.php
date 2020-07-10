@@ -17,7 +17,7 @@
   </li>
  
   <li class="nav-item">
-    <a class="nav-link" href="<?php echo base_url() ?>hrd/medicalreimbust">
+    <a class="nav-link" href="<?php echo base_url() ?>hrd/uangtransport">
       <i class="fas fa-fw fa-chart-area"></i>
       <span>Uang Transport</span></a>
   </li>
@@ -27,7 +27,7 @@
       <span>Perjalanan Dinas</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="<?php echo base_url() ?>hrd/uangtransport">
+    <a class="nav-link" href="<?php echo base_url() ?>hrd/medicalreimbust">
       <i class="fas fa-fw fa-chart-area"></i>
       <span>Medical Reimburstment</span></a>
   </li>

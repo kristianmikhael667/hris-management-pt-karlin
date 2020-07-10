@@ -13,24 +13,15 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                    <th>Id Karyawan</th>
+                    <th>Nama Karyawan</th>
+                    <th>Kode Bagian</th>
+                    <th>Alamat</th>
+                    <th>Nomor Telepon</th>
+                    <th>Email</th>
+                    <th>Tanggal Lahir</th>
                   </tr>
                 </thead>
-                <tfoot>
-                  <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
-                  </tr>
-                </tfoot>
                 <tbody>
                 <?php
                  
@@ -46,6 +37,8 @@
                     <td><?php echo $row['kode_bagian'] ; ?></td>
                     <td><?php echo $row['alamat'] ; ?></td>
                     <td><?php echo $row['nomor_telepon'] ; ?></td>
+                    <td><?php echo $row['email'] ; ?></td>
+                    <td><?php echo $row['tanggal_lahir'] ; ?></td>
                   </tr>
 
                   <?php } ?>
