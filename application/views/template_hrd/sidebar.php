@@ -39,9 +39,9 @@
                     <span>Jumlah Kehadiran</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="<?php echo base_url('hrd/jumlahkehadiran') ?>">
+                <a class="nav-link" href="<?php echo base_url('hrd/karyawan') ?>">
                     <i class="fa fa-home" aria-hidden="true"></i>
-                    <span>Tambah Data Karyawan</span></a>
+                    <span>Data Karyawan</span></a>
             </li>
 
             <li class="nav-item active">
