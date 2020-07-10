@@ -31,46 +31,17 @@
                                             <td>123</td>
                                             <td>User</td>
                                             <td>Web Dev</td>
-                                            <td>08177162626/td>
+                                            <td>08177162626</td>
                                             <td>
                                                     <div class="btn-group" role="group" aria-label="First Group">
                                                     <a href="#" class="btn btn-icon btn-outline-primary mr-2"><i class="fa fa-eye"></i></a>
                                                     <a href="#" type="button" class="btn btn-icon btn-outline-success mr-2"><i class="fa fa-edit"></i></a>
+                                                    <a href="#" type="button" class="btn btn-icon btn-outline-danger mr-2"><i class="fa fa-delete"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
 
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>113</td>
-                                            <td>Produk.pdf</td>
-                                            <td>21-08-2020</td>
-                                            <td>30000</td>
-                                            <td>Lulus</td>
-                                            <td>50000</td>
-                                            <td>
-                                                <div class="btn-group" role="group" aria-label="First Group">
-                                                    <a href="#" class="btn btn-icon btn-outline-primary mr-2"><i class="fa fa-eye"></i></a>
-                                                    <a href="#" type="button" class="btn btn-icon btn-outline-success mr-2"><i class="fa fa-edit"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>223</td>
-                                            <td>Picture.pdf</td>
-                                            <td>12-08-2020</td>
-                                            <td>30000</td>
-                                            <td>Lulus</td>
-                                            <td>50000</td>
-                                            <td>
-                                                <div class="btn-group" role="group" aria-label="First Group">
-                                                    <a href="#" class="btn btn-icon btn-outline-primary mr-2"><i class="fa fa-eye"></i></a>
-                                                    <a href="#" type="button" class="btn btn-icon btn-outline-success mr-2"><i class="fa fa-edit"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                       
 
                                     </tbody>
                                 </table>
