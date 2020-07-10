@@ -3,8 +3,13 @@
 class Dashboard_hrd extends CI_Controller{
 
     public function index()
-    {
-        
-        $this->load->view('template_hrd/wrapper');
+	{
+		$data = array('title' => 'Dashboard HRD',
+					  'content' => 'hrd/karyawan/list'
+                     );
+                     
+		$this->load->view('template_bootstrap/wrapper', $data, FALSE);
     }
+    
+    
 }
