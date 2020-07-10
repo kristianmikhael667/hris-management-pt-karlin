@@ -2,6 +2,12 @@
 
 class Dashboard_hrd extends CI_Controller{
 
+	public function __construct(){
+        parent::__construct();
+		$this->load->model('models_hrd/Karyawan');
+		
+    }
+
     public function index()
 	{
 		$data = array('title' => '',
