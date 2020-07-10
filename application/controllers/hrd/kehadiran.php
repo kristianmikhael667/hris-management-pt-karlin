@@ -1,13 +1,15 @@
 <?php
 
-class Perjalanandinas extends CI_Controller{
+class Kehadiran extends CI_Controller{
 
     public function index()
 	{
 		$data = array('title' => '',
-					  'content' => 'hrd/perjalanan_dinas/list'
+					  'content' => 'hrd/kehadiran/list'
                      );
                      
 		$this->load->view('template_bootstrap/wrapper', $data, FALSE);
     }
+    
+    
 }

@@ -3,10 +3,11 @@
 class Uangtransport extends CI_Controller{
 
     public function index()
-    {
-        $this->load->view('template_hrd/header');
-        $this->load->view('template_hrd/sidebar');
-        $this->load->view('hrd/uang_transport');
-        $this->load->view('template_hrd/footer');
+	{
+		$data = array('title' => '',
+					  'content' => 'hrd/uang_transport/list'
+                     );
+                     
+		$this->load->view('template_bootstrap/wrapper', $data, FALSE);
     }
 }
