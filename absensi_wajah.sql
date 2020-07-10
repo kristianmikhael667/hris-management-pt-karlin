@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Jul 2020 pada 08.29
+-- Waktu pembuatan: 10 Jul 2020 pada 06.19
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.2.16
 
@@ -58,8 +58,17 @@ CREATE TABLE `tbl_karyawan` (
   `alamat` varchar(50) NOT NULL,
   `nomor_telepon` varchar(15) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `tanggal_lahir` date NOT NULL
+  `tanggal_lahir` date NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `role_id` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_karyawan`
+--
+
+INSERT INTO `tbl_karyawan` (`id_karyawan`, `nama_karyawan`, `kode_bagian`, `alamat`, `nomor_telepon`, `email`, `tanggal_lahir`, `password`, `role_id`) VALUES
+(111, 'Mikhael Kristian', 112, '', '', '', '0000-00-00', 'warrior', 1);
 
 -- --------------------------------------------------------
 
@@ -248,7 +257,7 @@ ALTER TABLE `tbl_jumlah_cuti`
 -- AUTO_INCREMENT untuk tabel `tbl_karyawan`
 --
 ALTER TABLE `tbl_karyawan`
-  MODIFY `id_karyawan` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_karyawan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_kehadiran`
