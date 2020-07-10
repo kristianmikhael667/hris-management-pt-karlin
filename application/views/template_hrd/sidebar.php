@@ -38,6 +38,11 @@
                     <i class="fa fa-home" aria-hidden="true"></i>
                     <span>Jumlah Kehadiran</span></a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="<?php echo base_url('hrd/jumlahkehadiran') ?>">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <span>Tambah Data Karyawan</span></a>
+            </li>
 
             <li class="nav-item active">
                 <a class="nav-link" href="<?php echo base_url('hrd/uangtransport') ?>">
