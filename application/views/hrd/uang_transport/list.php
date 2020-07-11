@@ -34,7 +34,6 @@
                     <td>Rp.<?php echo number_format($data['jumlah_hadir']*$data['uang_bensin']) ?></td>
                     <td>Rp.<?php echo number_format($data['jumlah_hadir']*$data['uang_parkir']) ?></td>
                   </tr>
-
                   <?php } ?>
               
                 </tbody>
