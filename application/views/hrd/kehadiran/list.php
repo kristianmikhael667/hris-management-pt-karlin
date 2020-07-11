@@ -21,7 +21,7 @@
                 <?php
                  
                  
-                  $cek_query=$this->Kehadiran_m->list(); 
+                  $cek_query=$this->kehadiran->list(); 
                   
                   foreach ($cek_query->result_array() as $row)
                   {       

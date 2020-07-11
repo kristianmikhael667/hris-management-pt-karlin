@@ -4,7 +4,7 @@ class Medicalreimbust extends CI_Controller{
 
 	public function __construct(){
         parent::__construct();
-		$this->load->model('models_hrd/Medical_m');
+		$this->load->model('models_hrd/Medical_m', 'medical');
 		
 	}
 	

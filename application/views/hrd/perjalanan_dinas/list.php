@@ -27,7 +27,7 @@
                 <?php
                  
                  
-                  $cek_query=$this->Perjalanan_dinas_m->list(); 
+                  $cek_query=$this->perjalanan_dinas->list(); 
                   
                   foreach ($cek_query->result_array() as $row)
                   {       

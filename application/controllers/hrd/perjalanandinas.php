@@ -4,7 +4,7 @@ class Perjalanandinas extends CI_Controller{
 
 	public function __construct(){
         parent::__construct();
-		$this->load->model('models_hrd/Perjalanan_dinas_m');
+		$this->load->model('models_hrd/Perjalanan_dinas_m', 'perjalanan_dinas');
 		
 	}
 	

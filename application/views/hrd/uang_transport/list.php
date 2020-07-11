@@ -24,7 +24,7 @@
                 <?php
                  
                  
-                  $cek_query=$this->Uang_transport_m->list(); 
+                  $cek_query=$this->uang_transport->list(); 
                   
                   foreach ($cek_query->result_array() as $row)
                   {       

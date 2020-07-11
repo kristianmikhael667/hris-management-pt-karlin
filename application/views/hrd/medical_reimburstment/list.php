@@ -30,7 +30,7 @@
                 <?php
                  
                  
-                  $cek_query=$this->Medical_m->list(); 
+                  $cek_query=$this->medical->list(); 
                   
                   foreach ($cek_query->result_array() as $row)
                   {       

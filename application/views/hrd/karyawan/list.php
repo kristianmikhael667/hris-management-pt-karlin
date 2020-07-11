@@ -26,7 +26,7 @@
                 <?php
                  
                  
-                  $cek_query=$this->Karyawan->list(); 
+                  $cek_query=$this->karyawan->list(); 
                   
                   foreach ($cek_query->result_array() as $row)
                   {       
