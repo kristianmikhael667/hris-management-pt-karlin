@@ -24,8 +24,7 @@ class Uang_transport_m extends CI_Model{
 	{
 		$this->db->select('*');
  		$this->db->from('tbl_transportasi t_transport');
- 		$this->db->join('tbl_kehadiran t_hadir', 't_transport.id_karyawan = t_hadir.id_karyawan');
- 		$this->db->using('jumlah_hadir');	
+ 		$this->db->join('tbl_kehadiran t_hadir', 't_transport.id_karyawan = t_hadir.id_karyawan');	
 	    $query = $this->db->get();
 	    return $query;
 	}
