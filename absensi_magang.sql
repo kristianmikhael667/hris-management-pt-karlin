@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Jul 2020 pada 06.19
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.2.16
+-- Waktu pembuatan: 11 Jul 2020 pada 06.16
+-- Versi server: 10.1.34-MariaDB
+-- Versi PHP: 7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `absensi_wajah`
+-- Database: `absensi_magang`
 --
 
 -- --------------------------------------------------------
@@ -54,21 +54,28 @@ CREATE TABLE `tbl_jumlah_cuti` (
 CREATE TABLE `tbl_karyawan` (
   `id_karyawan` int(3) NOT NULL,
   `nama_karyawan` varchar(50) NOT NULL,
+  `jenis_kelamin` enum('L','P') NOT NULL,
   `kode_bagian` int(10) NOT NULL,
   `alamat` varchar(50) NOT NULL,
   `nomor_telepon` varchar(15) NOT NULL,
   `email` varchar(50) NOT NULL,
   `tanggal_lahir` date NOT NULL,
   `password` varchar(50) NOT NULL,
-  `role_id` tinyint(1) NOT NULL
+  `role_id` tinyint(1) NOT NULL,
+  `foto` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_karyawan`
 --
 
-INSERT INTO `tbl_karyawan` (`id_karyawan`, `nama_karyawan`, `kode_bagian`, `alamat`, `nomor_telepon`, `email`, `tanggal_lahir`, `password`, `role_id`) VALUES
-(111, 'Mikhael Kristian', 112, '', '', '', '0000-00-00', 'warrior', 1);
+INSERT INTO `tbl_karyawan` (`id_karyawan`, `nama_karyawan`, `jenis_kelamin`, `kode_bagian`, `alamat`, `nomor_telepon`, `email`, `tanggal_lahir`, `password`, `role_id`, `foto`) VALUES
+(111, 'Mikhael Kristian', 'L', 112, '', '', '', '0000-00-00', 'warrior', 1, ''),
+(221, 'DANANG', 'L', 2, '111', '0813127372611', 'labinfo1ftki@gmail.com', '2020-07-07', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', 2, 'b491e493b5bdb1924635c949301d91ed.jpg'),
+(1731, '1', 'P', 3, '1', '11', '11', '2020-07-30', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', 2, '39b85f3305be0282dc0f1d6159b2f237.jpg'),
+(17555, 'DANANG', 'L', 2, 'qq', '0813127372611', 'magangsemester6@gmail.com', '2020-07-17', '1c6637a8f2e1f75e06ff9984894d6bd16a3a36a9', 3, '6a134753b81bba76ddd66b1e5ed4b563.jpg'),
+(1253647567, 'DANANG', 'P', 2, '1', '1', '1', '2020-07-25', '356a192b7913b04c54574d18c28d46e6395428ab', 2, '950ec4d7895b415fe84c42e70210d482.jpg'),
+(2147483647, 'DANANG', 'L', 1, '1', '0813127372611', 'magangsemester6@gmail.com', '2020-07-20', '', 1, 'da9bc5720a4628bb73761aeb42efe7f3.jpg');
 
 -- --------------------------------------------------------
 
@@ -192,7 +199,7 @@ ALTER TABLE `tbl_jumlah_cuti`
 --
 ALTER TABLE `tbl_karyawan`
   ADD PRIMARY KEY (`id_karyawan`),
-  ADD UNIQUE KEY `kode_bagian` (`kode_bagian`);
+  ADD KEY `kode_bagian` (`kode_bagian`) USING BTREE;
 
 --
 -- Indeks untuk tabel `tbl_kehadiran`
@@ -257,7 +264,7 @@ ALTER TABLE `tbl_jumlah_cuti`
 -- AUTO_INCREMENT untuk tabel `tbl_karyawan`
 --
 ALTER TABLE `tbl_karyawan`
-  MODIFY `id_karyawan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id_karyawan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2147483647;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_kehadiran`
