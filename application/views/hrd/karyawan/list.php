@@ -20,6 +20,7 @@
                     <th>Nomor Telepon</th>
                     <th>Email</th>
                     <th>Tanggal Lahir</th>
+                    <th>Foto</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -39,6 +40,7 @@
                     <td><?php echo $row['nomor_telepon'] ; ?></td>
                     <td><?php echo $row['email'] ; ?></td>
                     <td><?php echo $row['tanggal_lahir'] ; ?></td>
+                    <td><img style="width: 100px;" src="<?php echo base_url().'assets/images/'.$row['foto'];?>"></td>
                   </tr>
 
                   <?php } ?>
