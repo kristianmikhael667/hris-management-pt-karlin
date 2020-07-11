@@ -15,5 +15,5 @@ class Uangtransport extends CI_Controller{
                      );
                      
 		$this->load->view('template_bootstrap_hrd/wrapper', $data, FALSE);
-    }
+	}
 }
