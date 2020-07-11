@@ -15,7 +15,7 @@ class Uang_transport_m extends CI_Model{
 	public function check_transportasi($id){
 		$this->db->select('*');
 		$this->db->from('tbl_transportasi');
-		$this->db->where('id_tr', $id);
+		$this->db->where('id_karyawan', $id);
 		$query = $this->db->get();
         return $query;
 	}

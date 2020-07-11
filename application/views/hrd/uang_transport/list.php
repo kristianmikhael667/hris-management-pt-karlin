@@ -30,9 +30,9 @@
                   {       
                 ?>
                   <tr>
-                    <td><?php echo $row['id_tr'] ; ?></td>
-                    <td>Rp.<?php echo number_format($data['jumlah_hadir']*$data['uang_bensin']) ?></td>
-                    <td>Rp.<?php echo number_format($data['jumlah_hadir']*$data['uang_parkir']) ?></td>
+                    <td><?php echo $row['id_karyawan'] ; ?></td>
+                    <td>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_bensin'])  ?></td>
+                    <td>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_parkir'])  ?></td>
                   </tr>
                   <?php } ?>
               

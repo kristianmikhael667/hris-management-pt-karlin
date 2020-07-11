@@ -15,5 +15,26 @@ class Perjalanandinas extends CI_Controller{
                      );
                      
 		$this->load->view('template_bootstrap_hrd/wrapper', $data, FALSE);
-    }
+	}
+
+	public function add()
+	{
+		$id_karyawan = $this->input->post('id_karyawan');
+		$lampiran = $this->input->post('lampiran');
+		$tanggal = $this->input->post('tanggal');
+		$biaya_transportasi = $this->input->post('biaya_transportasi');
+		$ket = $this->input->post('ket');
+		$uang_makan = $this->input->post('uang_makan');
+
+		$data = array(
+			'id_karyawan' => $id_karyawan,
+			'lampiran' => $lampiran,
+			'tanggal' => $tanggal,
+			'biaya_transportasi' => $biaya_transportasi,
+			'ket' => $ket,
+			'uang_makan' => $uang_makan
+			);
+		$this->perjalanan_dinas->input_data($data,'tbl_perjalanan_dinas');
+		redirect('hrd/perjalanandinas/index');
+	}
 }
