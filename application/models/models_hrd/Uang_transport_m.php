@@ -23,13 +23,11 @@ class Uang_transport_m extends CI_Model{
 	public function hitunguang()
 	{
 		$this->db->select('*');
- 		$this->db->from('tbl_transportasi');
- 		$this->db->join('tbl_kehadiran');
+ 		$this->db->from('tbl_transportasi t_transport');
+ 		$this->db->join('tbl_kehadiran t_hadir', 't_transport.id_karyawan = t_hadir.id_karyawan');
  		$this->db->using('jumlah_hadir');	
 	    $query = $this->db->get();
-	    if($query->num_rows()>0)
-	      {return $query->result();}
-	    else{return null;}
+	    return $query;
 	}
 
 	public function add_transportasi($id){	
