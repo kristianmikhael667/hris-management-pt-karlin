@@ -24,15 +24,15 @@
                 <tbody>
                 <?php
 
-                  $cek_query=$this->uang_transport->list(); 
+                  $cek_query=$this->uang_transport->hitunguang(); 
                   
                   foreach ($cek_query->result_array() as $row)
                   {       
                 ?>
                   <tr>
                     <td><?php echo $row['id_tr'] ; ?></td>
-                    <td>Rp.<?php echo number_format($data['b.jumlah_hadir']*$data['uang_bensin']) ?></td>
-                    <td>Rp.<?php echo number_format($data['b.jumlah_hadir']*$data['uang_parkir']) ?></td>
+                    <td>Rp.<?php echo number_format($data['jumlah_hadir']*$data['uang_bensin']) ?></td>
+                    <td>Rp.<?php echo number_format($data['jumlah_hadir']*$data['uang_parkir']) ?></td>
                   </tr>
 
                   <?php } ?>
