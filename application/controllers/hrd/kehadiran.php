@@ -14,7 +14,7 @@ class Kehadiran extends CI_Controller{
 					  'content' => 'hrd/kehadiran/list'
                      );
                      
-		$this->load->view('template_bootstrap_hrd/wrapper', $data, FALSE);
+					 $this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
     }
 	
     

@@ -14,6 +14,6 @@ class Uangtransport extends CI_Controller{
 					  'content' => 'hrd/uang_transport/list'
                      );
                      
-		$this->load->view('template_bootstrap_hrd/wrapper', $data, FALSE);
+					 $this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
 	}
 }

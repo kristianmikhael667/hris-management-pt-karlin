@@ -15,14 +15,14 @@ class Dashboard_hrd extends CI_Controller{
 					  'content' => 'hrd/karyawan/list'
                      );
                      
-		$this->load->view('template_bootstrap_hrd/wrapper', $data, FALSE);
+		$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
 	}
 	
 	public function add(){
 		$data = array('title' => 'Add Karyawan',
 					  'content' => 'hrd/karyawan/add'
 		);
-		$this->load->view('template_bootstrap_hrd/wrapper', $data, FALSE);
+		$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
 		$config['upload_path'] = './assets/images/'; //path folder
 	    $config['allowed_types'] = 'gif|jpg|png|doc|docx|pdf|xls|xlsx|ppt|ppt|zip|rar'; //type yang dapat diakses bisa anda sesuaikan
 	    $config['encrypt_name'] = TRUE; //Enkripsi nama yang terupload
