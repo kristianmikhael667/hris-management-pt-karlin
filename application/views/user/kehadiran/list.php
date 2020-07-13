@@ -21,14 +21,13 @@
                 <?php
                  
                   // $id_karyawan = $this->session->userdata('id_karyawan');
-                  $id_karyawan == 221;
-                  $cek_query=$this->check_kehadiran($id_karyawan); 
+                  $cek_query=$this->kehadiran->list(); 
                   
                   foreach ($cek_query->result_array() as $row)
                   {       
                 ?>
                   <tr>
-                    <td><?php echo $row['id_kehadiran'] ; ?></td>
+                    <td><?php echo $row['id_karyawan'] ; ?></td>
                     <td><?php echo $row['jumlah_hadir'] ; ?></td>
                     <td><?php echo $row['jumlah_cuti'] ; ?></td>
                     <td><?php echo $row['jumlah_izin'] ; ?></td>

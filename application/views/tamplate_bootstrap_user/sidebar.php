@@ -3,24 +3,18 @@
 
 <!-- Sidebar -->
 <ul class="sidebar navbar-nav">
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class="fas fa-fw fa-folder"></i>
-        <span>Karyawan</span>
+  <li class="nav-item active">
+    <a class="nav-link" href="<?php echo base_url() ?>user/kehadiran">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Dashboard User</span>
     </a>
-      <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <h6 class="dropdown-header">Action</h6>
-        <a class="dropdown-item" href="<?php echo base_url() ?>user/dashboard_hrd">Data Seluruh Karyawan</a>
-        <a class="dropdown-item" href="<?php echo base_url() ?>user/dashboard_hrd/add">Tambah Karyawan</a>
-      </div>
   </li>
   <li class="nav-item active">
     <a class="nav-link" href="<?php echo base_url() ?>user/kehadiran">
       <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Kehadiran Karyawan</span>
+      <span>Record Kehadiran</span>
     </a>
   </li>
-  
   <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url() ?>user/uangtransport">
       <i class="fas fa-fw fa-chart-area"></i>
@@ -34,7 +28,26 @@
   <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url() ?>user/medicalreimbust">
       <i class="fas fa-fw fa-chart-area"></i>
-      <span>Medical Reimburstment</span></a>
+      <span>Medical Reimbust</span></a>
   </li>
-
+  <li class="nav-item">
+    <a class="nav-link" href="<?php echo base_url() ?>user/formcuti">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Form Cuti</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?php echo base_url() ?>user/formdinas">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Form Perjalanan Dinas</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?php echo base_url() ?>user/formpurchase">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Forum Purchase Request</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?php echo base_url() ?>user/databarang">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Data Manajemen Barang</span></a>
+  </li>
 </ul>
