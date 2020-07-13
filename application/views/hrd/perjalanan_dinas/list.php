@@ -66,13 +66,15 @@
           <form action="<?php echo base_url()?>hrd/perjalanandinas/add"  method="post">
               <div class="form-group">
                 <label>Id Karyawan</label>
-                <select>
-                    <?php foreach ($cek_query->result_array() as $row) { ?>
+                <br>
+                <select class="form-control" id="sel1">
+                    <?php 
+                     $cek_query=$this->karyawan->list(); 
+                    foreach ($cek_query->result_array() as $row) { ?>
                     <option> <?php echo $row['id_karyawan'] ?> </option>
                     <?php } ?>
                 </select>
-                <input type="text" name="id_karyawan" class="form-control" placeholder="Id Karyawan" required>
-
+                <br>
                 <label>Lampiran</label>
                 <input type="number" name="lampiran" class="form-control" placeholder="Lampiran" required>
 
