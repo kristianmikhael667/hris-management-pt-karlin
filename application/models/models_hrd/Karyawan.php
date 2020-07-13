@@ -29,6 +29,10 @@ class Karyawan extends CI_Model{
 		$this->db->delete('tbl_karyawan');
 	}
 
+	public function edit($id){		
+		return $this->db->get_where('tbl_karyawan',$id);
+	}
+
 }
 
 ?>
