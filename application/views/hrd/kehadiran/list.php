@@ -15,6 +15,7 @@
                     <th>Jumlah Cuti</th>
                     <th>Jumlah Izin</th>
                     <th>Jumlah Sakit</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -27,11 +28,13 @@
                   {       
                 ?>
                   <tr>
-                    <td><?php echo $row['id_kehadiran'] ; ?></td>
+                    <td><?php echo $row['id_karyawan'] ; ?></td>
                     <td><?php echo $row['jumlah_hadir'] ; ?></td>
                     <td><?php echo $row['jumlah_cuti'] ; ?></td>
                     <td><?php echo $row['jumlah_izin'] ; ?></td>
                     <td><?php echo $row['jumlah_sakit'] ; ?></td>
+                    <td><a href="<?php echo base_url('hrd/dashboard_hrd/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-danger"> Hapus </a>
+                    <a href="<?php echo base_url('hrd/dashboard_hrd/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Edit </a>  </td>
                   </tr>
 
                   <?php } ?>

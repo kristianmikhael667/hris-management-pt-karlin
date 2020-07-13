@@ -23,6 +23,7 @@
                     <th>Biaya Transportasi</th>
                     <th>Keterangan</th>
                     <th>Uang Makan</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,6 +42,8 @@
                     <td><?php echo $row['biaya_transportasi'] ; ?></td>
                     <td><?php echo $row['ket'] ; ?></td>
                     <td><?php echo $row['uang_makan'] ; ?></td>
+                    <td><a href="<?php echo base_url('hrd/dashboard_hrd/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-danger"> Hapus </a>
+                    <a href="<?php echo base_url('hrd/dashboard_hrd/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Edit </a>  </td>
                   </tr>
 
                   <?php } ?>
@@ -67,7 +70,7 @@
               <div class="form-group">
                 <label>Id Karyawan</label>
                 <br>
-                <select class="form-control" id="sel1">
+                <select class="form-control" id="sel1" name="id_karyawan">
                     <?php 
                      $cek_query=$this->karyawan->list(); 
                     foreach ($cek_query->result_array() as $row) { ?>
