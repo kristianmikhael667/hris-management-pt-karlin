@@ -65,10 +65,18 @@
         <div class="modal-body">
           <form action="<?php echo base_url()?>hrd/perjalanandinas/add"  method="post">
               <div class="form-group">
-                <label>Id Karyawan</label>
-                <input type="text" name="id_karyawan" class="form-control" placeholder="Id Karyawan" required>
+                <label>test Id Karyawan</label>
 
-                <label>Lampiran</label>
+                    <select name="jurusan" id="jurusan">
+                      <?php foreach($cek_query->result_array() as $row1){ ?>
+                          <option> <?php  echo $row1['id_karyawan'] ?> </option>
+                        
+                        
+                     <?php } ?>
+                    </select>
+                  
+
+                <label>Lampiran File </label>
                 <input type="number" name="lampiran" class="form-control" placeholder="Lampiran" required>
 
                 <label>Tanggal</label>
