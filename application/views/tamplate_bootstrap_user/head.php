@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin - Dashboard</title>
+  <title>Halaman Karyawan</title>
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url() ?>tamplate/assets1/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

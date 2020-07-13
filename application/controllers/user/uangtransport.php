@@ -4,7 +4,7 @@ class Uangtransport extends CI_Controller{
 
 	public function __construct(){
         parent::__construct();
-		$this->load->model('models_hrd/Uang_transport_m', 'uang_transport');
+		$this->load->model('models_user/Uang_transport_m', 'uang_transport');
 		
 	}
 	
