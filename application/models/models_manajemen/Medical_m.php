@@ -23,6 +23,13 @@ class Medical_m extends CI_Model{
 	public function add_medical($id){	
 		return  $this->db->insert('tbl_medical', $id); 
 	}
+
+	public function delete($id)
+	{
+		$this->db->where($id);
+		$this->db->delete('tbl_medical');
+	}
+	
 	
 }
 

@@ -24,6 +24,12 @@ class Kehadiran_m extends CI_Model{
 		return  $this->db->insert('tbl_kehadiran', $id); 
 	}
 
+	public function delete($id)
+	{
+		$this->db->where($id);
+		$this->db->delete('tbl_kehadiran');
+	}
+
 }
 
 ?>

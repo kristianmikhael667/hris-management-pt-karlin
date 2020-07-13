@@ -10,6 +10,11 @@ class Perjalanan_dinas_m extends CI_Model{
 		$this->db->insert($table,$data);
 	}
 
+	public function delete($id)
+	{
+		$this->db->where($id);
+		$this->db->delete('tbl_perjalanan_dinas');
+	}
 	
 
 
