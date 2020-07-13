@@ -16,7 +16,7 @@
             Input Data Karyawan</div>
             <div class="card-body">
                 
-                <form action="<?php echo base_url()?>hrd/dashboard_hrd/add"  method="post" enctype="multipart/form-data">
+                <form action="<?php echo base_url()?>hrd/dashboard_hrd/edit"  method="post" enctype="multipart/form-data">
                 <?php	
                 $id = $this->input->get('id');
                 $cek_query = $this->karyawan->check_employe($id);
@@ -50,52 +50,53 @@
                             <label class="col-sm-3 col-form-label"> DEVISI </label>
                             <div class="col-sm-8">
                                 <select class="form-control" name="kode_bagian" required >
-                                    <option value="01"> CEO </option>
-                                    <option value="02"> MANAGER </option>
-                                    <option value="03"> AM </option>
-                                    <option value="04"> HR </option>
-                                    <option value="04"> WEB DEV </option>
-                                    <option value="04"> DESAIN GRAFIS </option>
-                                    <option value="04"> SALES </option>
+                                    <option <?php echo ($row['kode_bagian'] == '1') ? "selected": "" ?> value="01"> CEO </option>
+                                    <option <?php echo ($row['kode_bagian'] == '2') ? "selected": "" ?> value="02"> MANAGER </option>
+                                    <option <?php echo ($row['kode_bagian'] == '3') ? "selected": "" ?> value="03"> MANAGER </option>
+                                    <option <?php echo ($row['kode_bagian'] == '4') ? "selected": "" ?> value="04"> AM </option>
+                                    <option <?php echo ($row['kode_bagian'] == '5') ? "selected": "" ?> value="05"> HR </option>
+                                    <option <?php echo ($row['kode_bagian'] == '6') ? "selected": "" ?> value="06"> WEB DEV </option>
+                                    <option <?php echo ($row['kode_bagian'] == '7') ? "selected": "" ?> value="07"> DESAIN GRAFIS </option>
+                                    <option <?php echo ($row['kode_bagian'] == '8') ? "selected": "" ?> value="08"> SALES </option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label  class="col-sm-3 col-form-label"> AKSES WEB </label>
                             <div class="form-group col-sm-6">	
-                                    <input type="radio"  name="role_id" value="1" > MANAGEMENT <br>
-                                    <input type="radio"  name="role_id" value="2" > HR <br>
-                                    <input type="radio"  name="role_id" value="3" > USER
+                                    <input type="radio"  name="role_id" value="1" <?php echo ($row['role_id'] == '1') ? "checked": "" ?> > MANAGEMENT <br>
+                                    <input type="radio"  name="role_id" value="2" <?php echo ($row['role_id'] == '2') ? "checked": "" ?> >  HR <br>
+                                    <input type="radio"  name="role_id" value="3" <?php echo ($row['role_id'] == '3') ? "checked": "" ?> > USER
                             </div>
                         </div>
                         <div class="form-group row">
                             <label  class="col-sm-3 col-form-label"> ALAMAT </label>
                             <div class="form-group col-sm-8">	
-                                <textarea name="alamat" class="form-control" cols="20" rows="4"></textarea>
+                                <textarea name="alamat" class="form-control" cols="20" rows="4"><?php echo $row['alamat']  ?> </textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label  class="col-sm-3 col-form-label"> NOMOR TELEPON </label>
                             <div class="form-group col-sm-8">	
-                                <input type="text" class="form-control" name="nomor_telepon" placeholder="NOMOR TELEPON" required>
+                                <input type="text" class="form-control" name="nomor_telepon" placeholder="NOMOR TELEPON" value="<?php echo $row['nomor_telepon'] ?>" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label  class="col-sm-3 col-form-label"> EMAIL </label>
                             <div class="form-group col-sm-8">	
-                                <input type="text" class="form-control" name="email" placeholder="EMAIL" required>
+                                <input type="text" class="form-control" name="email" placeholder="EMAIL" value="<?php echo $row['email'] ?>" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label  class="col-sm-3 col-form-label"> PASSWORD </label>
                             <div class="form-group col-sm-8">	
-                                <input type="password" class="form-control" name="password" placeholder="PASSWORD" required>
+                                <input type="text" class="form-control" name="password" placeholder="PASSWORD" value="<?php echo sha1($row['password']) ?>" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label  class="col-sm-3 col-form-label"> TANGGAL LAHIR </label>
                             <div class="form-group col-sm-8">	
-                                <input type="date" class="form-control" name="tanggal_lahir" placeholder="TANGGAL LAHIR" required>  
+                                <input type="date" class="form-control" name="tanggal_lahir" placeholder="TANGGAL LAHIR" value="<?php echo $row['tanggal_lahir'] ?>" required>  
                             </div>
                         </div>
                         <div class="form-group row">

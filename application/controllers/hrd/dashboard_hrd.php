@@ -126,7 +126,7 @@ class Dashboard_hrd extends CI_Controller{
 				$this->image_lib->resize();
 				$foto 				= $gbr['file_name'];
 				$data_user = array(
-					'id_karyawan'		=> $id_karyawan,
+					'id_karyawan'		=> $id_karyawan ,
 					'nama_karyawan'		=> $nama_karyawan,
 					'jenis_kelamin'		=> $jenis_kelamin,
 					'kode_bagian'		=> $kode_bagian,
@@ -138,7 +138,7 @@ class Dashboard_hrd extends CI_Controller{
 					'role_id'			=> $role_id,
 					'foto'				=> $foto
 				);
-				$this->karyawan->edit($data_user);
+				$this->karyawan->edit($id_karyawan, $data_user);
 				echo "<script>alert('Berhasil mengupload data')</script>";
 			
 			}
@@ -156,7 +156,7 @@ class Dashboard_hrd extends CI_Controller{
 				'password'			=> $password,
 				'role_id'			=> $role_id
 			);
-			$this->karyawan->edit($data_user);
+			$this->karyawan->edit($id_karyawan, $data_user);
 			echo "<script>alert('Berhasil mengupload data')</script>";
 			
 		}
