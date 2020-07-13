@@ -7,6 +7,7 @@ class Dashboard_hrd extends CI_Controller{
 		$this->load->model('models_hrd/Karyawan', 'karyawan');
 		$this->load->library('session');
 		$this->load->library('upload');
+		$this->load->helper('url');
     }
 
     public function index()
@@ -29,6 +30,8 @@ class Dashboard_hrd extends CI_Controller{
 					$this->karyawan->delete($where);
 					$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);	
 	}
+
+	
 	
 	public function add(){
 		$data = array('title' => 'Add Karyawan',
@@ -91,11 +94,13 @@ class Dashboard_hrd extends CI_Controller{
 		}
 		
 	}
-
+	
 	public function edit(){
-		$data = array('title' => 'Add Karyawan',
+		$data = array('title' => 'Edit Karyawan',
 					  'content' => 'hrd/karyawan/edit'
 		);
+		$id = $this->input->get('id');
+		
 		$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
 
 		$config['upload_path'] = './assets/images/'; //path folder
@@ -105,20 +110,21 @@ class Dashboard_hrd extends CI_Controller{
 		$config['max_width']            = 0;
 		$config['max_height']           = 0;
 
-		$id_karyawan 		= $this->input->get('id');
-		$nama_karyawan		= $this->input->post('nama_karyawan');
-		$jenis_kelamin		= $this->input->post('jenis_kelamin');
-		$kode_bagian		= $this->input->post('kode_bagian');
-		$alamat				= $this->input->post('alamat');
-		$nomor_telepon		= $this->input->post('nomor_telepon');
-		$email				= $this->input->post('email');
-		$tanggal_lahir		= $this->input->post('tanggal_lahir');
-		$password			= sha1($this->input->post('password'));
-		$role_id			= $this->input->post('role_id');
+		
 
 	    $this->upload->initialize($config);
 	    if(!empty($_FILES['filefoto']['name'])){
 			if ($this->upload->do_upload('filefoto')){
+				$gbr = $this->upload->data();
+				$nama_karyawan		= $this->input->post('nama_karyawan');
+				$jenis_kelamin		= $this->input->post('jenis_kelamin');
+				$kode_bagian		= $this->input->post('kode_bagian');
+				$alamat				= $this->input->post('alamat');
+				$nomor_telepon		= $this->input->post('nomor_telepon');
+				$email				= $this->input->post('email');
+				$tanggal_lahir		= $this->input->post('tanggal_lahir');
+				$password			= sha1($this->input->post('password'));
+				$role_id			= $this->input->post('role_id');
 				$config['image_library']='gd2';
 	            $config['source_image']='./assets/images/'.$gbr['file_name'];
 	            $config['new_image']= './assets/images/'.$gbr['file_name'];
@@ -126,7 +132,7 @@ class Dashboard_hrd extends CI_Controller{
 				$this->image_lib->resize();
 				$foto 				= $gbr['file_name'];
 				$data_user = array(
-					'id_karyawan'		=> $id_karyawan ,
+					'id_karyawan'		=> $id,
 					'nama_karyawan'		=> $nama_karyawan,
 					'jenis_kelamin'		=> $jenis_kelamin,
 					'kode_bagian'		=> $kode_bagian,
@@ -138,14 +144,23 @@ class Dashboard_hrd extends CI_Controller{
 					'role_id'			=> $role_id,
 					'foto'				=> $foto
 				);
-				$this->karyawan->edit($id_karyawan, $data_user);
-				echo "<script>alert('Berhasil mengupload data')</script>";
+				$this->karyawan->edit($data_user, $id);
+			//	echo "<script>alert('Berhasil mengupload data')</script>";
 			
 			}
 		}
 		else{
-			$data_user = array(
-				'id_karyawan'		=> $id_karyawan,
+			$nama_karyawan		= $this->input->post('nama_karyawan');
+		$jenis_kelamin		= $this->input->post('jenis_kelamin');
+		$kode_bagian		= $this->input->post('kode_bagian');
+		$alamat				= $this->input->post('alamat');
+		$nomor_telepon		= $this->input->post('nomor_telepon');
+		$email				= $this->input->post('email');
+		$tanggal_lahir		= $this->input->post('tanggal_lahir');
+		$password			= sha1($this->input->post('password'));
+		$role_id			= $this->input->post('role_id');	
+			$data_user1 = array(
+				'id_karyawan'		=> $id,
 				'nama_karyawan'		=> $nama_karyawan,
 				'jenis_kelamin'		=> $jenis_kelamin,
 				'kode_bagian'		=> $kode_bagian,
@@ -156,8 +171,8 @@ class Dashboard_hrd extends CI_Controller{
 				'password'			=> $password,
 				'role_id'			=> $role_id
 			);
-			$this->karyawan->edit($id_karyawan, $data_user);
-			echo "<script>alert('Berhasil mengupload data')</script>";
+			$this->karyawan->edit($data_user1, $id);
+			//echo "<script>alert('Berhasil mengupload data')</script>";
 			
 		}
 

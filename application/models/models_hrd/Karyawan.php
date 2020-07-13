@@ -29,9 +29,10 @@ class Karyawan extends CI_Model{
 		$this->db->delete('tbl_karyawan');
 	}
 
-	public function edit($id, $data){		
-		$this->db->where($id);
-		$this->db->update('tbl_karyawan',$data);
+	public function edit($data, $id)
+	{
+		$this->db->where('id_karyawan', $id);
+		$this->db->update('tbl_karyawan', $data);
 	}
 
 }
