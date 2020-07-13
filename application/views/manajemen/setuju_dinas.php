@@ -13,76 +13,39 @@
                             <div class="card-header">
                                 <i class="fa fa-address-card mr-2" aria-hidden="true"></i> Forum Perjalanan Dinas</div>
                             <div class="card-body">
-                                <table class="table">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Id Karyawan</th>
-                                            <th scope="col">Lampiran</th>
-                                            <th scope="col">Tanggal</th>
-                                            <th scope="col">Biaya Transportasi</th>
-                                            <th scope="col">Keterangan</th>
-                                            <th scope="col">Uang Makan</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>213</td>
-                                            <td>File.pdf</td>
-                                            <td>22-08-2020</td>
-                                            <td>30000</td>
-                                            <td>Lulus</td>
-                                            <td>50000</td>
-                                            <td>
-                                                <div class="btn-group" role="group" aria-label="First Group">
-                                                    <a href="#" class="btn btn-icon btn-outline-primary mr-2"><i class="fa fa-eye"></i></a>
-                                                    <a href="#" type="button" class="btn btn-icon btn-outline-success mr-2"><i class="fa fa-edit"></i></a>
-                                                    <a href="#" type="button" class="btn btn-icon btn-outline-success mr-2"><i class="fa fa-check"></i></a>
-                                                    <a href="#" type="button" class="btn btn-icon btn-outline-danger mr-2"><i class="fa fa-times"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Id Karyawan</th>
+                                    <th>Lampiran</th>
+                                    <th>Tanggal</th>
+                                    <th>Biaya Transportasi</th>
+                                    <th>Keterangan</th>
+                                    <th>Uang Makan</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                
+                                
+                                $cek_query=$this->perjalanan_dinas->tampil_data(); 
+                                
+                                foreach ($cek_query->result_array() as $row)
+                                {       
+                                ?>
+                                <tr>
+                                    <td><?php echo $row['id_karyawan'] ; ?></td>
+                                    <td><?php echo $row['lampiran'] ; ?></td>
+                                    <td><?php echo $row['tanggal'] ; ?></td>
+                                    <td><?php echo $row['biaya_transportasi'] ; ?></td>
+                                    <td><?php echo $row['ket'] ; ?></td>
+                                    <td><?php echo $row['uang_makan'] ; ?></td>
+                                </tr>
 
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>113</td>
-                                            <td>Produk.pdf</td>
-                                            <td>21-08-2020</td>
-                                            <td>30000</td>
-                                            <td>Lulus</td>
-                                            <td>50000</td>
-                                            <td>
-                                                <div class="btn-group" role="group" aria-label="First Group">
-                                                    <a href="#" class="btn btn-icon btn-outline-primary mr-2"><i class="fa fa-eye"></i></a>
-                                                    <a href="#" type="button" class="btn btn-icon btn-outline-success mr-2"><i class="fa fa-edit"></i></a>
-                                                    <a href="#" type="button" class="btn btn-icon btn-outline-success mr-2"><i class="fa fa-check"></i></a>
-                                                    <a href="#" type="button" class="btn btn-icon btn-outline-danger mr-2"><i class="fa fa-times"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>223</td>
-                                            <td>Picture.pdf</td>
-                                            <td>12-08-2020</td>
-                                            <td>30000</td>
-                                            <td>Lulus</td>
-                                            <td>50000</td>
-                                            <td>
-                                                <div class="btn-group" role="group" aria-label="First Group">
-                                                    <a href="#" class="btn btn-icon btn-outline-primary mr-2"><i class="fa fa-eye"></i></a>
-                                                    <a href="#" type="button" class="btn btn-icon btn-outline-success mr-2"><i class="fa fa-edit"></i></a>
-                                                    <a href="#" type="button" class="btn btn-icon btn-outline-success mr-2"><i class="fa fa-check"></i></a>
-                                                    <a href="#" type="button" class="btn btn-icon btn-outline-danger mr-2"><i class="fa fa-times"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
+                                <?php } ?>
+                            
+                                </tbody>
+                            </table>
 
 
                             </div>
