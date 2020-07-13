@@ -17,6 +17,20 @@ class Dashboard_hrd extends CI_Controller{
                      
 		$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
 	}
+
+	public function delete()
+	{
+		$data = array('title' => 'Data Karyawan',
+					  'content' => 'hrd/karyawan/list'
+					 );
+					
+					$id = $this->input->get('id');
+					$where = array('id_karyawan' => $id);
+					$this->karyawan->delete($where);
+					$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
+                     
+		
+	}
 	
 	public function add(){
 		$data = array('title' => 'Add Karyawan',

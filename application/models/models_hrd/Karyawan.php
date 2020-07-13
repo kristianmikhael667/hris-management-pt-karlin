@@ -23,6 +23,13 @@ class Karyawan extends CI_Model{
 		return  $this->db->insert('tbl_karyawan', $id); 
 	}
 
+	public function delete($id)
+	{
+		$this->db->where($id);
+		$this->db->delete('tbl_karyawan'); 
+	
+	}
+
 }
 
 ?>
