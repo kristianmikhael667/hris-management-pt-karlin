@@ -30,11 +30,21 @@
       <i class="fas fa-fw fa-chart-area"></i>
       <span>Medical Reimbust</span></a>
   </li>
+
   <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url() ?>user/formcuti">
       <i class="fas fa-fw fa-chart-area"></i>
       <span>Form Cuti</span></a>
   </li>
+
+  
+  <li class="nav-item">
+      <a class="nav-link collapsed" href="<?php echo base_url() ?>user/pengajuancuti" >
+        <i class="fas fa-fw fa-wrench"></i>
+        <span>Ketentuan Pengajuan Cuti</span>
+      </a>
+    </li>
+
   <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url() ?>user/formdinas">
       <i class="fas fa-fw fa-chart-area"></i>
