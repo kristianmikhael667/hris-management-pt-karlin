@@ -8,9 +8,7 @@ class Dashboard_hrd extends CI_Controller{
 		$this->load->library('session');
 		$this->load->library('upload');
 		$this->load->helper('url');
-		if( ($this->session->userdata('user') == null) && ($this->session->userdata('akses') != 3) ){
-			redirect('login/login');
-		}
+		
     }
 
     public function index()
@@ -64,7 +62,7 @@ class Dashboard_hrd extends CI_Controller{
 				$nomor_telepon		= $this->input->post('nomor_telepon');
 				$email				= $this->input->post('email');
 				$tanggal_lahir		= $this->input->post('tanggal_lahir');
-				$password			= sha1($this->input->post('password'));
+				$password			= password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 				$role_id			= $this->input->post('role_id');
 				$foto 				= $gbr['file_name'];
 				$cek_employe 		= $this->karyawan->check_employe($id_karyawan);

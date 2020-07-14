@@ -6,6 +6,12 @@ class Perjalanandinas extends CI_Controller{
         parent::__construct();
 		$this->load->model('models_hrd/Perjalanan_dinas_m', 'perjalanan_dinas');
 		$this->load->model('models_hrd/Karyawan', 'karyawan');
+		$this->load->library('session');
+		$this->load->library('upload');
+		$this->load->helper('url');
+		if( ($this->session->userdata('id_karyawan') == null) && ($this->session->userdata('role_id') != 2) ){
+			redirect('login/login');
+		}
 	}
 	
     public function index()

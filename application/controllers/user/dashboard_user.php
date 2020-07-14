@@ -7,6 +7,10 @@ class Dashboard_user extends CI_Controller{
 		$this->load->model('models_hrd/Karyawan', 'karyawan');
 		$this->load->library('session');
 		$this->load->library('upload');
+		$this->load->helper('url');
+		if( ($this->session->userdata('id_karyawan') == null) && ($this->session->userdata('role_id') != 3) ){
+			redirect('login/login');
+		}
     }
 
     public function index()
