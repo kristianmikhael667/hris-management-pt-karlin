@@ -40,12 +40,15 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Form Login</h1>
                   </div>
-                  <form class="user" action="login/proses" method="post">
+                  <?php echo $this->session->flashdata('pesan') ?>
+                  <form class="user" action="<?php echo base_url('auth/login') ?>" method="post">
                     <div class="form-group">
-                      <input type="text" name="username" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="ID KARYAWAN ">
+                      <input type="text" name="id_karyawan" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="ID KARYAWAN ">
+                      <?php echo form_error('id_karyawan', '<div class="text-danger small ml-2">','</div>'); ?>
                     </div>
                     <div class="form-group">
                       <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="PASSWORD">
+                      <?php echo form_error('password', '<div class="text-danger small ml-2">','</div>'); ?>
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
@@ -53,7 +56,7 @@
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>  
-                    <button class="btn btn-primary btn-user btn-block" name="login">	Login	</button>
+                    <button type="submit" class="btn btn-primary form-control" name="login">	Login	</button>
                   </form>
                 </div>
               </div>

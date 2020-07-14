@@ -23,6 +23,10 @@
 
   <!-- Navbar -->
   <ul class="navbar-nav ml-auto ml-md-0">
+  <?php if ($this->session->userdata('id_karyawan')){ ?>
+      <li><div class="text-success">Selamat Datang <?php echo $this->session->userdata('id_karyawan')?></div></li>
+      <li class= "ml-3"><?php echo anchor('auth/logout','Logout') ?></li>
+  <?php } ?>
     <li class="nav-item dropdown no-arrow mx-1">
       <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-bell fa-fw"></i>
