@@ -12,7 +12,15 @@ class Kehadiran_m extends CI_Model{
         return $query;
 	}
 
-	public function check_kehadiran($id){
+	public function check_kehadiran($jumlah, $id){
+		$this->db->select('jumlah_sakit');
+		$this->db->from('tbl_kehadiran');
+		$this->db->where('id_karyawan', $id);
+		$query = $this->db->get();
+        return $query;
+	}
+
+	public function check_employe($id){
 		$this->db->select('*');
 		$this->db->from('tbl_kehadiran');
 		$this->db->where('id_karyawan', $id);
