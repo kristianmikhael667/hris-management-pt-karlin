@@ -26,6 +26,9 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('form_login');
-	}
+		$data = array('title' => ''
+                     );
+                     
+		$this->load->view('tamplate_dashboard_utama/wrapper', $data, FALSE);
+    }
 }

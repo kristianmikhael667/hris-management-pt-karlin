@@ -76,7 +76,7 @@
 											</li> -->
 											<li><a href="courses.html"><i class="fa fa-clone"></i>PT Karlin Mastrindo</a></li>
 											<!-- <li><a href="courses.html"><i class="fa fa-clone"></i>Download petunjuk</a></li> -->
-											<li><a href="portal/"><i class="fa fa-bullhorn"></i>Login</a></li>
+											<li><a href="login/"><i class="fa fa-bullhorn"></i>Login</a></li>
 											<li><a href="portal/register.php"><i class="fa fa-address-book"></i>Daftar</a> </li>
 										</ul>
 										<!-- End Main Menu -->

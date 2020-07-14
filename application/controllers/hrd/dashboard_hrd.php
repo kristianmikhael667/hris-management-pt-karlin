@@ -8,6 +8,9 @@ class Dashboard_hrd extends CI_Controller{
 		$this->load->library('session');
 		$this->load->library('upload');
 		$this->load->helper('url');
+		if( ($this->session->userdata('user') == null) && ($this->session->userdata('akses') != 3) ){
+			redirect('login/login');
+		}
     }
 
     public function index()
