@@ -31,8 +31,6 @@ class Dashboard_hrd extends CI_Controller{
 					$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);	
 	}
 
-	
-	
 	public function add(){
 		$data = array('title' => 'Add Karyawan',
 					  'content' => 'hrd/karyawan/add'
@@ -96,12 +94,13 @@ class Dashboard_hrd extends CI_Controller{
 	}
 	
 	public function edit(){
-		$data = array('title' => 'Edit Karyawan',
+		$data = array('title' => 'Add Karyawan',
 					  'content' => 'hrd/karyawan/edit'
 		);
+		$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
 		$id = $this->input->get('id');
 		
-		$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
+
 
 		$config['upload_path'] = './assets/images/'; //path folder
 	    $config['allowed_types'] = 'gif|jpg|png|doc|docx|pdf|xls|xlsx|ppt|ppt|zip|rar'; //type yang dapat diakses bisa anda sesuaikan
@@ -116,6 +115,7 @@ class Dashboard_hrd extends CI_Controller{
 	    if(!empty($_FILES['filefoto']['name'])){
 			if ($this->upload->do_upload('filefoto')){
 				$gbr = $this->upload->data();
+				$id_karyawan		= $this->input->post('id_karyawan');
 				$nama_karyawan		= $this->input->post('nama_karyawan');
 				$jenis_kelamin		= $this->input->post('jenis_kelamin');
 				$kode_bagian		= $this->input->post('kode_bagian');
@@ -131,8 +131,7 @@ class Dashboard_hrd extends CI_Controller{
 	            $this->load->library('image_lib', $config);
 				$this->image_lib->resize();
 				$foto 				= $gbr['file_name'];
-				$data_user = array(
-					'id_karyawan'		=> $id,
+				$data_user1 = array(
 					'nama_karyawan'		=> $nama_karyawan,
 					'jenis_kelamin'		=> $jenis_kelamin,
 					'kode_bagian'		=> $kode_bagian,
@@ -144,13 +143,18 @@ class Dashboard_hrd extends CI_Controller{
 					'role_id'			=> $role_id,
 					'foto'				=> $foto
 				);
-				$this->karyawan->edit($data_user, $id);
-			//	echo "<script>alert('Berhasil mengupload data')</script>";
+				$where = array(
+					'id_karyawan' => $id_karyawan
+				);
+				$this->karyawan->edit($where, $data_user1);
+				//echo "<script>alert('Berhasil mengupload data')</script>";
 			
 			}
 		}
 		else{
-			$nama_karyawan		= $this->input->post('nama_karyawan');
+			
+		$id_karyawan		= $this->input->post('id_karyawan');
+		$nama_karyawan		= $this->input->post('nama_karyawan');
 		$jenis_kelamin		= $this->input->post('jenis_kelamin');
 		$kode_bagian		= $this->input->post('kode_bagian');
 		$alamat				= $this->input->post('alamat');
@@ -160,7 +164,6 @@ class Dashboard_hrd extends CI_Controller{
 		$password			= sha1($this->input->post('password'));
 		$role_id			= $this->input->post('role_id');	
 			$data_user1 = array(
-				'id_karyawan'		=> $id,
 				'nama_karyawan'		=> $nama_karyawan,
 				'jenis_kelamin'		=> $jenis_kelamin,
 				'kode_bagian'		=> $kode_bagian,
@@ -171,7 +174,10 @@ class Dashboard_hrd extends CI_Controller{
 				'password'			=> $password,
 				'role_id'			=> $role_id
 			);
-			$this->karyawan->edit($data_user1, $id);
+			$where = array(
+				'id_karyawan' => $id_karyawan
+			);
+			$this->karyawan->edit($where, $data_user1);
 			//echo "<script>alert('Berhasil mengupload data')</script>";
 			
 		}

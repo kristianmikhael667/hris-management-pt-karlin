@@ -27,7 +27,12 @@
     
                 
                     <div class="container"> 
-                        
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"> ID KARYAWAN </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="id_karyawan" placeholder="ID KARYAWAN" value="<?php echo $row['id_karyawan'] ?>" required>
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label"> NAMA </label>
                             <div class="col-sm-8">
