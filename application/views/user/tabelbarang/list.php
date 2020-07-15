@@ -27,6 +27,7 @@
                   
                   foreach ($cek_query->result_array() as $row)
                   {       
+                    //SELECT COUNT(nama_kolom) FROM nama_table
                 ?>
                   <tr>
                     <td><?php echo $row['id_karyawan'] ; ?></td>
@@ -35,8 +36,13 @@
                     <td><?php echo $row['keterangan'] ; ?></td>
                     <td>
                       <button class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#view" name=""><i class="fa fa-eye"></i></button>
-                      <button class="btn btn-sm btn-danger mb-2" data-toggle="modal" data-target="#manajemen" name=""><i class="fa fa-trash"></i></button>
-                      <button class="btn btn-sm btn-success mb-2" data-toggle="modal" data-target="#edit" name=""><i class="fa fa-magic"></i></button>
+                      <?php
+                        $cek_query=$this->manajemenbarang->tampil(); 
+                        foreach ($cek_query->result_array() as $row)
+                        { ?>
+                          <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('user/manajemenbarang/deletepurchase?id=') . $row['id_karyawan']; ?>"><i class="fa fa-trash"></i></a>
+                      <?php } ?>
+                        <button class="btn btn-sm btn-success mb-2" data-toggle="modal" data-target="#edit" name=""><i class="fa fa-magic"></i></button>
                     </td>
                   </tr>
 
@@ -61,7 +67,12 @@
           </button>
         </div>
         <div class="modal-body">
-
+        <?php
+          $cek_query=$this->manajemenbarang->tampil(); 
+            foreach ($cek_query->result_array() as $row)
+          { ?>
+              <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('user/manajemenbarang/delete?id=') . $row['id_purchase_request']; ?>"><i class="fa fa-trash"></i> HAPUS SEMUA DATA BARANG !!!</a>
+          <?php } ?>
         <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -129,10 +140,10 @@
               <label>Nomor Purchase</label>
               <input type="text" name="id_purchase_request" class="form-control" readonly value="<?php echo $row['id_purchase_request'] ; ?>">
             </div>
-
+            
             <div class="for-group">
               <label>Tanggal Permintaan</label>
-              <input type="text" name="tgl_permintaan" class="form-control" value="<?php echo $row['tgl_permintaan'] ; ?>">
+              <input type="date" name="tgl_permintaan" class="form-control" value="<?php echo $row['tgl_permintaan'] ; ?>">
             </div>
 
             <div class="for-group">
@@ -141,7 +152,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary btn-sm mt-3">Simpan</button>
-            
+            <button type="reset" class="btn btn-danger btn-sm mt-3">Reset</button>
           </form>
           <?php } ?>
       </div>
