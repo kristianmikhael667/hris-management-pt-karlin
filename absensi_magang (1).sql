@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Jul 2020 pada 06.16
--- Versi server: 10.1.34-MariaDB
--- Versi PHP: 7.2.8
+-- Waktu pembuatan: 14 Jul 2020 pada 17.19
+-- Versi server: 10.1.38-MariaDB
+-- Versi PHP: 7.2.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,6 +32,47 @@ CREATE TABLE `tbl_bagian` (
   `kode_bagian` int(10) NOT NULL,
   `bagian` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_cuti`
+--
+
+CREATE TABLE `tbl_cuti` (
+  `mulai_cuti` date NOT NULL,
+  `akhir_cuti` date NOT NULL,
+  `jenis_cuti` varchar(50) NOT NULL,
+  `alasan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_cuti`
+--
+
+INSERT INTO `tbl_cuti` (`mulai_cuti`, `akhir_cuti`, `jenis_cuti`, `alasan`) VALUES
+('2020-07-14', '2020-07-24', '03', 'hati');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_dinas`
+--
+
+CREATE TABLE `tbl_dinas` (
+  `nomor_sppd` int(50) NOT NULL,
+  `tgl_keberangkatan` date NOT NULL,
+  `bln_keberangkatan` date NOT NULL,
+  `tujuan` varchar(50) NOT NULL,
+  `alasan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_dinas`
+--
+
+INSERT INTO `tbl_dinas` (`nomor_sppd`, `tgl_keberangkatan`, `bln_keberangkatan`, `tujuan`, `alasan`) VALUES
+(2147483647, '2020-07-10', '2020-08-01', 'Raja Ampat', 'Mau refresing capek ngoding');
 
 -- --------------------------------------------------------
 
@@ -70,12 +111,8 @@ CREATE TABLE `tbl_karyawan` (
 --
 
 INSERT INTO `tbl_karyawan` (`id_karyawan`, `nama_karyawan`, `jenis_kelamin`, `kode_bagian`, `alamat`, `nomor_telepon`, `email`, `tanggal_lahir`, `password`, `role_id`, `foto`) VALUES
-(111, 'Mikhael Kristian', 'L', 112, '', '', '', '0000-00-00', 'warrior', 1, ''),
-(221, 'DANANG', 'L', 2, '111', '0813127372611', 'labinfo1ftki@gmail.com', '2020-07-07', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', 2, 'b491e493b5bdb1924635c949301d91ed.jpg'),
-(1731, '1', 'P', 3, '1', '11', '11', '2020-07-30', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', 2, '39b85f3305be0282dc0f1d6159b2f237.jpg'),
-(17555, 'DANANG', 'L', 2, 'qq', '0813127372611', 'magangsemester6@gmail.com', '2020-07-17', '1c6637a8f2e1f75e06ff9984894d6bd16a3a36a9', 3, '6a134753b81bba76ddd66b1e5ed4b563.jpg'),
-(1253647567, 'DANANG', 'P', 2, '1', '1', '1', '2020-07-25', '356a192b7913b04c54574d18c28d46e6395428ab', 2, '950ec4d7895b415fe84c42e70210d482.jpg'),
-(2147483647, 'DANANG', 'L', 1, '1', '0813127372611', 'magangsemester6@gmail.com', '2020-07-20', '', 1, 'da9bc5720a4628bb73761aeb42efe7f3.jpg');
+(111, 'DANANG AJI MUSTOF', 'L', 3, 'dere', '089668997397', 'haekal@gmail.com', '2020-07-31', '111', 3, 'e8a0e903b92951f4f463ff2bef9615a0.png'),
+(221, 'admin', 'L', 1, 'Ciseeng ', '0898765', 'kristianmikhael@gmail.com', '2020-07-26', '9c1c01dc3ac1445a500251fc34a15d3e75a849df', 2, '472cbcc880a565b3464070077e66875c.png');
 
 -- --------------------------------------------------------
 
@@ -84,7 +121,7 @@ INSERT INTO `tbl_karyawan` (`id_karyawan`, `nama_karyawan`, `jenis_kelamin`, `ko
 --
 
 CREATE TABLE `tbl_kehadiran` (
-  `id_kehadiran` int(10) NOT NULL,
+  `id_karyawan` int(10) NOT NULL,
   `jumlah_hadir` int(11) NOT NULL,
   `jumlah_cuti` int(11) NOT NULL,
   `jumlah_izin` int(11) NOT NULL,
@@ -99,6 +136,7 @@ CREATE TABLE `tbl_kehadiran` (
 
 CREATE TABLE `tbl_manage_barang` (
   `id_purchase_request` int(10) NOT NULL,
+  `id_barang` int(20) NOT NULL,
   `nama_barang` varchar(50) NOT NULL,
   `harga` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -173,7 +211,7 @@ CREATE TABLE `tbl_purcase_request` (
 --
 
 CREATE TABLE `tbl_transportasi` (
-  `id_tr` int(10) NOT NULL,
+  `id_karyawan` int(10) NOT NULL,
   `uang_bensin` longtext NOT NULL,
   `uang_parkir` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -205,13 +243,14 @@ ALTER TABLE `tbl_karyawan`
 -- Indeks untuk tabel `tbl_kehadiran`
 --
 ALTER TABLE `tbl_kehadiran`
-  ADD PRIMARY KEY (`id_kehadiran`);
+  ADD PRIMARY KEY (`id_karyawan`);
 
 --
 -- Indeks untuk tabel `tbl_manage_barang`
 --
 ALTER TABLE `tbl_manage_barang`
-  ADD PRIMARY KEY (`id_purchase_request`);
+  ADD PRIMARY KEY (`id_purchase_request`),
+  ADD UNIQUE KEY `id_barang` (`id_barang`);
 
 --
 -- Indeks untuk tabel `tbl_medical`
@@ -242,7 +281,7 @@ ALTER TABLE `tbl_purcase_request`
 -- Indeks untuk tabel `tbl_transportasi`
 --
 ALTER TABLE `tbl_transportasi`
-  ADD PRIMARY KEY (`id_tr`);
+  ADD PRIMARY KEY (`id_karyawan`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -264,13 +303,13 @@ ALTER TABLE `tbl_jumlah_cuti`
 -- AUTO_INCREMENT untuk tabel `tbl_karyawan`
 --
 ALTER TABLE `tbl_karyawan`
-  MODIFY `id_karyawan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2147483647;
+  MODIFY `id_karyawan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_kehadiran`
 --
 ALTER TABLE `tbl_kehadiran`
-  MODIFY `id_kehadiran` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=352;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_manage_barang`
@@ -306,7 +345,7 @@ ALTER TABLE `tbl_purcase_request`
 -- AUTO_INCREMENT untuk tabel `tbl_transportasi`
 --
 ALTER TABLE `tbl_transportasi`
-  MODIFY `id_tr` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -322,13 +361,13 @@ ALTER TABLE `tbl_bagian`
 -- Ketidakleluasaan untuk tabel `tbl_jumlah_cuti`
 --
 ALTER TABLE `tbl_jumlah_cuti`
-  ADD CONSTRAINT `tbl_jumlah_cuti_ibfk_1` FOREIGN KEY (`id_karyawan`) REFERENCES `tbl_kehadiran` (`id_kehadiran`);
+  ADD CONSTRAINT `tbl_jumlah_cuti_ibfk_1` FOREIGN KEY (`id_karyawan`) REFERENCES `tbl_kehadiran` (`id_karyawan`);
 
 --
 -- Ketidakleluasaan untuk tabel `tbl_kehadiran`
 --
 ALTER TABLE `tbl_kehadiran`
-  ADD CONSTRAINT `tbl_kehadiran_ibfk_1` FOREIGN KEY (`id_kehadiran`) REFERENCES `tbl_karyawan` (`id_karyawan`);
+  ADD CONSTRAINT `tbl_kehadiran_ibfk_1` FOREIGN KEY (`id_karyawan`) REFERENCES `tbl_karyawan` (`id_karyawan`);
 
 --
 -- Ketidakleluasaan untuk tabel `tbl_manage_barang`
@@ -364,7 +403,7 @@ ALTER TABLE `tbl_purcase_request`
 -- Ketidakleluasaan untuk tabel `tbl_transportasi`
 --
 ALTER TABLE `tbl_transportasi`
-  ADD CONSTRAINT `tbl_transportasi_ibfk_1` FOREIGN KEY (`id_tr`) REFERENCES `tbl_karyawan` (`id_karyawan`);
+  ADD CONSTRAINT `tbl_transportasi_ibfk_1` FOREIGN KEY (`id_karyawan`) REFERENCES `tbl_karyawan` (`id_karyawan`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

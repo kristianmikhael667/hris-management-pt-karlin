@@ -3,7 +3,17 @@
 class Dashboard_hrd extends CI_Controller{
 
 	public function __construct(){
-        parent::__construct();
+		parent::__construct();
+		
+		if($this->session->userdata('role_id') != '2'){
+			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			Anda Belum Login HRD!
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+		</div>');
+		redirect('auth/login');
+		}
 		$this->load->model('models_hrd/Karyawan', 'karyawan');
 		$this->load->library('session');
 		$this->load->library('upload');
@@ -65,8 +75,8 @@ class Dashboard_hrd extends CI_Controller{
 				$nomor_telepon		= $this->input->post('nomor_telepon');
 				$email				= $this->input->post('email');
 				$tanggal_lahir		= $this->input->post('tanggal_lahir');
-				$password			= password_hash($this->input->post('password'), PASSWORD_DEFAULT);
-				$role_id			= $this->input->post('role_id');
+				$password			= $this->input->post('password');
+				$role_id			= 3;
 				$foto 				= $gbr['file_name'];
 				$cek_employe 		= $this->karyawan->check_employe($id_karyawan);
 				$cek_data_employe 	= $cek_employe->num_rows();
@@ -86,7 +96,7 @@ class Dashboard_hrd extends CI_Controller{
 							'email'				=> $email,
 							'tanggal_lahir'		=> $tanggal_lahir,
 							'password'			=> $password,
-							'role_id'			=> $role_id,
+							'role_id'			=> 3,
 							'foto'				=> $foto
 						);
 						$this->karyawan->add_employe($data_user);
