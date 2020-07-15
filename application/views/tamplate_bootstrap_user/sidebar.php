@@ -58,6 +58,6 @@
   <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url() ?>user/databarang">
       <i class="fas fa-fw fa-chart-area"></i>
-      <span>Data Manajemen Barang</span></a>
+      <span>Data Purchase Request</span></a>
   </li>
 </ul>
