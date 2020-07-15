@@ -18,13 +18,7 @@
                 <div class="form-group row">
                     <label for="sel1" class="col-sm-3 col-form-label">Id Karyawan</label>
                     <div class="col-sm-8">
-                        <select class="form-control" id="sel1" name="id_karyawan"> 
-                            <?php 
-                            $cek_query=$this->karyawan->list(); 
-                            foreach ($cek_query->result_array() as $row) { ?>
-                            <option> <?php echo $row['id_karyawan'] ?> </option>
-                            <?php } ?>
-                        </select>
+                        <input type="text" class="form-control" name="id_purchase_request" readonly value="<?php echo $this->session->userdata('id_karyawan')?>"  required>
                     </div>
                 </div>
                 <div class="form-group row">

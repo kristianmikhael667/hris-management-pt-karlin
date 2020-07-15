@@ -16,7 +16,7 @@
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
       <?php $this->session->userdata('id_karyawan') ?>
-      <li><div>Selamat Datang <?php echo $this->session->userdata('id_karyawan')?></div></li>
+      <li><div>Selamat Datang <?php echo $this->session->userdata('nama_karyawan')?></div></li>
       <li class= "ml-3"><?php echo anchor('auth/logout','Logout') ?></li>
 
       <!-- Nav Item - Search Dropdown (Visible Only XS) -->
