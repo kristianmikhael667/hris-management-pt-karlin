@@ -4,7 +4,7 @@
 <!-- Sidebar -->
 <ul class="sidebar navbar-nav">
   <li class="nav-item active">
-    <a class="nav-link" href="<?php echo base_url() ?>user/kehadiran">
+    <a class="nav-link" href="<?php echo base_url() ?>user/dashboard_user">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard User</span>
     </a>

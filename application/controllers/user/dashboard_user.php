@@ -25,7 +25,7 @@ class Dashboard_user extends CI_Controller{
     public function index()
 	{
 		$data = array('title' => 'Data Karyawan',
-					  'content' => 'user/karyawan/list'
+					  'content' => 'user/dashboard/dashboarduser'
                      );
                      
 					 $this->load->view('tamplate_bootstrap_user/wrapper', $data, FALSE);

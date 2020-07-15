@@ -1,6 +1,17 @@
 <?php
 
+
 class Auth extends CI_Controller{
+
+    public function __construct(){
+        parent::__construct();
+		$this->load->model('models_login/Login_akses', 'login_user');
+		$this->load->library('session');
+		$this->load->library('upload');
+        $this->load->helper('url');
+        $this->load->helper('form');
+    }
+
     public function login()
     {
         $this->form_validation->set_rules('id_karyawan','id_karyawan','required',['required' => 'Id Karyawan wajib diisi!']);
@@ -22,10 +33,12 @@ class Auth extends CI_Controller{
             }else{
                 $this->session->set_userdata('id_karyawan',$auth->id_karyawan);
                 $this->session->set_userdata('role_id',$auth->role_id);
-                 $this->session->set_userdata('nama_karyawan',$auth->nama_karyawan);
-
+                
+                $cek_query=$this->login_user->check_employe('id_karyawan');     
+                    $data=$cek_query->row_array();
+                    $this->session->set_userdata('nama_karyawan', $data['nama_karyawan']);
                 switch($auth->role_id){
-                    case 1 : redirect('manajemen/dashboard_manajemen');
+                    case 1 : redirect('manajemen/dashboard_manajemen');        
                         break;
                     case 2 : redirect('hrd/dashboard_hrd');
                         break;
@@ -34,6 +47,8 @@ class Auth extends CI_Controller{
                     default:
                         break;
                 }
+
+                
             }
         }
     }

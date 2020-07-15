@@ -18,6 +18,8 @@ class Kehadiran_m extends CI_Model{
         return $query;
 	}
 
+	
+
 }
 
 ?>
