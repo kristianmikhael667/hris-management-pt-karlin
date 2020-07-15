@@ -2,6 +2,10 @@
 
 class Manajemenbarang_m extends CI_Model{
 
+	function tampil(){
+		return $this->db->get('tbl_purcase_request');
+	}
+
     function tampil_data(){
 		return $this->db->get('tbl_manage_barang');
 	}

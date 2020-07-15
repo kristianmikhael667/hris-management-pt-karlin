@@ -18,7 +18,7 @@
                 <div class="form-group row">
                     <label for="sel1" class="col-sm-3 col-form-label">Id Karyawan</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="id_purchase_request" readonly value="<?php echo $this->session->userdata('id_karyawan')?>"  required>
+                        <input type="text" class="form-control" name="id_karyawan" readonly value="<?php echo $this->session->userdata('id_karyawan')?>"  required>
                     </div>
                 </div>
                 <div class="form-group row">
