@@ -13,6 +13,15 @@ class Formcuti_m extends CI_Model{
     function input_data($data,$table){
 		$this->db->insert($table,$data);
 	}
+
+	public function update_kehadiran($id, $data)
+	{
+	
+		$this->db->update('tbl_kehadiran', $data, $id);
+		
+	}
+
+	
 }
 
 ?>

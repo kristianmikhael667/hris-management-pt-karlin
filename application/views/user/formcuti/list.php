@@ -15,6 +15,12 @@
         <form action="<?php echo base_url()?>user/formcuti/add" method="post" enctype="multipart/form-data">
             <div class="container"> 
                 <div class="form-group row">
+                    <label for="sel1" class="col-sm-3 col-form-label">Id Karyawan</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="id_karyawan" readonly value="<?php echo $this->session->userdata('id_karyawan')?>"  required>
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label class="col-sm-3 col-form-label"> TANGGAL MULAI CUTI </label>
                         <div class="col-sm-8">
                             <input type="date" class="form-control" name="mulai_cuti" required>

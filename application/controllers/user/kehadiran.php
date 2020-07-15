@@ -20,7 +20,9 @@ class Kehadiran extends CI_Controller{
                      );
                      
 					 $this->load->view('tamplate_bootstrap_user/wrapper', $data, FALSE);
-    }
+	}
+	
+	
 	
     
 }
