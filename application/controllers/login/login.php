@@ -8,7 +8,8 @@ class Login extends CI_Controller{
 		$this->load->model('models_login/Login_akses', 'login_user');
 		$this->load->library('session');
 		$this->load->library('upload');
-		$this->load->helper('url');
+        $this->load->helper('url');
+        $this->load->helper('form');
     }
 
     public function index()
@@ -28,24 +29,26 @@ class Login extends CI_Controller{
                 $this->session->set_userdata('role_id', $data['role_id']);
 
                 if($data['role_id'] == 1){
-                    reditect('manajemen/dashboard_manajemen');
+                    reditect('hrd/dashboard_hrd', 'refresh');
                 }
 
-                else if($data['role_id'] = 2){
-                    redirect('/hrd/dashboard_hrd');
+                else if($data['role_id'] == 2){
+                    reditect('hrd/dashboard_hrd', 'refresh');
+                   // $this->load->view('hrd/dashboard_hrd');
                 }
 
-                else if($data['role_id'] == 3){
-                    reditect('/user/dashboard_user');
+                else if($data['role_id'] = 3){
+                   // reditect('/user/dashboard_user');
+                   $this->load->view('user/dashboard_user');
                 }
                
                       
                 $this->input->set_cookie('id_karyaawan', $username, 450);
-                $this->input->set_cookie('Nama', $data['nama'], 450);      
+                $this->input->set_cookie('Nama', $data['nama_karyawan'], 450);      
             }        
             else{  
                 echo "<script>alert('data yang anda insert salah, pastikan lagi')</script>";
-                return $this->load->view('login.php');
+                reditect('welcome', 'refresh');
             }       
       }
 }

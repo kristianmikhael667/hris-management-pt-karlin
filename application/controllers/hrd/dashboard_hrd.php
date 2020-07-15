@@ -8,6 +8,9 @@ class Dashboard_hrd extends CI_Controller{
 		$this->load->library('session');
 		$this->load->library('upload');
 		$this->load->helper('url');
+		if( ($this->session->userdata('id_karyawan') == null) && ($this->session->userdata('role_id') != 2) ){
+			redirect('login/login');
+		}
 		
     }
 
