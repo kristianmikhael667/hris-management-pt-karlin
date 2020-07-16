@@ -36,7 +36,7 @@ class Manajemenbarang_m extends CI_Model{
 		$this->db->delete('tbl_manage_barang'); 
 	}
 
-	public function databarang($id)
+	public function databarang()
 	{
 		$this->db->select('count(*)');
 		$this->db->from('tbl_manage_barang');

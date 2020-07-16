@@ -63,27 +63,26 @@ class Manajemenbarang extends CI_Controller{
 	}
 
 	public function deletepurchase()
-	{	
-		$id = $this->input->get('id');
+	{		
+			//$data = array('title' => 'Data Karyawan',
+					  //'content' => 'user/tabelbarang/list'
+					 //);
+            //$id = $this->input->get('id');
+			//$where = array('id_karyawan' => $id);
 
-		$data1 = $this->manajemenbarang->jumlahdatabarang($id);
-		$data2 = $this->db->last_query($data1);
-		if (!($data2))
-        {	
-			$data = array('title' => 'Data Karyawan',
-					  'content' => 'user/tabelbarang/list'
-					 );
-            $id = $this->input->get('id');
-			$where = array('id_karyawan' => $id);
+			//$this->manajemenbarang->delete($where);
+			//$this->load->view('tamplate_bootstrap_user/wrapper', $data, FALSE);
+			$id = $this->input->get('id');
+			$this->formpurchase->delete($id);
+			$this->manajemenbarang->deletecase($id);
 
-			$this->manajemenbarang->delete($where);
-			$this->load->view('tamplate_bootstrap_user/wrapper', $data, FALSE);
+			$this->session->set_flashdata('success','Item Berhasil Di Hapus');
+			redirect(base_url('user/databarang/index'));
+			// redirect buat pindah ke halaman awalnya
 
-		}
-		else{
-			echo "<script>alert('Hapus Seluruh Data Barang Terlebih Dahulu')</script>";
-            redirect('user/databarang/index', 'refresh');
-		}
+			//atau bisa juga make
+
+			redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function edit_purchase($id){
