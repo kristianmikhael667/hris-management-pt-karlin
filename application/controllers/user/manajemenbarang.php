@@ -70,7 +70,7 @@ class Manajemenbarang extends CI_Controller{
             //$id = $this->input->get('id');
 			//$where = array('id_karyawan' => $id);
 
-			//$this->manajemenbarang->delete($where);
+			//$this->manajemenbarang->jumlahdatabarang($where);
 			//$this->load->view('tamplate_bootstrap_user/wrapper', $data, FALSE);
 			$id = $this->input->get('id');
 			$this->formpurchase->delete($id);
