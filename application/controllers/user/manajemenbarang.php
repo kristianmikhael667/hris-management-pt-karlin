@@ -74,9 +74,9 @@ class Manajemenbarang extends CI_Controller{
 			//$this->load->view('tamplate_bootstrap_user/wrapper', $data, FALSE);
 			$id = $this->input->get('id');
 			$this->formpurchase->delete($id);
-			$this->manajemenbarang->deletecase($id);
+			//$this->manajemenbarang->deletecase($id);
 
-			$this->session->set_flashdata('success','Item Berhasil Di Hapus');
+		//	$this->session->set_flashdata('success','Item Berhasil Di Hapus');
 			redirect(base_url('user/databarang/index'));
 			// redirect buat pindah ke halaman awalnya
 

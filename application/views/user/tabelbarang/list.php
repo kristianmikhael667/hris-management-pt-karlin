@@ -40,7 +40,7 @@
                         $cek_query=$this->manajemenbarang->tampil(); 
                         foreach ($cek_query->result_array() as $row)
                         { ?>
-                          <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('user/manajemenbarang/deletepurchase?id=') . $row['id_karyawan']; ?>"><i class="fa fa-trash"></i></a>
+                          <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('user/manajemenbarang/deletepurchase?id=') . $row['id_purchase_request']; ?>"><i class="fa fa-trash"></i></a>
                       <?php } ?>
                         <button class="btn btn-sm btn-success mb-2" data-toggle="modal" data-target="#edit" name=""><i class="fa fa-magic"></i></button>
                     </td>
