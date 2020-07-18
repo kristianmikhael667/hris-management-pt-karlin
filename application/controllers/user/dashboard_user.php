@@ -30,6 +30,14 @@ class Dashboard_user extends CI_Controller{
                      
 					 $this->load->view('tamplate_bootstrap_user/wrapper', $data, FALSE);
 	}
+
+	public function profile()
+	{
+		$data = array('title' => 'Data Karyawan',
+					  'content' => 'user/profile/profile'
+                     );
+					 $this->load->view('tamplate_bootstrap_user/wrapper', $data, FALSE);
+	}
 	
 	public function add(){
 		$data = array('title' => 'Add Karyawan',

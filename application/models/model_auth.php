@@ -27,4 +27,11 @@ class Model_auth extends CI_Model{
         $query = $this->db->get();
         return $query;
     }
+
+    public function nama(){
+		$this->db->select('nama_karyawan');
+		$this->db->from('tbl_karyawan');
+		$query = $this->db->get();
+        return $query;
+	}
 }

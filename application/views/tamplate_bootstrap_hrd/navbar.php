@@ -5,7 +5,7 @@
 <div id="content">
 
   <!-- Topbar -->
-  <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+  <nav class="navbar navbar-expand navbar-primary bg-success static-top">
 
     <!-- Sidebar Toggle (Topbar) -->
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -14,10 +14,7 @@
 
 
     <!-- Topbar Navbar -->
-    <ul class="navbar-nav ml-auto">
-      <?php $this->session->userdata('id_karyawan') ?>
-      <li><div>Selamat Datang <?php echo $this->session->userdata('nama_karyawan')?></div></li>
-      <li class= "ml-3"><?php echo anchor('auth/logout','Logout') ?></li>
+    <ul class="navbar-nav ml-auto mt-auto">
 
       <!-- Nav Item - Search Dropdown (Visible Only XS) -->
       <li class="nav-item dropdown no-arrow d-sm-none">
@@ -149,8 +146,21 @@
       <!-- Nav Item - User Information -->
       <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-          <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+          <span class="mr-2 d-none d-lg-inline text-dark-600 large"><?php
+              $id_karyawan = $this->session->userdata('id_karyawan');
+              $cek_query=$this->model_auth->check_employe($id_karyawan); 
+                foreach ($cek_query->result_array() as $row)
+                {       
+              ?><?php echo $row['nama_karyawan'] ; ?> 
+          <?php } ?></span>
+          <?php
+              $id_karyawan = $this->session->userdata('id_karyawan');
+              $cek_query=$this->model_auth->check_employe($id_karyawan); 
+                foreach ($cek_query->result_array() as $row)
+                {       
+              ?>
+          <img class="img-profile rounded-circle" width="35px" src="<?php echo base_url().'assets/images/'.$row['foto'];?>">
+          <?php } ?>
         </a>
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
