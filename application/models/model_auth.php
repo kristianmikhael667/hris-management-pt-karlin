@@ -15,9 +15,6 @@ class Model_auth extends CI_Model{
         }else{
             return array();
         }
-
-
-        
     }
 
     public function check_employe($id){
@@ -27,6 +24,31 @@ class Model_auth extends CI_Model{
         $query = $this->db->get();
         return $query;
     }
+
+    public function kehadiran($id){
+        $this->db->select('*');
+        $this->db->from('tbl_kehadiran');
+        $this->db->where('id_karyawan', $id);
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function transport($id){
+        $this->db->select('*');
+        $this->db->from('tbl_transportasi');
+        $this->db->where('id_karyawan', $id);
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function hitunguang()
+	{
+		$this->db->select('*');
+         $this->db->from('tbl_transportasi t_transport');
+         $this->db->join('tbl_kehadiran t_hadir', 't_transport.id_karyawan = t_hadir.id_karyawan');	
+	    $query = $this->db->get();
+	    return $query;
+	}
 
     public function nama(){
 		$this->db->select('nama_karyawan');

@@ -5,6 +5,7 @@ class Kehadiran extends CI_Controller{
 	public function __construct(){
         parent::__construct();
 		$this->load->model('models_hrd/Kehadiran_m', 'kehadiran');
+		$this->load->model('model_auth', 'modelauth');
 		$this->load->library('session');
 		$this->load->library('upload');
 		$this->load->helper('url');

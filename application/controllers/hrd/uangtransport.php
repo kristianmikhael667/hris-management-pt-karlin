@@ -5,6 +5,7 @@ class Uangtransport extends CI_Controller{
 	public function __construct(){
         parent::__construct();
 		$this->load->model('models_hrd/Uang_transport_m', 'uang_transport');
+		$this->load->model('models_hrd/Karyawan', 'karyawan');
 		$this->load->library('session');
 		$this->load->library('upload');
 		$this->load->helper('url');
@@ -33,7 +34,7 @@ class Uangtransport extends CI_Controller{
 			'uang_bensin'   => $uang_bensin,
 			'uang_parkir'	=> $uang_parkir
 			);
-		$this->formcuti->input_data($data,'tbl_transportasi');
+		$this->uang_transport->add_transportasi($data,'tbl_transportasi');
 		redirect('hrd/uangtransport/index');
 	}
 }

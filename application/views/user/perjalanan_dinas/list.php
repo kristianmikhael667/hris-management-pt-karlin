@@ -22,6 +22,7 @@
                     <th>Biaya Transportasi</th>
                     <th>Keterangan</th>
                     <th>Uang Makan</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -40,6 +41,11 @@
                     <td><?php echo $row['biaya_transportasi'] ; ?></td>
                     <td><?php echo $row['ket'] ; ?></td>
                     <td><?php echo $row['uang_makan'] ; ?></td>
+                    <td>
+                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-warning"> Pdf </a>
+                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-primary"> Edit </a>
+                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-danger"> Delete </a>
+                    </td>
                   </tr>
 
                   <?php } ?>

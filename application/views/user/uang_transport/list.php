@@ -18,22 +18,43 @@
                     <th>Id Transportasi</th>
                     <th>Uang Bensin</th>
                     <th>Uang Parkir</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                <?php
+                <tr>
+                    <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
+                          $cek_query=$this->model_auth->transport($id_karyawan); 
+                          foreach ($cek_query->result_array() as $row)
+                        {          
+                      ?><?php echo $row['id_karyawan'] ; ?> 
+                    <?php } ?></td>
 
-                  $cek_query=$this->uang_transport->hitunguang(); 
-                  
-                  foreach ($cek_query->result_array() as $row)
-                  {       
-                ?>
-                  <tr>
-                    <td><?php echo $row['id_karyawan'] ; ?></td>
-                    <td>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_bensin'])  ?></td>
-                    <td>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_parkir'])  ?></td>
-                  </tr>
-                  <?php } ?>
+                    <td><?php
+                          $id_karyawan = $this->session->userdata('id_karyawan');
+                          $cek_query=$this->model_auth->transport($id_karyawan); 
+                          $cek_query=$this->model_auth->hitunguang();
+                            foreach ($cek_query->result_array() as $row)
+                            {       
+                          ?>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_bensin'])  ?> 
+                      <?php } ?></td>
+
+                    <td><?php 
+                          $id_karyawan = $this->session->userdata('id_karyawan');
+                          $cek_query=$this->model_auth->transport($id_karyawan); 
+                           $cek_query=$this->model_auth->hitunguang();  
+                          foreach ($cek_query->result_array() as $row)
+                        {          
+                      ?>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_parkir'])  ?> 
+                    <?php } ?></td>
+
+                    <td>
+                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-warning"> Pdf </a>
+                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-primary"> Edit </a>
+                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-danger"> Delete </a>
+                    </td>
+                    
+                </tr>
               
                 </tbody>
               </table>

@@ -25,6 +25,7 @@
                     <th>Jumlah Disetujui</th>
                     <th>Stuck</th>
                     <th>Keterangan</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -46,6 +47,11 @@
                     <td><?php echo $row['jumlah_disetujui'] ; ?></td>
                     <td><?php echo $row['struck'] ; ?></td>
                     <td><?php echo $row['ket'] ; ?></td>
+                    <td>
+                    <a href="<?php echo base_url('user/report/pdf?id=') . $row['id_karyawan']; ?>" class="btn btn-warning"> Pdf </a>
+                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-primary"> Edit </a>
+                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-danger"> Delete </a>
+                    </td>
                   </tr>
 
                   <?php } ?>
