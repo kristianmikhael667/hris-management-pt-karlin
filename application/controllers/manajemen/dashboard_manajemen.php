@@ -25,10 +25,10 @@ class Dashboard_manajemen extends CI_Controller{
 	
 	public function index()
 	{
-		$data = array('title' => 'Data Karyawan',
-					  'content' => 'manajemen/setuju_dinas/list'
+		$data = array('title' => 'Data Manajer',
+					  'content' => 'manajemen/dashboard/dashboardmanajemen'
                      );
                      
-		$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
+		$this->load->view('tamplate_bootstrap_manajemen/wrapper', $data, FALSE);
 	}
 }

@@ -5,6 +5,7 @@ class Formdinas extends CI_Controller
     public function __construct(){
         parent::__construct();
 		$this->load->model('models_user/formdinas_m', 'formdinas');
+		$this->load->model('models_hrd/Karyawan', 'karyawan');
 		$this->load->library('session');
 		$this->load->library('upload');
 		$this->load->helper('url');
@@ -24,6 +25,7 @@ class Formdinas extends CI_Controller
 
     public function add()
 	{
+		$id_karyawan = $this->input->post('id_karyawan');
 		$nomor_sppd = $this->input->post('nomor_sppd');
 		$tgl_keberangkatan = $this->input->post('tgl_keberangkatan');
         $bln_keberangkatan = $this->input->post('bln_keberangkatan');
@@ -31,6 +33,7 @@ class Formdinas extends CI_Controller
 		$alasan = $this->input->post('alasan');
 
 		$data = array(
+			'id_karyawan'	        => $id_karyawan,
 			'nomor_sppd'	        => $nomor_sppd,
 			'tgl_keberangkatan'     => $tgl_keberangkatan,
             'bln_keberangkatan' 	=> $bln_keberangkatan,

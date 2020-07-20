@@ -23,20 +23,13 @@
   <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url() ?>user/perjalanandinas">
       <i class="fas fa-fw fa-chart-area"></i>
-      <span>Perjalanan Dinas</span></a>
+      <span>Dinas</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url() ?>user/medicalreimbust">
       <i class="fas fa-fw fa-chart-area"></i>
       <span>Medical Reimbust</span></a>
   </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="<?php echo base_url() ?>user/formcuti">
-      <i class="fas fa-fw fa-chart-area"></i>
-      <span>Form Cuti</span></a>
-  </li>
-
   
   <li class="nav-item">
       <a class="nav-link collapsed" href="<?php echo base_url() ?>user/pengajuancuti" >
@@ -44,12 +37,25 @@
         <span>Ketentuan Pengajuan Cuti</span>
       </a>
     </li>
+  
+    <li class="nav-item">
+    <a class="nav-link" href="<?php echo base_url() ?>user/formcuti">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Form Cuti</span></a>
+  </li>
 
   <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url() ?>user/formdinas">
       <i class="fas fa-fw fa-chart-area"></i>
       <span>Form Perjalanan Dinas</span></a>
   </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="<?php echo base_url() ?>user/datadinas">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Data Perjalanan Dinas</span></a>
+  </li>
+
   <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url() ?>user/formpurchase">
       <i class="fas fa-fw fa-chart-area"></i>
