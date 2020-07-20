@@ -13,20 +13,13 @@
     <div class="card-body">
         <form action="<?php echo base_url()?>user/formdinas/add" method="post" enctype="multipart/form-data">
             <div class="container"> 
-                <div class="form-group row">
-
-                <label class="col-sm-3 col-form-label">ID Karyawan</label>
-                <div class="col-sm-8">
-                    <select class="form-control" name="id_karyawan">
-                        <?php 
-                        $cek_query=$this->karyawan->list(); 
-                        foreach ($cek_query->result_array() as $row) { ?>
-                        <option> <?php echo $row['id_karyawan'] ?> </option>
-                        <?php } ?>
-                    </select>
+            <div class="form-group row">
+                    <label for="sel1" class="col-sm-3 col-form-label">Id Karyawan</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="id_karyawan" readonly value="<?php echo $this->session->userdata('id_karyawan')?>"  required>
+                    </div>
                 </div>
-                <br>
-                <br>
+                <div class="form-group row">
                     <label class="col-sm-3 col-form-label"> NOMOR SPPD </label>
                         <div class="col-sm-8">
                             <input type="number" class="form-control" name="nomor_sppd" required>

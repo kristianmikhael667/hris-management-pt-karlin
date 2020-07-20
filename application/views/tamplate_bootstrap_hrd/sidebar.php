@@ -72,6 +72,13 @@
       </a>
     </li>
 
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="<?php echo base_url() ?>hrd/dinas">
+        <i class="fas fa-fw fa-wrench"></i>
+        <span>Data Dinas</span>
+      </a>
+    </li>
+
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
       <a class="nav-link collapsed" href="<?php echo base_url() ?>hrd/medicalreimbust">
