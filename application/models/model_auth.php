@@ -41,11 +41,12 @@ class Model_auth extends CI_Model{
         return $query;
     }
 
-    public function hitunguang()
+    public function hitunguang($id)
 	{
 		$this->db->select('*');
          $this->db->from('tbl_transportasi t_transport');
-         $this->db->join('tbl_kehadiran t_hadir', 't_transport.id_karyawan = t_hadir.id_karyawan');	
+         $this->db->join('tbl_kehadiran t_hadir', 't_transport.id_karyawan = t_hadir.id_karyawan');
+         $this->db->where('id_karyawan', $id);
 	    $query = $this->db->get();
 	    return $query;
 	}

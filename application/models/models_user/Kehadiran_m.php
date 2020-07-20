@@ -18,6 +18,14 @@ class Kehadiran_m extends CI_Model{
         return $query;
 	}
 
+	public function kehadiran($id){
+		$this->db->select('*');
+		$this->db->from('tbl_kehadiran');
+		$this->db->where('id_karyawan', $id);
+		$query = $this->db->get();    
+        return $query;
+	}
+
 	
 
 }

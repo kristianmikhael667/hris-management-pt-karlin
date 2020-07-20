@@ -38,6 +38,16 @@ class Kehadiran_m extends CI_Model{
 		$this->db->delete('tbl_kehadiran');
 	}
 
+	public function hitunguang($id)
+	{
+		$this->db->select('*');
+         $this->db->from('tbl_transportasi t_transport');
+         $this->db->join('tbl_kehadiran t_hadir', 't_transport.id_karyawan = t_hadir.id_karyawan');
+         $this->db->where('id_karyawan', $id);
+	    $query = $this->db->get();
+	    return $query;
+	}
+
 }
 
 ?>
