@@ -20,12 +20,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                <?php
-                  $cek_query=$this->datadinas->list(); 
-                  
-                  foreach ($cek_query->result_array() as $row)
-                  {       
-                ?>
+                
                   <tr>
                     <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
                           $cek_query=$this->datadinas->datadinass($id_karyawan); 
@@ -76,8 +71,7 @@
                     <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-danger"> Delete </a>
                     </td>
                   </tr>
-                  
-                        <?php } ?>
+
               
                 </tbody>
               </table>

@@ -66,32 +66,31 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="<?php echo base_url()?>hrd/perjalanandinas/add"  method="post">
+        <form action="<?php echo base_url()?>hrd/dinas/add"  method="post">
               <div class="form-group">
-                <label>Id Karyawan</label>
+                <label>Nomor Purchase</label>
                 <br>
-                <select class="form-control" id="sel1" name="id_karyawan">
+                <select class="form-control" id="sel1" name="nomor_sppd">
                     <?php 
-                     $cek_query=$this->karyawan->list(); 
+                    $cek_query=$this->dinas->tampildata(); 
                     foreach ($cek_query->result_array() as $row) { ?>
-                    <option> <?php echo $row['id_karyawan'] ?> </option>
+                    <option> <?php echo $row['nomor_sppd'] ?> </option>
                     <?php } ?>
                 </select>
                 <br>
-                <label>Lampiran</label>
-                <input type="number" name="lampiran" class="form-control" placeholder="Lampiran" required>
 
                 <label>Tanggal</label>
-                <input type="date" name="tanggal" class="form-control" placeholder="Tanggal" required>
+                <input type="date" name="tanggal" class="form-control" placeholder="Id Barang" required>
 
                 <label>Biaya Transportasi</label>
-                <input type="text" name="biaya_transportasi" class="form-control" placeholder="Biaya Transportasi" required>
-
-                <label>Keterangan</label>
-                <input type="text" name="ket" class="form-control" placeholder="Keterangan" required>
+                <input type="number" name="biaya_transportasi" class="form-control" placeholder="Nama Barang" required>
                 
+                <label>Keterangan</label>
+                <input type="text" name="ket" class="form-control" placeholder="ket" required>
+
                 <label>Uang Makan</label>
-                <input type="number" name="uang_makan" class="form-control" placeholder="Uang Makan" required>
+                <input type="number" name="uang_makan" class="form-control" placeholder="uang_makan" required>
+
               </div>
               
               <button type="submit" class="btn btn-primary">Simpan</button>

@@ -18,6 +18,7 @@
                     <th>Id Transportasi</th>
                     <th>Uang Bensin</th>
                     <th>Uang Parkir</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>

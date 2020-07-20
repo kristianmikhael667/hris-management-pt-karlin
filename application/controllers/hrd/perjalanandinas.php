@@ -5,6 +5,7 @@ class Perjalanandinas extends CI_Controller{
 	public function __construct(){
         parent::__construct();
 		$this->load->model('models_hrd/Perjalanan_dinas_m', 'perjalanan_dinas');
+		$this->load->model('models_hrd/Datadinas_hrd', 'dinas');
 		$this->load->model('models_hrd/Karyawan', 'karyawan');
 		$this->load->library('session');
 		$this->load->library('upload');
@@ -25,16 +26,14 @@ class Perjalanandinas extends CI_Controller{
 
 	public function add()
 	{
-		$id_karyawan = $this->input->post('id_karyawan');
-		$lampiran = $this->input->post('lampiran');
+		$nomor_sppd = $this->input->post('nomor_sppd');
 		$tanggal = $this->input->post('tanggal');
 		$biaya_transportasi = $this->input->post('biaya_transportasi');
 		$ket = $this->input->post('ket');
 		$uang_makan = $this->input->post('uang_makan');
 
 		$data = array(
-			'id_karyawan' => $id_karyawan,
-			'lampiran' => $lampiran,
+			'nomor_sppd' => $nomor_sppd,
 			'tanggal' => $tanggal,
 			'biaya_transportasi' => $biaya_transportasi,
 			'ket' => $ket,

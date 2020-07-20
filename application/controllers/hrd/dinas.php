@@ -24,5 +24,23 @@ class Dinas extends CI_Controller{
 					 $this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
     }
 	
+	public function add()
+	{
+		$nomor_sppd = $this->input->post('nomor_sppd');
+		$tanggal = $this->input->post('tanggal');
+		$biaya_transportasi = $this->input->post('biaya_transportasi');
+		$ket = $this->input->post('ket');
+		$uang_makan = $this->input->post('uang_makan');
+
+		$data = array(
+			'nomor_sppd' => $nomor_sppd,
+			'tanggal' => $tanggal,
+			'biaya_transportasi' => $biaya_transportasi,
+			'ket' => $ket,
+			'uang_makan' => $uang_makan
+			);
+		$this->perjalanan_dinas->input_data($data,'tbl_perjalanan_dinas');
+		redirect('hrd/perjalanandinas/index');
+	}
     
 }
