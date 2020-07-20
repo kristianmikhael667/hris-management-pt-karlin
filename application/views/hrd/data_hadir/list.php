@@ -40,11 +40,14 @@
                     <td><?php echo $row['tujuan'] ; ?></td>
                     <td><?php echo $row['alasan'] ; ?></td>
                     <td>
-                    <a href="<?php echo base_url('hrd/dashboard_hrd/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-primary"> Lihat </a>
-                    <a href="<?php echo base_url('hrd/dashboard_hrd/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-danger"> Hapus </a>
-                    <a href="<?php echo base_url('hrd/dashboard_hrd/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Edit </a>  </td>
-                        
-                   
+                    <button class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#view" name=""><i class="fa fa-eye"></i></button>
+                      <?php
+                        $cek_query=$this->datadinas->tampil_data(); 
+                        foreach ($cek_query->result_array() as $row)
+                        { ?>
+                          <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('hrd/perjalanandinas/delete?id=') . $row['id_karyawan']; ?>"><i class="fa fa-trash"></i></a>
+                      <?php } ?>
+                        <button class="btn btn-sm btn-success mb-2" data-toggle="modal" data-target="#edit" name=""><i class="fa fa-magic"></i></button></td>
                   </tr>
 
                   <?php } ?>
@@ -97,6 +100,65 @@
       <div class="modal-footer">
 
       </div>
+    </div>
+  </div>
 </div>
+
+<div class="modal fade" id="view" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Data Barang</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      </div>
+        <div class="modal-body">
+        <?php
+          $cek_query=$this->datadinas->tampil_data(); 
+            foreach ($cek_query->result_array() as $row)
+          { ?>
+              <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('hrd/perjalanandinas/delete?id=') . $row['id_karyawan']; ?>"><i class="fa fa-trash"></i></a>
+          <?php } ?>
+        <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Nomor SPPD</th>
+                    <th>Tanggal</th>
+                    <th>Biaya Transportasi</th>
+                    <th>Keterangan</th>
+                    <th>Uang Makan</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <?php
+                  $cek_query=$this->perjalanan_dinas->tampil_data(); 
+                  foreach ($cek_query->result_array() as $row)
+                  {       
+                ?>
+                  <tr>
+                    <td><?php echo $row['nomor_sppd'] ; ?></td>
+                    <td><?php echo $row['tanggal'] ; ?></td>
+                    <td><?php echo $row['biaya_transportasi'] ; ?></td>
+                    <td><?php echo $row['ket'] ; ?></td>
+                    <td><?php echo $row['uang_makan'] ; ?></td>
+                    <td>
+                      <button class="btn btn-sm btn-danger mb-2" data-toggle="modal" data-target="#manajemen" name=""><i class="fa fa-trash"></i></button>
+                      <button class="btn btn-sm btn-success mb-2" data-toggle="modal" data-target="#manajemen" name=""><i class="fa fa-magic"></i></button>
+                    </td>
+                  </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+    </div>
+  </div>
+</div>

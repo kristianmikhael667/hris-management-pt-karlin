@@ -42,4 +42,9 @@ class Perjalanandinas extends CI_Controller{
 		$this->perjalanan_dinas->input_data($data,'tbl_perjalanan_dinas');
 		redirect('hrd/perjalanandinas/index');
 	}
+
+	public function delete()
+	{
+		
+	}
 }

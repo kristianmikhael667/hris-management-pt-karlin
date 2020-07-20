@@ -64,14 +64,6 @@
       </a>
     </li>
 
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="<?php echo base_url() ?>hrd/perjalanandinas">
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>Perjalanan Dinas</span>
-      </a>
-    </li>
-
     <li class="nav-item">
       <a class="nav-link collapsed" href="<?php echo base_url() ?>hrd/dinas">
         <i class="fas fa-fw fa-wrench"></i>
