@@ -3,7 +3,8 @@
 
       <div class="container-fluid">
 
-      
+      <button class="btn btn-sm btn-success mb-2 ml-3" data-toggle="modal" data-target="#manajemen" name=""><i class="fas fa-plus fa-sm"></i> Management Barang </button>
+
       <div id="content-wrapper">
       <div class="container-fluid">
         <!-- DataTables Example -->
@@ -63,6 +64,46 @@
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
 </div>
+<div class="modal fade" id="manajemen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Uang Transportasi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="<?php echo base_url()?>user/Medicalreimbust/add"  method="post">
+              <div class="form-group">
+              <label>Nomor Purchase</label>
+               
+                <label>Id Karyawan</label>
+                <input type="text" name="id_karyawan" class="form-control" readonly value="<?php echo $this->session->userdata('id_karyawan'); ?>" placeholder="Id Karyawan" required>
+
+                <label>Id Claim</label>
+                <input type="text" name="klaim_id" class="form-control" placeholder="Id Barang" required>
+
+                <label>Jumlah Diajukan</label>
+                <input type="number" name="jumlah_diajukan" class="form-control" placeholder="Nama Barang" required>
+                
+            
+                <label  class="col-sm-3 col-form-label"> Struk </label>  <input type="file" name="filefoto" required>
+                <br>
+                <label>Keterangan</label>
+                <input type="number" name="ket" class="form-control" placeholder="Harga" required>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Simpan</button>
+              <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+    </div>
+</div>
         </div>
 
       </div>
+

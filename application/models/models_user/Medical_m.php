@@ -20,8 +20,16 @@ class Medical_m extends CI_Model{
         return $query;
 	}
 
-	public function add_medical($id){	
-		return  $this->db->insert('tbl_medical', $id); 
+	public function check_claim_id($id){
+		$this->db->select('*');
+		$this->db->from('tbl_medical');
+		$this->db->where('klaim_id', $id);
+		$query = $this->db->get();
+        return $query;
+	}
+
+	public function add($data){	
+		return  $this->db->insert('tbl_medical', $data); 
 	}
 	
 }
