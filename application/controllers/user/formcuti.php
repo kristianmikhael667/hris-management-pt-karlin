@@ -32,18 +32,17 @@ class Formcuti extends CI_Controller{
 		$jenis_cuti  = $this->input->post('jenis_cuti');
 		$alasan 	 = $this->input->post('alasan');
 
-		
-
 		$chek_kehadiran	= $this->kehadiran->chack_kehadiran($id_karyawan);
 		$data			=	$chek_kehadiran->row_array();
-		if($data['jumlah_cuti'] >= 6){
+		if($data['jumlah_cuti'] >= 226){
 			echo "<script>alert('batas cuti anda sudah habis')</script>"; //belum kebaca
 			redirect('user/formcuti/index');
 		}
 
 		else{
-
-			if($jenis_cuti = 1){ //cuti
+			$chek_kehadiran	= $this->kehadiran->chack_kehadiran($id_karyawan);
+			$data			=	$chek_kehadiran->row_array();
+			if($data['jumlah_cuti'] == $jenis_cuti){ //cuti
 				$data = array(
 					'mulai_cuti'	=> $mulai_cuti,
 					'akhir_cuti'    => $akhir_cuti,
@@ -76,11 +75,11 @@ class Formcuti extends CI_Controller{
 					redirect('user/formcuti/index');
 			}
 
-			else if($jenis_cuti = 2){ //jika cuti izin
+			else if($data['jumlah_izin'] = $jenis_cuti){ //jika cuti izin
 				$data = array(
 					'mulai_cuti'	=> $mulai_cuti,
 					'akhir_cuti'    => $akhir_cuti,
-					'jenis_cuti' 	=> $jenis_cuti,
+					'jenis_cuti' 	=> $cuti,
 					'alasan'		=> $alasan,
 					'id_karyawan'	=> $id_karyawan
 					);
@@ -112,11 +111,11 @@ class Formcuti extends CI_Controller{
 					redirect('user/formcuti/index');
 			}
 
-			else if($jenis_cuti = 3){ //jika cuti sakit
+			else if($data['jumlah_sakit'] == $jenis_cuti){ //jika cuti sakit
 				$data = array(
 					'mulai_cuti'	=> $mulai_cuti,
 					'akhir_cuti'    => $akhir_cuti,
-					'jenis_cuti' 	=> $jenis_cuti,
+					'jenis_cuti' 	=> $cuti,
 					'alasan'		=> $alasan,
 					'id_karyawan'	=> $id_karyawan
 					);
