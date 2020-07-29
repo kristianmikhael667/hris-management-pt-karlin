@@ -37,9 +37,9 @@
                             <label class="col-sm-3 col-form-label"> JENIS CUTI </label>
                             <div class="col-sm-8">
                                 <select class="form-control" name="jenis_cuti" required >
-                                    <option value="01"> Cuti </option>
-                                    <option value="02"> Izin </option>
-                                    <option value="03"> Sakit </option>
+                                    <option value="1"> Cuti </option>
+                                    <option value="2"> Izin </option>
+                                    <option value="3"> Sakit </option>
                                 </select>
                             </div>
                         </div>

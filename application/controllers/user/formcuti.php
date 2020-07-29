@@ -100,7 +100,7 @@ class Formcuti extends CI_Controller{
 					
 					$cuti 	= 	$data1['jumlah_izin'] + $days;
 					$update_cuti = array(
-						'jumlah_cuti' => $cuti
+						'jumlah_izin' => $cuti
 					);
 					$where = array(
 						'id_karyawan' => $id_karyawan
@@ -133,7 +133,7 @@ class Formcuti extends CI_Controller{
 
 					$cuti = $data1['jumlah_sakit'] + $days;
 					$update_cuti = array(
-						'jumlah_cuti' => $cuti
+						'jumlah_sakit' => $cuti
 					);
 					$where = array(
 						'id_karyawan' => $id_karyawan

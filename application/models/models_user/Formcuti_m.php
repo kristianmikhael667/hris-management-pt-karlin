@@ -16,9 +16,7 @@ class Formcuti_m extends CI_Model{
 
 	public function update_kehadiran($id, $data)
 	{
-	
 		$this->db->update('tbl_kehadiran', $data, $id);
-		
 	}
 
 	

@@ -10,6 +10,12 @@
     </a>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="<?php echo base_url() ?>user/absen">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Absen Karyawan</span>
+    </a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url() ?>user/kehadiran">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Record Kehadiran</span>
