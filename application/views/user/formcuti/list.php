@@ -14,6 +14,7 @@
     <div class="card-body">
         <form action="<?php echo base_url()?>user/formcuti/add" method="post" enctype="multipart/form-data">
             <div class="container"> 
+            <?php echo $this->session->flashdata('pesan') ?>
                 <div class="form-group row">
                     <label for="sel1" class="col-sm-3 col-form-label">Id Karyawan</label>
                     <div class="col-sm-8">

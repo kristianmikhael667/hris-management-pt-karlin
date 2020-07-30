@@ -35,17 +35,12 @@ class Formcuti extends CI_Controller{
 		$chek_kehadiran	= $this->kehadiran->chack_kehadiran($id_karyawan);
 		$data			=	$chek_kehadiran->row_array();
 		if($data['jumlah_cuti'] >= 4){
-			echo "<script>alert('batas cuti anda sudah habis')</script>"; //belum kebaca
-			redirect('user/formcuti/index');
-		}
-		
-		else if($data['jumlah_izin'] >= 4){
-			echo "<script>alert('batas cuti anda sudah habis')</script>"; //belum kebaca
-			redirect('user/formcuti/index');
-		}
-
-		else if($data['jumlah_sakit'] >= 4){
-			echo "<script>alert('batas cuti anda sudah habis')</script>"; //belum kebaca
+			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Maaf Jumlah Cuti Anda Sudah Melebihi 4
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>');
 			redirect('user/formcuti/index');
 		}
 
