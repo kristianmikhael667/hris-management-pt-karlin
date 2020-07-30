@@ -146,8 +146,10 @@
                             var face = frameBGR.roi(rects[0]);
 
                             var name = prompt('Say your name:');
-                            var cell = document.getElementById("targetNames").insertCell(0);
-                            cell.innerHTML = name;
+                            var cell = document.getElementById("targetNames").insertCell(0); //insert nama
+                            cell.innerHTML = name; //dipanggil namanya kesini
+
+                            
 
                             persons[name] = face2vec(face).clone();
 

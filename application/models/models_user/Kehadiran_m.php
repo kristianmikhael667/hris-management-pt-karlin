@@ -11,7 +11,7 @@ class Kehadiran_m extends CI_Model{
 	}
 
 	public function chack_kehadiran($id){
-		$this->db->select('jumlah_cuti');
+		$this->db->select('*');
 		$this->db->from('tbl_kehadiran');
 		$this->db->where('id_karyawan', $id);
 		$query = $this->db->get();    
@@ -26,7 +26,9 @@ class Kehadiran_m extends CI_Model{
         return $query;
 	}
 
-	
+	function input_data($data,$table){
+		$this->db->insert($table,$data);
+	}
 
 }
 

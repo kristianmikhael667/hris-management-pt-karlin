@@ -34,15 +34,24 @@ class Formcuti extends CI_Controller{
 
 		$chek_kehadiran	= $this->kehadiran->chack_kehadiran($id_karyawan);
 		$data			=	$chek_kehadiran->row_array();
-		if($data['jumlah_cuti'] >= 226){
+		if($data['jumlah_cuti'] >= 4){
+			echo "<script>alert('batas cuti anda sudah habis')</script>"; //belum kebaca
+			redirect('user/formcuti/index');
+		}
+		
+		else if($data['jumlah_izin'] >= 4){
+			echo "<script>alert('batas cuti anda sudah habis')</script>"; //belum kebaca
+			redirect('user/formcuti/index');
+		}
+
+		else if($data['jumlah_sakit'] >= 4){
 			echo "<script>alert('batas cuti anda sudah habis')</script>"; //belum kebaca
 			redirect('user/formcuti/index');
 		}
 
 		else{
-			$chek_kehadiran	= $this->kehadiran->chack_kehadiran($id_karyawan);
-			$data			=	$chek_kehadiran->row_array();
-			if($data['jumlah_cuti'] == $jenis_cuti){ //cuti
+			
+			if($jenis_cuti == "Cuti"){ //cuti //misal
 				$data = array(
 					'mulai_cuti'	=> $mulai_cuti,
 					'akhir_cuti'    => $akhir_cuti,
@@ -70,16 +79,14 @@ class Formcuti extends CI_Controller{
 					);
 	
 					$this->formcuti->update_kehadiran($where, $update_cuti);
-	
 					$this->formcuti->input_data($data,'tbl_cuti');
 					redirect('user/formcuti/index');
 			}
-
-			else if($data['jumlah_izin'] = $jenis_cuti){ //jika cuti izin
-				$data = array(
+			if($jenis_cuti == "Izin"){ //jika cuti izin
+				$data_array = array(
 					'mulai_cuti'	=> $mulai_cuti,
 					'akhir_cuti'    => $akhir_cuti,
-					'jenis_cuti' 	=> $cuti,
+					'jenis_cuti' 	=> $jenis_cuti,
 					'alasan'		=> $alasan,
 					'id_karyawan'	=> $id_karyawan
 					);
@@ -87,9 +94,7 @@ class Formcuti extends CI_Controller{
 					$chek_kehadiran1	= $this->kehadiran->chack_kehadiran($id_karyawan);
 					$data1				= $chek_kehadiran->row_array();
 
-					$chek_kehadiran1	= $this->kehadiran->chack_kehadiran($id_karyawan);
-					$data1				= $chek_kehadiran->row_array();
-
+			
 					$date1				= $mulai_cuti; //tanggal mulai
 					$date2				= $akhir_cuti; //tanggal akhir
 					$diff 				= abs(strtotime($date2) - strtotime($date1));
@@ -97,31 +102,34 @@ class Formcuti extends CI_Controller{
 					$months 			= floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
 					$days 				= floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 					
-					$cuti 	= 	$data1['jumlah_izin'] + $days;
-					$update_cuti = array(
+					foreach ($chek_kehadiran1->result_array() as $data)
+                    {
+
+					$cuti 	= 	$data['jumlah_izin'] + $days;
+					$update_sakit = array(
 						'jumlah_izin' => $cuti
 					);
 					$where = array(
 						'id_karyawan' => $id_karyawan
 					);
 	
-					$this->formcuti->update_kehadiran($where, $update_cuti);
-	
-					$this->formcuti->input_data($data,'tbl_cuti');
+					$this->formcuti->update_kehadiran($where, $update_sakit);
+					$this->formcuti->input_data($data_array,'tbl_cuti');
 					redirect('user/formcuti/index');
-			}
 
-			else if($data['jumlah_sakit'] == $jenis_cuti){ //jika cuti sakit
-				$data = array(
+					}
+			}
+			else if($jenis_cuti == "Sakit"){ //jika cuti sakit
+				$data_array = array(
 					'mulai_cuti'	=> $mulai_cuti,
 					'akhir_cuti'    => $akhir_cuti,
-					'jenis_cuti' 	=> $cuti,
+					'jenis_cuti' 	=> $jenis_cuti,
 					'alasan'		=> $alasan,
 					'id_karyawan'	=> $id_karyawan
 					);
 	
 					$chek_kehadiran1	= $this->kehadiran->chack_kehadiran($id_karyawan);
-					$data1				=	$chek_kehadiran->row_array();
+					$data				=	$chek_kehadiran->row_array();
 
 					$date1				= $mulai_cuti; //tanggal mulai
 					$date2				= $akhir_cuti; //tanggal akhir
@@ -130,7 +138,7 @@ class Formcuti extends CI_Controller{
 					$months 			= floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
 					$days 				= floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 
-					$cuti = $data1['jumlah_sakit'] + $days;
+					$cuti = $data['jumlah_sakit'] + $days;
 					$update_cuti = array(
 						'jumlah_sakit' => $cuti
 					);
@@ -139,8 +147,8 @@ class Formcuti extends CI_Controller{
 					);
 	
 					$this->formcuti->update_kehadiran($where, $update_cuti);
-	
-					$this->formcuti->input_data($data,'tbl_cuti');
+					$this->formcuti->input_data($data_array,'tbl_cuti');
+					
 					redirect('user/formcuti/index');
 			}
 			

@@ -37,15 +37,9 @@
                             <label class="col-sm-3 col-form-label"> JENIS CUTI </label>
                             <div class="col-sm-8">
                                 <select class="form-control" name="jenis_cuti" required >
-                                    <?php $id_karyawan = $this->session->userdata('id_karyawan');
-                                        $cek_query=$this->model_auth->kehadiran($id_karyawan); 
-                                        foreach ($cek_query->result_array() as $row)
-                                        { 
-                                            ?>
-                                            <option value="<?php echo $row['jumlah_cuti'] ; ?>"> Cuti </option>
-                                            <option value="<?php echo $row['jumlah_izin'] ; ?>"> Izin </option>
-                                            <option value="<?php echo $row['jumlah_sakit'] ; ?>"> Sakit </option>
-                                        <?php } ?>
+                                    <option> Cuti </option>
+                                    <option> Izin </option>
+                                    <option> Sakit </option>
                                 </select>
                             </div>
                         </div>
