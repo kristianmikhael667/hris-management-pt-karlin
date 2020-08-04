@@ -19,6 +19,18 @@ class Formcuti_m extends CI_Model{
 		$this->db->update('tbl_kehadiran', $data, $id);
 	}
 
+	public function update_sisa_pengajuan($id, $data)
+	{
+		$this->db->update('tbl_jumlah_cuti', $data, $id);
+	}
+
+	public function check_sisa_pengajuan(){
+		$this->db->select('*');
+		$this->db->from('tbl_jumlah_cuti');
+		$query = $this->db->get();    
+		return $query;
+	}
+
 	
 }
 

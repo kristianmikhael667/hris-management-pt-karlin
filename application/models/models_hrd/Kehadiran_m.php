@@ -6,7 +6,9 @@ class Kehadiran_m extends CI_Model{
     public function list()
 	{
 		$this->db->select('*');
-		$this->db->from('tbl_kehadiran');
+		$this->db->from('tbl_kehadiran t_hadir');
+		$this->db->join('tbl_jumlah_cuti t_jumlah_cuti', 't_hadir.id_karyawan = t_jumlah_cuti.id_karyawan');
+		$this->db->join('tbl_karyawan t_karyawan', 't_karyawan.id_karyawan = t_hadir.id_karyawan');
 		$query = $this->db->get();
         
         return $query;
