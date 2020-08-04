@@ -34,9 +34,33 @@ class Formcuti extends CI_Controller{
 
 		$chek_kehadiran	= $this->kehadiran->chack_kehadiran($id_karyawan);
 		$data			=	$chek_kehadiran->row_array();
-		if($data['jumlah_cuti'] >= 4){
+
+		$chek_pengajuan	= $this->formcuti->check_sisa_pengajuan($id_karyawan);
+		$data_pengajuan			=	$chek_pengajuan->row_array();
+
+		if($data['jumlah_cuti'] >= $data_pengajuan['jumlah_cuti_cuti']){
 			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        Maaf Jumlah Cuti Anda Sudah Melebihi 4
+                        Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_cuti'] . '
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>');
+			redirect('user/formcuti/index');
+		}
+
+		else if($data['jumlah_izin'] >= $data_pengajuan['jumlah_cuti_izin']) {
+			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_izin'] . '
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>');
+			redirect('user/formcuti/index');
+		}
+
+		else if($data['jumlah_sakit'] >=  $data_pengajuan['jumlah_cuti_sakit']){
+			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_sakit'] . '
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -55,9 +79,7 @@ class Formcuti extends CI_Controller{
 					'id_karyawan'	=> $id_karyawan
 					);
 	
-					$chek_kehadiran1	= $this->kehadiran->chack_kehadiran($id_karyawan);
-					$data1				= $chek_kehadiran->row_array();
-
+					
 					$date1				= $mulai_cuti; //tanggal mulai
 					$date2				= $akhir_cuti; //tanggal akhir
 					$diff 				= abs(strtotime($date2) - strtotime($date1));
@@ -65,18 +87,25 @@ class Formcuti extends CI_Controller{
 					$months 			= floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
 					$days 				= floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 					
-					$cuti 				= $data1['jumlah_cuti'] + $days;
+					$cuti 				= $data['jumlah_cuti'] + $days;
 					$update_cuti = array(
 						'jumlah_cuti' => $cuti
 					);
+					$sisa_cuti 			= $data_pengajuan['jumlah_cuti_cuti'] - $days;
+					$update_sisa_cuti 	= array(
+						'jumlah_cuti_cuti' => $sisa_cuti
+					);
+
 					$where = array(
 						'id_karyawan' => $id_karyawan
 					);
 	
+					$this->formcuti->update_sisa_pengajuan($where, $update_sisa_cuti);
 					$this->formcuti->update_kehadiran($where, $update_cuti);
 					$this->formcuti->input_data($data,'tbl_cuti');
 					redirect('user/formcuti/index');
 			}
+
 			if($jenis_cuti == "Izin"){ //jika cuti izin
 				$data_array = array(
 					'mulai_cuti'	=> $mulai_cuti,
@@ -85,9 +114,6 @@ class Formcuti extends CI_Controller{
 					'alasan'		=> $alasan,
 					'id_karyawan'	=> $id_karyawan
 					);
-	
-					$chek_kehadiran1	= $this->kehadiran->chack_kehadiran($id_karyawan);
-					$data1				= $chek_kehadiran->row_array();
 
 			
 					$date1				= $mulai_cuti; //tanggal mulai
@@ -97,22 +123,27 @@ class Formcuti extends CI_Controller{
 					$months 			= floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
 					$days 				= floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 					
-					foreach ($chek_kehadiran1->result_array() as $data)
-                    {
+					
 
 					$cuti 	= 	$data['jumlah_izin'] + $days;
 					$update_sakit = array(
 						'jumlah_izin' => $cuti
 					);
+
+					$sisa_izin 			= $data_pengajuan['jumlah_cuti_izin'] - $days;
+					$update_sisa_izin 	= array(
+						'jumlah_cuti_izin' => $sisa_izin
+					);
+
 					$where = array(
 						'id_karyawan' => $id_karyawan
 					);
 	
+					$this->formcuti->update_sisa_pengajuan($where, $update_sisa_izin);
 					$this->formcuti->update_kehadiran($where, $update_sakit);
 					$this->formcuti->input_data($data_array,'tbl_cuti');
 					redirect('user/formcuti/index');
 
-					}
 			}
 			else if($jenis_cuti == "Sakit"){ //jika cuti sakit
 				$data_array = array(
@@ -123,8 +154,7 @@ class Formcuti extends CI_Controller{
 					'id_karyawan'	=> $id_karyawan
 					);
 	
-					$chek_kehadiran1	= $this->kehadiran->chack_kehadiran($id_karyawan);
-					$data				=	$chek_kehadiran->row_array();
+					
 
 					$date1				= $mulai_cuti; //tanggal mulai
 					$date2				= $akhir_cuti; //tanggal akhir
@@ -133,14 +163,20 @@ class Formcuti extends CI_Controller{
 					$months 			= floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
 					$days 				= floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 
-					$cuti = $data['jumlah_sakit'] + $days;
+					$cuti 				= $data['jumlah_sakit'] + $days;
 					$update_cuti = array(
 						'jumlah_sakit' => $cuti
 					);
+					$sisa_sakit 			= $data_pengajuan['jumlah_cuti_sakit'] - $days;
+					$update_sisa_sakit 	= array(
+						'jumlah_cuti_sakit' => $sisa_sakit
+					);
+
 					$where = array(
 						'id_karyawan' => $id_karyawan
 					);
 	
+					$this->formcuti->update_sisa_pengajuan($where, $update_sisa_sakit);
 					$this->formcuti->update_kehadiran($where, $update_cuti);
 					$this->formcuti->input_data($data_array,'tbl_cuti');
 					

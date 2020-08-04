@@ -10,12 +10,23 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Id Karyawan</th>
-                    <th>Jumlah Hadir</th>
-                    <th>Jumlah Cuti</th>
-                    <th>Jumlah Izin</th>
-                    <th>Jumlah Sakit</th>
-                    <th>Action</th>
+                    <td rowspan="2" align="center">Id Karyawan</th>
+                    <td rowspan="2" align="center">Nama Karyawan</th>
+                    <td rowspan="2" align="center">Jumlah Hadir</th>
+                    <td colspan="2" align="center">Jumlah Cuti</th>
+                    <td colspan="2" align="center">Jumlah Izin</th>
+                    <td colspan="2" align="center">Jumlah Sakit</th>
+                    <td colspan="2" align="center">Action</th>
+                  </tr>
+                  <tr>
+                    <td align="center">Jumlah</th>
+                    <td align="center">Sisa</th>
+                    <td align="center">Jumlah</th>
+                    <td align="center">Sisa</th>
+                    <td align="center">Jumlah</th>
+                    <td align="center">Sisa</th>
+                    <td align="center">Action</th>
+                    <td align="center">Excel</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -28,13 +39,18 @@
                   {       
                 ?>
                   <tr>
-                    <td><?php echo $row['id_karyawan'] ; ?></td>
-                    <td><?php echo $row['jumlah_hadir'] ; ?></td>
-                    <td><?php echo $row['jumlah_cuti'] ; ?></td>
-                    <td><?php echo $row['jumlah_izin'] ; ?></td>
-                    <td><?php echo $row['jumlah_sakit'] ; ?></td>
-                    <td><a href="<?php echo base_url('hrd/dashboard_hrd/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-danger"> Hapus </a>
+                    <td align="center"><?php echo $row['id_karyawan'] ; ?></td>
+                    <td align="center"><?php echo $row['nama_karyawan'] ; ?></td>
+                    <td align="center"><?php echo $row['jumlah_hadir'] ; ?></td>
+                    <td align="center"><?php echo $row['jumlah_cuti'] ; ?></td>
+                    <td align="center"><?php echo $row['jumlah_cuti_cuti'] ; ?></td>
+                    <td align="center"><?php echo $row['jumlah_izin'] ; ?></td>
+                    <td align="center"><?php echo $row['jumlah_cuti_izin'] ; ?></td>
+                    <td align="center"><?php echo $row['jumlah_sakit'] ; ?></td>
+                    <td align="center"><?php echo $row['jumlah_cuti_sakit'] ; ?></td>
+                    <td align="center"><a href="<?php echo base_url('hrd/dashboard_hrd/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-danger"> Hapus </a>
                     <a href="<?php echo base_url('hrd/dashboard_hrd/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Edit </a>  </td>
+                    <td align="center"><a href="<?php echo base_url('hrd/dashboard_hrd/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Excel </a>  </td>
                   </tr>
 
                   <?php } ?>
