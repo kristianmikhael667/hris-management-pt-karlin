@@ -1,6 +1,7 @@
 
 <div class="content-wrapper">
     <div class="container-fluid">
+    <?php echo $this->session->flashdata('pesan') ?>
         <div class="card mb-3 mt-3">
             <div class="card-header">
                 <i class="fas fa-table"></i>
@@ -28,6 +29,7 @@
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+
                         <div class="modal-body">
 
                         <?php $session_value = $this->session->userdata('id_karyawan');
@@ -36,7 +38,7 @@
                                 {       
                             ?><?php echo $row['nama_karyawan'] ; ?> 
                         <?php } ?>
-                                        
+                        <br>
                         <!DOCTYPE html>
                         <html>
 
@@ -95,7 +97,7 @@
                                 {       
                             ?> 
                         
-                        var bestMatchName = '<?php echo $session_value . $row['nama_karyawan'] ;?>';
+                        var bestMatchName = '<?php echo $row['nama_karyawan'] ;?>';
                         <?php } ?>
                         var bestMatchScore = 0.5;  // Actually, the minimum is -1 but we use it as a threshold.
                         for (name in persons) {
@@ -106,6 +108,7 @@
                             bestMatchName = name;
                             }
                         }
+
                         vec.delete();
                         return bestMatchName;
                         };
@@ -159,19 +162,19 @@
                             if (rects.length > 0) {
                             var face = frameBGR.roi(rects[0]);
 
-                            var name = prompt('Say your name:');
-                            var cell = document.getElementById("targetNames").insertCell(0); //insert nama
-                            cell.innerHTML = name; //dipanggil namanya kesini
+                            // var name = prompt('Say your name:');
+                            // var cell = document.getElementById("targetNames").insertCell(0); //insert nama
+                            // cell.innerHTML = name; //dipanggil namanya kesini
 
                             
 
-                            persons[name] = face2vec(face).clone();
+                            // persons[name] = face2vec(face).clone();
 
-                            var canvas = document.createElement("canvas");
-                            canvas.setAttribute("width", 96);
-                            canvas.setAttribute("height", 96);
-                            var cell = document.getElementById("targetImgs").insertCell(0);
-                            cell.appendChild(canvas);
+                            // var canvas = document.createElement("canvas");
+                            // canvas.setAttribute("width", 96);
+                            // canvas.setAttribute("height", 96);
+                            // var cell = document.getElementById("targetImgs").insertCell(0);
+                            // cell.appendChild(canvas);
 
                             var faceResized = new cv.Mat(canvas.height, canvas.width, cv.CV_8UC3);
                             cv.resize(face, faceResized, {width: canvas.width, height: canvas.height});
@@ -246,8 +249,8 @@
                             <tr id="targetImgs"></tr>
                             <tr id="targetNames"></tr>
                         </table>
-                        <form action="post">
-                            <button id="addPersonButton" type="button" disabled="true" class="btn btn-success">ABSEN</button>
+                        <form action="<?php echo base_url()?>user/kehadiran/absen" method="post" enctype="multipart/form-data">
+                            <button id="addPersonButton" type="submit" disabled="true" class="btn btn-success">ABSEN</button>
                         </form>
                         
                         </body>
