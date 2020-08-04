@@ -1,3 +1,4 @@
+
 <div class="content-wrapper">
     <div class="container-fluid">
         <div class="card mb-3 mt-3">
@@ -17,19 +18,26 @@
                 <button class="btn btn-lg btn-primary mb-2" data-toggle="modal" data-target="#opencamera" name=""><i class="fa fa-camera" aria-hidden="true"></i>
  Open Camera </button>
             </div>
-        </div>
-        <!-- Modal -->
+            <!-- Modal -->
             <div class="modal fade" id="opencamera" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">ABSEN KARYAWAN</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    <!DOCTYPE html>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Absensi Karyawan</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                        <?php $session_value = $this->session->userdata('id_karyawan');
+                        $cek_query = $this->model_auth->check_employe($session_value); 
+                                foreach ($cek_query->result_array() as $row)
+                                {       
+                            ?><?php echo $row['nama_karyawan'] ; ?> 
+                        <?php } ?>
+                                        
+                        <!DOCTYPE html>
                         <html>
 
                         <head>
@@ -81,8 +89,14 @@
                         //! [Recognize]
                         function recognize(face) {
                         var vec = face2vec(face);
-
-                        var bestMatchName = 'unknown';
+                        <?php
+                        $cek_query = $this->model_auth->check_employe($session_value); 
+                                foreach ($cek_query->result_array() as $row)
+                                {       
+                            ?> 
+                        
+                        var bestMatchName = '<?php echo $session_value . $row['nama_karyawan'] ;?>';
+                        <?php } ?>
                         var bestMatchScore = 0.5;  // Actually, the minimum is -1 but we use it as a threshold.
                         for (name in persons) {
                             var personVec = persons[name];
@@ -101,8 +115,8 @@
                         var utils = new Utils('');
                         var proto = 'https://raw.githubusercontent.com/opencv/opencv/master/samples/dnn/face_detector/deploy_lowres.prototxt';
                         var weights = 'https://raw.githubusercontent.com/opencv/opencv_3rdparty/dnn_samples_face_detector_20180205_fp16/res10_300x300_ssd_iter_140000_fp16.caffemodel';
-                        var recognModel = 'https://raw.githubusercontent.com/pyannote/pyannote-data/master/openface.nn4.small2.v1.t7';
-
+                        var recognModel = '<?php echo base_url() ?>assets/face_recognition.t7';
+                            
                         utils.createFileFromUrl('face_detector.prototxt', proto, () => {
                             document.getElementById('status').innerHTML = 'Downloading face_detector.caffemodel';
                             utils.createFileFromUrl('face_detector.caffemodel', weights, () => {
@@ -232,18 +246,18 @@
                             <tr id="targetImgs"></tr>
                             <tr id="targetNames"></tr>
                         </table>
-                        <button id="addPersonButton" type="button" disabled="true" class="btn btn-success">Tambah Pegawai</button>
+                        <form action="post">
+                            <button id="addPersonButton" type="button" disabled="true" class="btn btn-success">ABSEN</button>
+                        </form>
+                        
                         </body>
 
                         </html>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save</button>
-                    </div>
+                        
+                        
                     </div>
                 </div>
             </div>
+        </div>
     </div>
 </div>
