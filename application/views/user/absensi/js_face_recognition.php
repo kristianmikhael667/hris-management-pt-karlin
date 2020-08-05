@@ -1,5 +1,7 @@
+
 <div class="content-wrapper">
     <div class="container-fluid">
+    <?php echo $this->session->flashdata('pesan') ?>
         <div class="card mb-3 mt-3">
             <div class="card-header">
                 <i class="fas fa-table"></i>
@@ -17,19 +19,27 @@
                 <button class="btn btn-lg btn-primary mb-2" data-toggle="modal" data-target="#opencamera" name=""><i class="fa fa-camera" aria-hidden="true"></i>
  Open Camera </button>
             </div>
-        </div>
-        <!-- Modal -->
+            <!-- Modal -->
             <div class="modal fade" id="opencamera" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">ABSEN KARYAWAN</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    <!DOCTYPE html>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Absensi Karyawan</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+
+                        <?php $session_value = $this->session->userdata('id_karyawan');
+                        $cek_query = $this->model_auth->check_employe($session_value); 
+                                foreach ($cek_query->result_array() as $row)
+                                {       
+                            ?><?php echo $row['nama_karyawan'] ; ?> 
+                        <?php } ?>
+                        <br>
+                        <!DOCTYPE html>
                         <html>
 
                         <head>
@@ -81,8 +91,14 @@
                         //! [Recognize]
                         function recognize(face) {
                         var vec = face2vec(face);
-
-                        var bestMatchName = 'unknown';
+                        <?php
+                        $cek_query = $this->model_auth->check_employe($session_value); 
+                                foreach ($cek_query->result_array() as $row)
+                                {       
+                            ?> 
+                        
+                        var bestMatchName = '<?php echo $row['nama_karyawan'] ;?>';
+                        <?php } ?>
                         var bestMatchScore = 0.5;  // Actually, the minimum is -1 but we use it as a threshold.
                         for (name in persons) {
                             var personVec = persons[name];
@@ -92,6 +108,7 @@
                             bestMatchName = name;
                             }
                         }
+
                         vec.delete();
                         return bestMatchName;
                         };
@@ -101,8 +118,8 @@
                         var utils = new Utils('');
                         var proto = 'https://raw.githubusercontent.com/opencv/opencv/master/samples/dnn/face_detector/deploy_lowres.prototxt';
                         var weights = 'https://raw.githubusercontent.com/opencv/opencv_3rdparty/dnn_samples_face_detector_20180205_fp16/res10_300x300_ssd_iter_140000_fp16.caffemodel';
-                        var recognModel = 'https://raw.githubusercontent.com/pyannote/pyannote-data/master/openface.nn4.small2.v1.t7';
-
+                        var recognModel = '<?php echo base_url() ?>assets/face_recognition.t7';
+                            
                         utils.createFileFromUrl('face_detector.prototxt', proto, () => {
                             document.getElementById('status').innerHTML = 'Downloading face_detector.caffemodel';
                             utils.createFileFromUrl('face_detector.caffemodel', weights, () => {
@@ -145,19 +162,19 @@
                             if (rects.length > 0) {
                             var face = frameBGR.roi(rects[0]);
 
-                            var name = prompt('Say your name:');
-                            var cell = document.getElementById("targetNames").insertCell(0); //insert nama
-                            cell.innerHTML = name; //dipanggil namanya kesini
+                            // var name = prompt('Say your name:');
+                            // var cell = document.getElementById("targetNames").insertCell(0); //insert nama
+                            // cell.innerHTML = name; //dipanggil namanya kesini
 
                             
 
-                            persons[name] = face2vec(face).clone();
+                            // persons[name] = face2vec(face).clone();
 
-                            var canvas = document.createElement("canvas");
-                            canvas.setAttribute("width", 96);
-                            canvas.setAttribute("height", 96);
-                            var cell = document.getElementById("targetImgs").insertCell(0);
-                            cell.appendChild(canvas);
+                            // var canvas = document.createElement("canvas");
+                            // canvas.setAttribute("width", 96);
+                            // canvas.setAttribute("height", 96);
+                            // var cell = document.getElementById("targetImgs").insertCell(0);
+                            // cell.appendChild(canvas);
 
                             var faceResized = new cv.Mat(canvas.height, canvas.width, cv.CV_8UC3);
                             cv.resize(face, faceResized, {width: canvas.width, height: canvas.height});
@@ -232,18 +249,18 @@
                             <tr id="targetImgs"></tr>
                             <tr id="targetNames"></tr>
                         </table>
-                        <button id="addPersonButton" type="button" disabled="true" class="btn btn-success">Tambah Pegawai</button>
+                        <form action="<?php echo base_url()?>user/kehadiran/absen" method="post" enctype="multipart/form-data">
+                            <button id="addPersonButton" type="submit" disabled="true" class="btn btn-success">ABSEN</button>
+                        </form>
+                        
                         </body>
 
                         </html>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save</button>
-                    </div>
+                        
+                        
                     </div>
                 </div>
             </div>
+        </div>
     </div>
 </div>
