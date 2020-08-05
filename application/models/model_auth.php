@@ -56,5 +56,12 @@ class Model_auth extends CI_Model{
 		$this->db->from('tbl_karyawan');
 		$query = $this->db->get();
         return $query;
+    }
+    
+    public function hadir($id){
+		$this->db->select('*');
+		$this->db->from('tbl_absen');
+		$query = $this->db->get();    
+        return $query;
 	}
 }

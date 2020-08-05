@@ -12,6 +12,9 @@
                   <tr>
                     <th>Id Karyawan</th>
                     <th>Jumlah Hadir</th>
+                    <th>Waktu Hadir</th>
+                    <th>Tanggal Hadir</th>
+                    <th>Lokasi</th>
                     <th>Jumlah Cuti</th>
                     <th>Jumlah Izin</th>
                     <th>Jumlah Sakit</th>
@@ -35,6 +38,27 @@
                             {       
                           ?><?php echo $row['jumlah_hadir'] ; ?> 
                       <?php } ?></td>
+                    
+                      <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
+                          $cek_query=$this->model_auth->hadir($id_karyawan); 
+                          foreach ($cek_query->result_array() as $row)
+                        {          
+                      ?><?php echo $row['jam_masuk'] ; ?> 
+                    <?php } ?></td>
+
+                    <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
+                          $cek_query=$this->model_auth->hadir($id_karyawan); 
+                          foreach ($cek_query->result_array() as $row)
+                        {          
+                      ?><?php echo $row['tanggal_masuk'] ; ?> 
+                    <?php } ?></td>
+
+                    <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
+                          $cek_query=$this->model_auth->hadir($id_karyawan); 
+                          foreach ($cek_query->result_array() as $row)
+                        {          
+                      ?><?php echo $row['lokasi'] ; ?> 
+                    <?php } ?></td>
 
                     <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
                           $cek_query=$this->model_auth->kehadiran($id_karyawan); 

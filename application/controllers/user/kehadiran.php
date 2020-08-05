@@ -33,7 +33,14 @@ class Kehadiran extends CI_Controller{
 		$update_hadir = $this->kehadiran->chack_kehadiran($id);
 		$data_hadir  =	$update_hadir->row_array();
 
-	
+		$ip_address = $_SERVER['REMOTE_ADDR'];
+		//get user ip address details with geoplugin.net
+		$geopluginURL = 'http://www.geoplugin.net/php.gp?id='.$ip_address;
+		$addrDetailsArr = unserialize(file_get_contents($geopluginURL));
+		//get city name by return array
+		$city = $addrDetailsArr['geoplugin_city'];
+		//get country name by return array
+		$country = $addrDetailsArr['geoplugin_countryName'];
 
 		$cek_absensi = $this->kehadiran->cek_data_hadir($id, $tanggal_absen);
 		$cek_data_absensi = $cek_absensi->num_rows();
@@ -61,7 +68,7 @@ class Kehadiran extends CI_Controller{
 				'id_karyawan'	        => $id,
 				'tanggal_masuk'	        => $tanggal_absen,
 				'jam_masuk'   			=> $jam_absen,
-				'lokasi'			 	=> "dipo tower"
+				'lokasi'			 	=> $addrDetailsArr['geoplugin_city'].$addrDetailsArr['geoplugin_region'].$country
 				);
 
 			$this->kehadiran->insert_absen($data_insert_absen, 'tbl_absen');
