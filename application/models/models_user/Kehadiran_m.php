@@ -35,6 +35,19 @@ class Kehadiran_m extends CI_Model{
 	{
 		$this->db->update('tbl_kehadiran', $data, $id);
 	}
+
+	public function cek_data_hadir($id, $tanggal){
+		$this->db->select('*');
+		$this->$db->from('tbl_absen');
+		$this->db->where('id_karyawan', $id);
+		$this->db->where('tanggal_masuk', $tanggal);
+		$query = $this->db->get();
+		return $query;
+	}
+
+	function insert_absen($data,$table){
+		$this->db->insert($table,$data);
+	}
 }
 
 ?>
