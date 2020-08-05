@@ -35,8 +35,8 @@ class Kehadiran extends CI_Controller{
 
 	
 
-		$cek_absensi = $this->kehadiran->cek_data_hadir($id, $tanggal);
-		$cek_data_absensi = $cek_data_absensi->num_rows();
+		$cek_absensi = $this->kehadiran->cek_data_hadir($id, $tanggal_absen);
+		$cek_data_absensi = $cek_absensi->num_rows();
 		if($cek_data_absensi > 0){
 			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show alert-mt-3" role="alert">
 							Anda Sudah Absen Hari Ini
@@ -58,10 +58,10 @@ class Kehadiran extends CI_Controller{
 
 
 			$data_insert_absen = array(
-				'id_karyawan'	        => $id_karyawan,
-				'tanggal_masuk'	        => $nomor_sppd,
-				'jam_masuk'   			=> $tgl_keberangkatan,
-				'lokasi'			 	=> $bln_keberangkatan
+				'id_karyawan'	        => $id,
+				'tanggal_masuk'	        => $tanggal_absen,
+				'jam_masuk'   			=> $jam_absen,
+				'lokasi'			 	=> "dipo tower"
 				);
 
 			$this->kehadiran->insert_absen($data_insert_absen, 'tbl_absen');
