@@ -15,6 +15,15 @@ class Dashboard_hrd extends CI_Controller{
 		redirect('auth/login');
 		}
 		$this->load->model('models_hrd/Karyawan', 'karyawan');
+		$this->load->model('models_hrd/Kehadiran_m', 'kehadiran');
+		$this->load->model('models_hrd/Medical_m', 'medical');
+		$this->load->model('models_hrd/Pengajuancuti_m', 'cuti');
+		$this->load->model('models_hrd/Perjalanan_dinas_m', 'perjalanandinas');
+		$this->load->model('models_hrd/Uang_transport_m', 'uang');
+		$this->load->model('models_user/Formcuti_m', 'formcuti');
+		$this->load->model('models_user/Formdinas_m', 'formdinas');
+		$this->load->model('models_user/manajemenbarang_m', 'manage');
+		$this->load->model('models_user/Formpurchase_m', 'purch');
 		$this->load->library('session');
 		$this->load->library('upload');
 		$this->load->helper('url');
@@ -40,8 +49,10 @@ class Dashboard_hrd extends CI_Controller{
 					 );
 					
 					$id = $this->input->get('id');
-					$where = array('id_karyawan' => $id);
-					$this->karyawan->delete($where);
+					
+					$this->karyawan->delete($id);
+					$this->karyawan->delete2($id);
+					
 					$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);	
 	}
 
@@ -68,6 +79,7 @@ class Dashboard_hrd extends CI_Controller{
 	            $this->load->library('image_lib', $config);
 	            $this->image_lib->resize();
 				$id_karyawan		= $this->input->post('id_karyawan');
+				//$nomor_sppd			= 1;
 				$nama_karyawan		= $this->input->post('nama_karyawan');
 				$jenis_kelamin		= $this->input->post('jenis_kelamin');
 				$kode_bagian		= $this->input->post('kode_bagian');
@@ -99,7 +111,102 @@ class Dashboard_hrd extends CI_Controller{
 							'role_id'			=> 3,
 							'foto'				=> $foto
 						);
-						$this->karyawan->add_employe($data_user);
+						$this->karyawan->add_employe($data_user);  //tbl_karyawan
+
+
+						$data_hadir = array(
+							'id_karyawan'		=> $id_karyawan,
+							'jumlah_hadir'		=> 0,
+							'jumlah_cuti'		=> 0,
+							'jumlah_izin'		=> 0,
+							'jumlah_sakit'		=> 0
+						);
+						$this->kehadiran->add_kehadiran($data_hadir); //tbl_kehadiran
+
+						$data_medical = array(
+							'id_karyawan'		=> $id_karyawan,
+							'klaim_id'		=> '',
+							'tanggal_pengajuan'		=> '',
+							'status_pengajuan'		=> '',
+							'tanggal_disetujui'		=> '',
+							'jumlah_diajukan'		=> 0,
+							'jumlah_disetujui'		=> 0,
+							'struck'		=> '',
+							'ket'		=> ''
+						);
+						$this->medical->add_medical($data_medical); //tbl_medical
+
+						$data_jml_cuti = array(
+							'id_karyawan'		=> $id_karyawan,
+							'jumlah_cuti_cuti'		=> 0,
+							'jumlah_cuti_izin'		=> 0,
+							'jumlah_cuti_sakit'		=> 0
+						);
+						$this->cuti->add_cuti($data_jml_cuti); //tbl_jumlah_cuti
+
+						// $perjalanan_dinas = array(
+						// 	'nomor_sppd'		=> $nomor_sppd,
+						// 	'tanggal'		=> '',
+						// 	'biaya_transportasi'		=> 0,
+						// 	'ket'	=> '',
+						// 	'uang_makan'		=> 0,
+						// 	'status'	=> ''
+						// );
+						// $this->perjalanandinas->input_data($perjalanan_dinas); //tbl_perjalanan_dinas
+
+						$uang_tr = array(
+							'id_karyawan'		=> $id_karyawan,
+							'uang_bensin'		=> 0,
+							'uang_parkir'		=> 0,
+							'status'	=> ''
+						);
+						$this->uang->add_transportasi($uang_tr); //tbl_transportasi
+
+						// $form = array(
+						// 	'mulai_cuti'		=> '',
+						// 	'akhir_cuti'		=> '',
+						// 	'jenis_cuti'		=> '',
+						// 	'alasan'	=> ''
+						// );
+						// $this->formcuti->input_data($form); //tbl_cuti
+
+						$forum = array(
+							'id_karyawan'		=> $id_karyawan,
+							'nomor_sppd'		=> $nomor_sppd,
+							'tgl_keberangkatan'		=> '',
+							'bln_keberangkatan'		=> '',
+							'tujuan'		=> '',
+							'alasan'	=> '',
+							'status'		=> ''
+						);
+						$this->formdinas->input_data($forum); //tbl_dinas
+
+						// $manage = array(
+						// 	'id_purchase_request'		=> $id_purchase_request,
+						// 	'id_barang'		=> $id_barang,
+						// 	'nama_barang'		=> '',
+						// 	'harga'		=> '',
+						// 	'status'		=> ''
+						// );
+						// $this->manage->input_data($manage); //tbl_manage_barang
+
+						$purcase = array(
+							'id_karyawan'		=> $id_karyawan,
+							'id_purchase_request'		=> $nomor_sppd,
+							'tgl_permintaan'		=> '',
+							'keterangan'		=> ''
+
+						);
+						$this->purch->input_data($purcase); //tbl_purcase_request
+
+						$absen = array(
+							'id_karyawan'		=> $id_karyawan,
+							'tanggal_masuk'		=> '',
+							'jam_masuk'		=> '',
+							'lokasi'		=> ''
+						);
+						$this->kehadiran->hadir($absen); //tbl_absen
+
 						echo "<script>alert('UPLOAD DATA BERHASIL')</script>";
 					}
 			}

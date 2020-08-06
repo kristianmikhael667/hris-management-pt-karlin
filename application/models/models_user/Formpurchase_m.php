@@ -6,8 +6,8 @@ class Formpurchase_m extends CI_Model
 		return $this->db->get('tbl_purcase_request');
 	}
 	
-	function input_data($data,$table){
-		$this->db->insert($table,$data);
+	function input_data($data){
+		$this->db->insert('tbl_purcase_request',$data);
 	}
 
 	

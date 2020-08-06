@@ -10,8 +10,8 @@ class Formcuti_m extends CI_Model{
         return $query;
 	}
 
-    function input_data($data,$table){
-		$this->db->insert($table,$data);
+    function input_data($data){
+		$this->db->insert('tbl_cuti',$data);
 	}
 
 	public function update_kehadiran($id, $data)

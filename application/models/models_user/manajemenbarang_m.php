@@ -10,8 +10,8 @@ class Manajemenbarang_m extends CI_Model{
 		return $this->db->get('tbl_manage_barang');
 	}
 	
-	function input_data($data,$table){
-		$this->db->insert($table,$data);
+	function input_data($data){
+		$this->db->insert('tbl_manage_barang',$data);
 	}
 
 	public function edit_barang($where,$table){

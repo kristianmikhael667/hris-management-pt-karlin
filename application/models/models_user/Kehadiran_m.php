@@ -30,7 +30,6 @@ class Kehadiran_m extends CI_Model{
 		$this->db->insert($table,$data);
 	}
 
-
 	public function update_data($id, $data)
 	{
 		$this->db->update('tbl_kehadiran', $data, $id);

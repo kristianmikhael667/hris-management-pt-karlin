@@ -28,13 +28,18 @@ class Uangtransport extends CI_Controller{
 		$id_karyawan = $this->input->post('id_karyawan');
 		$uang_bensin = $this->input->post('uang_bensin');
 		$uang_parkir = $this->input->post('uang_parkir');
-
+		$status = $this->input->post('status');
 		$data = array(
 			'id_karyawan'	=> $id_karyawan,
 			'uang_bensin'   => $uang_bensin,
-			'uang_parkir'	=> $uang_parkir
+			'uang_parkir'	=> $uang_parkir,
+			'status'		=> 'waiting'
 			);
 		$this->uang_transport->add_transportasi($data,'tbl_transportasi');
 		redirect('hrd/uangtransport/index');
+	}
+
+	function add_transportasi($data){
+		$this->db->insert('tbl_transportasi',$data);
 	}
 }

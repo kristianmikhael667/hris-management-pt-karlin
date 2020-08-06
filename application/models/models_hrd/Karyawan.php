@@ -25,9 +25,44 @@ class Karyawan extends CI_Model{
 
 	public function delete($id)
 	{
-		$this->db->where($id);
-		$this->db->delete('tbl_karyawan');
+		$query=$this->db->query("DELETE a.*, b.* FROM tbl_karyawan a, tbl_kehadiran b WHERE a.id_karyawan = '$id' AND b.id_karyawan = '$id'");
+		return $query;
+		
+		// $query=$this->db->query("DELETE a.*, b.*, c.*, d.*, e.*, f.*, g.*, h.* FROM 
+		// tbl_karyawan a, 
+		// tbl_kehadiran b,
+		// tbl_medical c,
+		// tbl_jumlah_cuti d,
+		// tbl_transportasi e,
+		// tbl_purcase_request f,
+		// tbl_jumlah_cuti g,
+		// tbl_absen h
+		// WHERE 
+		// a.id_karyawan = '$id' 
+		// AND 
+		// b.id_karyawan = '$id'
+		// AND
+		// c.id_karyawan = '$id'
+		// AND
+		// d.id_karyawan = '$id'
+		// AND
+		// e.id_karyawan = '$id'
+		// AND
+		// f.id_karyawan = '$id'
+		// AND
+		// g.id_karyawan = '$id'
+		// AND
+		// h.id_karyawan = '$id'");
+		
+		// return $query; 
 	}
+
+	public function delete2($id)
+	{
+		$query=$this->db->query("DELETE a.*, b.* FROM tbl_karyawan a, tbl_dinas b WHERE a.id_karyawan = '$id' AND b.id_karyawan = '$id'");
+		return $query;
+	}
+	
 
 	public function edit($id, $data)
 	{
