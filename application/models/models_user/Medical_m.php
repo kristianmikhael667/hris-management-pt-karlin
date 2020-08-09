@@ -31,6 +31,18 @@ class Medical_m extends CI_Model{
 	public function add($data){	
 		return  $this->db->insert('tbl_medical', $data); 
 	}
+
+	public function edit($id, $data)
+	{
+		$this->db->update('tbl_medical', $data, $id);	
+	}
+
+	public function delete($id)
+	{
+		$this->db->where($id);
+		$this->db->delete('tbl_medical');
+
+	}
 	
 }
 

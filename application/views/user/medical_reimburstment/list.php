@@ -3,7 +3,7 @@
 
       <div class="container-fluid">
 
-      <button class="btn btn-sm btn-success mb-2 ml-3" data-toggle="modal" data-target="#manajemen" name=""><i class="fas fa-plus fa-sm"></i> Management Barang </button>
+      <button class="btn btn-sm btn-success mb-2 ml-3" data-toggle="modal" data-target="#manajemen" name=""><i class="fas fa-plus fa-sm"></i> Input Medical Reinburstment </button>
 
       <div id="content-wrapper">
       <div class="container-fluid">
@@ -32,8 +32,8 @@
                 <tbody>
                 <?php
                  
-                 
-                  $cek_query=$this->medical->list(); 
+                 $id_karyawan = $this->session->userdata('id_karyawan');
+                  $cek_query=$this->medical->check_medical($id_karyawan); 
                   
                   foreach ($cek_query->result_array() as $row)
                   {       
@@ -46,12 +46,12 @@
                     <td><?php echo $row['tanggal_disetujui'] ; ?></td>
                     <td><?php echo $row['jumlah_diajukan'] ; ?></td>
                     <td><?php echo $row['jumlah_disetujui'] ; ?></td>
-                    <td><?php echo $row['struck'] ; ?></td>
+                    <td><img style="width: 100px;" src="<?php echo base_url().'assets/images/'.$row['struck'];?>"></td>
                     <td><?php echo $row['ket'] ; ?></td>
                     <td>
-                    <a href="<?php echo base_url('user/report/pdf?id=') . $row['id_karyawan']; ?>" class="btn btn-warning"> Pdf </a>
-                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-primary"> Edit </a>
-                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-danger"> Delete </a>
+                    <a href="<?php echo base_url('user/laporan_medical_pdf/pdfmedical?id=') . $row['id_karyawan']; ?>" class="btn btn-warning"> Pdf </a>
+                    <a href="<?php echo base_url('user/medicalreimbust/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-primary"> Edit </a>
+                    <a href="<?php echo base_url('user/medicalreimbust/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-danger"> Delete </a>
                     </td>
                   </tr>
 
@@ -68,30 +68,31 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Uang Transportasi</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Medical Reimbust</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form action="<?php echo base_url()?>user/Medicalreimbust/add"  method="post">
+          <form action="<?php echo base_url()?>user/Medicalreimbust/add"  method="post" enctype="multipart/form-data">
               <div class="form-group">
-              <label>Nomor Purchase</label>
                
                 <label>Id Karyawan</label>
                 <input type="text" name="id_karyawan" class="form-control" readonly value="<?php echo $this->session->userdata('id_karyawan'); ?>" placeholder="Id Karyawan" required>
 
-                <label>Id Claim</label>
-                <input type="text" name="klaim_id" class="form-control" placeholder="Id Barang" required>
+                <label>Id Klaim</label>
+                <input type="text" name="klaim_id" class="form-control" placeholder="Id Klaim" required>
 
                 <label>Jumlah Diajukan</label>
-                <input type="number" name="jumlah_diajukan" class="form-control" placeholder="Nama Barang" required>
-                
+                <input type="number" name="jumlah_diajukan" class="form-control" placeholder="Jumlah Diajukan" required>
             
-                <label  class="col-sm-3 col-form-label"> Struk </label>  <input type="file" name="filefoto" required>
+                <label> Struk </label>  
                 <br>
+                <input type="file" name="filefoto" required>
+                <br>
+
                 <label>Keterangan</label>
-                <input type="number" name="ket" class="form-control" placeholder="Harga" required>
+                <input type="number" name="ket" class="form-control" placeholder="Keterangan" required>
               </div>
               
               <button type="submit" class="btn btn-primary">Simpan</button>

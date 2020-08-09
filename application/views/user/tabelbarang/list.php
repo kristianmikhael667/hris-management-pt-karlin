@@ -22,8 +22,8 @@
                 </thead>
                 <tbody>
                 <?php
-                 
-                  $cek_query=$this->manajemenbarang->tampil(); 
+                 $id_karyawan = $this->session->userdata('id_karyawan');
+                  $cek_query=$this->manajemenbarang->tampil($id_karyawan); 
                   
                   foreach ($cek_query->result_array() as $row)
                   {       
@@ -37,7 +37,8 @@
                     <td>
                       <button class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#view" name=""><i class="fa fa-eye"></i></button>
                       <?php
-                        $cek_query=$this->manajemenbarang->tampil(); 
+                        $id_karyawan = $this->session->userdata('id_purchase_request');
+                        $cek_query=$this->manajemenbarang->tampil_data($id_karyawan); 
                         foreach ($cek_query->result_array() as $row)
                         { ?>
                           <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('user/manajemenbarang/deletepurchase?id=') . $row['id_purchase_request']; ?>"><i class="fa fa-trash"></i></a>

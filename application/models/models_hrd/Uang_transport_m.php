@@ -30,8 +30,8 @@ class Uang_transport_m extends CI_Model{
 	    return $query;
 	}
 
-	public function add_transportasi($id){	
-		return  $this->db->insert('tbl_transportasi', $id); 
+	public function add_transportasi($data){	
+		return  $this->db->insert('tbl_transportasi',$data); 
 	}
 
 	public function delete($id)

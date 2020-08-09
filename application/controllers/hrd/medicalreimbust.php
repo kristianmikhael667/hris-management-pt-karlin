@@ -20,5 +20,11 @@ class Medicalreimbust extends CI_Controller{
                      );
                      
 					 $this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
-    }
+	}
+	
+	public function delete()
+	{
+		$id = $this->input->get('id');
+		$this->medical->delete($id);
+	}
 }

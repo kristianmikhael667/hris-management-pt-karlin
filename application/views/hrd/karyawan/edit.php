@@ -5,7 +5,7 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-            <a> Tambah Data Karyawan</a>
+            <a> Edit Data Karyawan</a>
             </li>   
         </ol>
 
@@ -13,7 +13,7 @@
         <div class="card mb-3">
             <div class="card-header">
             <i class="fas fa-chart-area"></i>
-            Input Data Karyawan</div>
+            Edit Data Karyawan</div>
             <div class="card-body">
                 
                 <form action="<?php echo base_url()?>hrd/dashboard_hrd/edit"  method="post" enctype="multipart/form-data">
@@ -92,6 +92,15 @@
                             <div class="form-group col-sm-8">	
                                 <input type="text" class="form-control" name="password" placeholder="PASSWORD" value="<?php echo sha1($row['password']) ?>" required>
                             </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="status" class="control-label col-sm-3">Status</label>
+                                <div class="col-sm-3">
+                                <select name="status">
+                                    <option value="aktif" <?php if("aktif") { echo "SELECTED"; } ?>>Aktif</option>
+                                    <option value="none" <?php if("none") { echo "SELECTED"; } ?>>Tidak Aktif</option>
+                                </select>
+                                </div>
                         </div>
                         <div class="form-group row">
                             <label  class="col-sm-3 col-form-label"> TANGGAL LAHIR </label>

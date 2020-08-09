@@ -25,8 +25,8 @@
           <tbody>
           <?php
            
-           
-            $cek_query=$this->kehadiran->list(); 
+           $id_karyawan = $this->session->userdata('id_karyawan');
+            $cek_query=$this->kehadiran->check_employe($id_karyawan); 
             
             foreach ($cek_query->result_array() as $row)
             {       

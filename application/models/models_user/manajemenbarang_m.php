@@ -2,12 +2,20 @@
 
 class Manajemenbarang_m extends CI_Model{
 
-	function tampil(){
-		return $this->db->get('tbl_purcase_request');
+	function tampil($id){
+		$this->db->select('*');
+		$this->db->from('tbl_purcase_request');
+		$this->db->where('id_karyawan', $id);
+		$query = $this->db->get();    
+        return $query;
 	}
 
-    function tampil_data(){
-		return $this->db->get('tbl_manage_barang');
+    function tampil_data($id){
+		$this->db->select('*');
+		$this->db->from('tbl_manage_barang');
+		$this->db->where('id_purchase_request', $id);
+		$query = $this->db->get();    
+        return $query;
 	}
 	
 	function input_data($data){

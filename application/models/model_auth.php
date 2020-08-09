@@ -64,5 +64,13 @@ class Model_auth extends CI_Model{
         $this->db->where('id_karyawan', $id);
 		$query = $this->db->get();    
         return $query;
+    }
+    
+    public function check_medical($id){
+		$this->db->select('*');
+		$this->db->from('tbl_medical');
+		$this->db->where('id_karyawan', $id);
+		$query = $this->db->get();
+        return $query;
 	}
 }

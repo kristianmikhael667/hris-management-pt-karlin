@@ -48,11 +48,15 @@ class Dashboard_hrd extends CI_Controller{
 					  'content' => 'hrd/karyawan/list'
 					 );
 					
+					//  $id = $this->input->get('id');
+					//  //$where = array('id_karyawan' => $id);
+					//  $this->karyawan->delete($id);
+
+					 
 					$id = $this->input->get('id');
-					
+					//$where = array('id_karyawan' => $id);
 					$this->karyawan->delete($id);
-					$this->karyawan->delete2($id);
-					
+					// $this->kehadiran->delete($id);
 					$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);	
 	}
 
@@ -79,7 +83,7 @@ class Dashboard_hrd extends CI_Controller{
 	            $this->load->library('image_lib', $config);
 	            $this->image_lib->resize();
 				$id_karyawan		= $this->input->post('id_karyawan');
-				//$nomor_sppd			= 1;
+				//$nomor_sppd			= $this->input->post('nomor_sppd');
 				$nama_karyawan		= $this->input->post('nama_karyawan');
 				$jenis_kelamin		= $this->input->post('jenis_kelamin');
 				$kode_bagian		= $this->input->post('kode_bagian');
@@ -88,6 +92,7 @@ class Dashboard_hrd extends CI_Controller{
 				$email				= $this->input->post('email');
 				$tanggal_lahir		= $this->input->post('tanggal_lahir');
 				$password			= $this->input->post('password');
+				$status				= $this->input->post('status');
 				$role_id			= 3;
 				$foto 				= $gbr['file_name'];
 				$cek_employe 		= $this->karyawan->check_employe($id_karyawan);
@@ -108,11 +113,16 @@ class Dashboard_hrd extends CI_Controller{
 							'email'				=> $email,
 							'tanggal_lahir'		=> $tanggal_lahir,
 							'password'			=> $password,
+							'status'			=> $status,
 							'role_id'			=> 3,
 							'foto'				=> $foto
 						);
 						$this->karyawan->add_employe($data_user);  //tbl_karyawan
 
+						// $datasetuju = array(
+						// 	'status'	=> $status
+						// );
+						// $this->karyawan->persetujuan('tbl_karyawan',$datasetuju);
 
 						$data_hadir = array(
 							'id_karyawan'		=> $id_karyawan,
@@ -172,7 +182,7 @@ class Dashboard_hrd extends CI_Controller{
 
 						$forum = array(
 							'id_karyawan'		=> $id_karyawan,
-							'nomor_sppd'		=> $nomor_sppd,
+							'nomor_sppd'		=> 0,
 							'tgl_keberangkatan'		=> '',
 							'bln_keberangkatan'		=> '',
 							'tujuan'		=> '',
@@ -192,7 +202,7 @@ class Dashboard_hrd extends CI_Controller{
 
 						$purcase = array(
 							'id_karyawan'		=> $id_karyawan,
-							'id_purchase_request'		=> $nomor_sppd,
+							'id_purchase_request'		=> 0,
 							'tgl_permintaan'		=> '',
 							'keterangan'		=> ''
 
@@ -245,6 +255,7 @@ class Dashboard_hrd extends CI_Controller{
 				$email				= $this->input->post('email');
 				$tanggal_lahir		= $this->input->post('tanggal_lahir');
 				$password			= sha1($this->input->post('password'));
+				$status				= $this->input->post('status');
 				$role_id			= $this->input->post('role_id');
 				$config['image_library']='gd2';
 	            $config['source_image']='./assets/images/'.$gbr['file_name'];
@@ -261,6 +272,7 @@ class Dashboard_hrd extends CI_Controller{
 					'email'				=> $email,
 					'tanggal_lahir'		=> $tanggal_lahir,
 					'password'			=> $password,
+					'status'			=> $status,
 					'role_id'			=> $role_id,
 					'foto'				=> $foto
 				);
@@ -283,6 +295,7 @@ class Dashboard_hrd extends CI_Controller{
 		$email				= $this->input->post('email');
 		$tanggal_lahir		= $this->input->post('tanggal_lahir');
 		$password			= sha1($this->input->post('password'));
+		$status				= $this->input->post('status');
 		$role_id			= $this->input->post('role_id');	
 			$data_user1 = array(
 				'nama_karyawan'		=> $nama_karyawan,
@@ -293,6 +306,7 @@ class Dashboard_hrd extends CI_Controller{
 				'email'				=> $email,
 				'tanggal_lahir'		=> $tanggal_lahir,
 				'password'			=> $password,
+				'status'			=> $status,
 				'role_id'			=> $role_id
 			);
 			$where = array(

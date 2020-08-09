@@ -1,6 +1,6 @@
 <?php
 
-class Laporan_kehadiran_pdf extends CI_Controller{
+class Laporan_medical_pdf extends CI_Controller{
 
 	public function __construct(){
         parent::__construct();
@@ -21,16 +21,6 @@ class Laporan_kehadiran_pdf extends CI_Controller{
                      
 					 $this->load->view('tamplate_bootstrap_user/wrapper', $data, FALSE);
     }
-	
-    public function pdf(){
-
-		$data['data'] = $this->db->get('tbl_kehadiran')->result();
-
-		$this->load->library('pdf');
-		$customPaper = 'A4';
-		$this->pdf->setPaper($customPaper, 'landscape');
-		$this->pdf->load_view('user/laporan_kehadiran', $data);
-	}
 
 	public function pdfmedical(){
 
@@ -38,7 +28,7 @@ class Laporan_kehadiran_pdf extends CI_Controller{
 
 		$this->load->library('pdfmedical');
 		$customPaper = 'A4';
-		$this->pdf->setPaper($customPaper, 'landscape');
-		$this->pdf->load_view('user/laporan_medical', $data);
+		$this->pdfmedical->setPaper($customPaper, 'landscape');
+		$this->pdfmedical->load_view('user/laporan_medical', $data);
 	}
 }

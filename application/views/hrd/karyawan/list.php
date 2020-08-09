@@ -16,6 +16,7 @@
                     <th>Id Karyawan</th>
                     <th>Nama Karyawan</th>
                     <th>Kode Bagian</th>
+                    <th>Status</th>
                     <th>Alamat</th>
                     <th>Nomor Telepon</th>
                     <th>Email</th>
@@ -37,17 +38,14 @@
                     <td><?php echo $row['id_karyawan'] ; ?></td>
                     <td><?php echo $row['nama_karyawan'] ; ?></td>
                     <td><?php echo $row['kode_bagian'] ; ?></td>
+                    <td><?php echo $row['status'] ; ?></td>
                     <td><?php echo $row['alamat'] ; ?></td>
                     <td><?php echo $row['nomor_telepon'] ; ?></td>
                     <td><?php echo $row['email'] ; ?></td>
                     <td><?php echo $row['tanggal_lahir'] ; ?></td>
                     <td><img style="width: 100px;" src="<?php echo base_url().'assets/images/'.$row['foto'];?>"></td>
-                    
-                        <td><a href="<?php echo base_url('hrd/dashboard_hrd/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-danger"> Hapus </a>
-
+                    <td><a href="<?php echo base_url('hrd/dashboard_hrd/delete?id=') .$row['id_karyawan']; ?>" class="btn btn-outline-danger"> Hapus </a>
                         <a href="<?php echo base_url('hrd/dashboard_hrd/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Edit </a>  </td>
-                        
-                   
                   </tr>
 
                   <?php } ?>

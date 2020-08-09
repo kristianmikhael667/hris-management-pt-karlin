@@ -31,6 +31,12 @@ class Formcuti_m extends CI_Model{
 		return $query;
 	}
 
+	public function delete($id_karyawan)
+	{
+		$this->db->where($id);
+		$this->db->delete('tbl_cuti');
+	}
+
 	
 }
 
