@@ -33,20 +33,75 @@ class Auth extends CI_Controller{
             }else{
                 $this->session->set_userdata('id_karyawan',$auth->id_karyawan);
                 $this->session->set_userdata('role_id',$auth->role_id);
-                
+                $auth1 = $this->model_auth->cek_login();
                 $cek_query=$this->login_user->check_employe('id_karyawan');     
                     $data=$cek_query->row_array();
                     $this->session->set_userdata('nama_karyawan', $data['nama_karyawan']);
-                switch($auth->role_id){
-                    case 1 : redirect('manajemen/dashboard_manajemen');        
-                        break;
-                    case 2 : redirect('hrd/dashboard_hrd');
-                        break;
-                    case 3 : redirect('user/dashboard_user');
-                        break;
-                    default:
-                        break;
-                }
+
+                    $status_karyawan = $auth1->status;
+                    $role = $auth1->role_id;
+
+                    if(($role == 1) && ($status_karyawan='AKTIF')){
+                        redirect('manajemen/dashboard_manajemen');
+                    }
+                    else if(($role == 2) && ($status_karyawan='AKTIF')){
+                        redirect('hrd/dashboard_hrd');
+                    }
+                    else if(($role == 3) && ($status_karyawan='AKTIF')){
+                        redirect('user/dashboard_user');
+                    }
+                    else{
+                        $this->session->set_flashdata('pesan1','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                         DINONAKTIFKAN
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                         </button>
+                            </div>');
+                            redirect('auth/login');
+                         
+                    }
+
+
+                    // switch($auth1->role_id){
+                    // case 1 :
+                    //     if(($status_karyawan='AKTIF'))   { redirect('manajemen/dashboard_manajemen');}   
+                    //     if(($status_karyawan='NONE')){ 
+                    //         $this->session->set_flashdata('pesan1','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    //     DINONAKTIFKAN
+                    //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    //     <span aria-hidden="true">&times;</span>
+                    //     </button>
+                    // </div>');
+                    // redirect('auth/login');
+                    //      }  
+                    //     break;
+                    // case 2 : 
+                    //     if(($status_karyawan='AKTIF'))   { redirect('hrd/dashboard_hrd');}   
+                    //     if(($status_karyawan='NONE')){
+                    //         $this->session->set_flashdata('pesan1','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    //     DINONAKTIFKAN
+                    //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    //     <span aria-hidden="true">&times;</span>
+                    //     </button>
+                    // </div>');
+                    // redirect('auth/login');
+                    //      }
+                    //     break;
+                    // case 3 : 
+                    //     if(($status_karyawan='AKTIF'))   { redirect('user/dashboard_user');}   
+                    //     if(($status_karyawan='NONE')){
+                    //         $this->session->set_flashdata('pesan1','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    //     DINONAKTIFKAN
+                    //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    //     <span aria-hidden="true">&times;</span>
+                    //     </button>
+                    // </div>');
+                    // redirect('auth/login');
+                    //     }
+                    //     break;
+                    // default:
+                    //     break;
+               // }
 
                 
             }
