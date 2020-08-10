@@ -48,7 +48,7 @@ class Dashboard_hrd extends CI_Controller{
 					  'content' => 'hrd/karyawan/list'
 					 );
 					
-					//  $id = $this->input->get('id');
+					
 					//  //$where = array('id_karyawan' => $id);
 					//  $this->karyawan->delete($id);
 
@@ -118,103 +118,103 @@ class Dashboard_hrd extends CI_Controller{
 						);
 						$this->karyawan->add_employe($data_user);  //tbl_karyawan
 
-						// $datasetuju = array(
-						// 	'status'	=> $status
+						// // $datasetuju = array(
+						// // 	'status'	=> $status
+						// // );
+						// // $this->karyawan->persetujuan('tbl_karyawan',$datasetuju);
+
+						 $data_hadir = array(
+						 	'id_karyawan'		=> $id_karyawan,
+						 	'jumlah_hadir'		=> 0,
+						 	'jumlah_cuti'		=> 0,
+						 	'jumlah_izin'		=> 0,
+						 	'jumlah_sakit'		=> 0
+						 );
+						 $this->kehadiran->add_kehadiran($data_hadir); //tbl_kehadiran
+
+						// $data_medical = array(
+						// 	'id_karyawan'		=> $id_karyawan,
+						// 	'klaim_id'		=> '',
+						// 	'tanggal_pengajuan'		=> '',
+						// 	'status_pengajuan'		=> '',
+						// 	'tanggal_disetujui'		=> '',
+						// 	'jumlah_diajukan'		=> 0,
+						// 	'jumlah_disetujui'		=> 0,
+						// 	'struck'		=> '',
+						// 	'ket'		=> ''
 						// );
-						// $this->karyawan->persetujuan('tbl_karyawan',$datasetuju);
-
-						$data_hadir = array(
-							'id_karyawan'		=> $id_karyawan,
-							'jumlah_hadir'		=> 0,
-							'jumlah_cuti'		=> 0,
-							'jumlah_izin'		=> 0,
-							'jumlah_sakit'		=> 0
-						);
-						$this->kehadiran->add_kehadiran($data_hadir); //tbl_kehadiran
-
-						$data_medical = array(
-							'id_karyawan'		=> $id_karyawan,
-							'klaim_id'		=> '',
-							'tanggal_pengajuan'		=> '',
-							'status_pengajuan'		=> '',
-							'tanggal_disetujui'		=> '',
-							'jumlah_diajukan'		=> 0,
-							'jumlah_disetujui'		=> 0,
-							'struck'		=> '',
-							'ket'		=> ''
-						);
-						$this->medical->add_medical($data_medical); //tbl_medical
+						// $this->medical->add_medical($data_medical); //tbl_medical
 
 						$data_jml_cuti = array(
-							'id_karyawan'		=> $id_karyawan,
-							'jumlah_cuti_cuti'		=> 0,
-							'jumlah_cuti_izin'		=> 0,
-							'jumlah_cuti_sakit'		=> 0
-						);
-						$this->cuti->add_cuti($data_jml_cuti); //tbl_jumlah_cuti
+						 	'id_karyawan'		=> $id_karyawan,
+						 	'jumlah_cuti_cuti'		=> 7,
+						 	'jumlah_cuti_izin'		=> 7,
+						 	'jumlah_cuti_sakit'		=> 7
+						 );
+						 $this->cuti->add_cuti($data_jml_cuti); //tbl_jumlah_cuti
 
-						// $perjalanan_dinas = array(
-						// 	'nomor_sppd'		=> $nomor_sppd,
-						// 	'tanggal'		=> '',
-						// 	'biaya_transportasi'		=> 0,
-						// 	'ket'	=> '',
-						// 	'uang_makan'		=> 0,
+						// // $perjalanan_dinas = array(
+						// // 	'nomor_sppd'		=> $nomor_sppd,
+						// // 	'tanggal'		=> '',
+						// // 	'biaya_transportasi'		=> 0,
+						// // 	'ket'	=> '',
+						// // 	'uang_makan'		=> 0,
+						// // 	'status'	=> ''
+						// // );
+						// // $this->perjalanandinas->input_data($perjalanan_dinas); //tbl_perjalanan_dinas
+
+						// $uang_tr = array(
+						// 	'id_karyawan'		=> $id_karyawan,
+						// 	'uang_bensin'		=> 0,
+						// 	'uang_parkir'		=> 0,
 						// 	'status'	=> ''
 						// );
-						// $this->perjalanandinas->input_data($perjalanan_dinas); //tbl_perjalanan_dinas
+						// $this->uang->add_transportasi($uang_tr); //tbl_transportasi
 
-						$uang_tr = array(
-							'id_karyawan'		=> $id_karyawan,
-							'uang_bensin'		=> 0,
-							'uang_parkir'		=> 0,
-							'status'	=> ''
-						);
-						$this->uang->add_transportasi($uang_tr); //tbl_transportasi
+						// // $form = array(
+						// // 	'mulai_cuti'		=> '',
+						// // 	'akhir_cuti'		=> '',
+						// // 	'jenis_cuti'		=> '',
+						// // 	'alasan'	=> ''
+						// // );
+						// // $this->formcuti->input_data($form); //tbl_cuti
 
-						// $form = array(
-						// 	'mulai_cuti'		=> '',
-						// 	'akhir_cuti'		=> '',
-						// 	'jenis_cuti'		=> '',
-						// 	'alasan'	=> ''
-						// );
-						// $this->formcuti->input_data($form); //tbl_cuti
-
-						$forum = array(
-							'id_karyawan'		=> $id_karyawan,
-							'nomor_sppd'		=> 0,
-							'tgl_keberangkatan'		=> '',
-							'bln_keberangkatan'		=> '',
-							'tujuan'		=> '',
-							'alasan'	=> '',
-							'status'		=> ''
-						);
-						$this->formdinas->input_data($forum); //tbl_dinas
-
-						// $manage = array(
-						// 	'id_purchase_request'		=> $id_purchase_request,
-						// 	'id_barang'		=> $id_barang,
-						// 	'nama_barang'		=> '',
-						// 	'harga'		=> '',
+						// $forum = array(
+						// 	'id_karyawan'		=> $id_karyawan,
+						// 	'nomor_sppd'		=> 0,
+						// 	'tgl_keberangkatan'		=> '',
+						// 	'bln_keberangkatan'		=> '',
+						// 	'tujuan'		=> '',
+						// 	'alasan'	=> '',
 						// 	'status'		=> ''
 						// );
-						// $this->manage->input_data($manage); //tbl_manage_barang
+						// $this->formdinas->input_data($forum); //tbl_dinas
 
-						$purcase = array(
-							'id_karyawan'		=> $id_karyawan,
-							'id_purchase_request'		=> 0,
-							'tgl_permintaan'		=> '',
-							'keterangan'		=> ''
+						// // $manage = array(
+						// // 	'id_purchase_request'		=> $id_purchase_request,
+						// // 	'id_barang'		=> $id_barang,
+						// // 	'nama_barang'		=> '',
+						// // 	'harga'		=> '',
+						// // 	'status'		=> ''
+						// // );
+						// // $this->manage->input_data($manage); //tbl_manage_barang
 
-						);
-						$this->purch->input_data($purcase); //tbl_purcase_request
+						// $purcase = array(
+						// 	'id_karyawan'		=> $id_karyawan,
+						// 	'id_purchase_request'		=> 0,
+						// 	'tgl_permintaan'		=> '',
+						// 	'keterangan'		=> ''
 
-						$absen = array(
-							'id_karyawan'		=> $id_karyawan,
-							'tanggal_masuk'		=> '',
-							'jam_masuk'		=> '',
-							'lokasi'		=> ''
-						);
-						$this->kehadiran->hadir($absen); //tbl_absen
+						// );
+						// $this->purch->input_data($purcase); //tbl_purcase_request
+
+						// $absen = array(
+						// 	'id_karyawan'		=> $id_karyawan,
+						// 	'tanggal_masuk'		=> '',
+						// 	'jam_masuk'		=> '',
+						// 	'lokasi'		=> ''
+						// );
+						// $this->kehadiran->hadir($absen); //tbl_absen
 
 						echo "<script>alert('UPLOAD DATA BERHASIL')</script>";
 					}

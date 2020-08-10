@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Agu 2020 pada 17.44
+-- Waktu pembuatan: 10 Agu 2020 pada 05.05
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.2.16
 
@@ -77,7 +77,8 @@ INSERT INTO `tbl_cuti` (`id_karyawan`, `mulai_cuti`, `akhir_cuti`, `jenis_cuti`,
 (0, '2020-07-17', '2020-07-29', '02', 'monas'),
 (666, '2020-08-08', '2020-08-09', 'Cuti', 'pop'),
 (666, '2020-08-08', '2020-08-09', 'Izin', 'kl'),
-(666, '2020-08-08', '2020-08-10', 'Sakit', 'skt');
+(666, '2020-08-08', '2020-08-10', 'Sakit', 'skt'),
+(333, '2020-08-10', '2020-08-12', 'Cuti', 'a');
 
 -- --------------------------------------------------------
 
@@ -102,7 +103,8 @@ CREATE TABLE `tbl_dinas` (
 INSERT INTO `tbl_dinas` (`id_karyawan`, `nomor_sppd`, `tgl_keberangkatan`, `bln_keberangkatan`, `tujuan`, `alasan`, `status`) VALUES
 (321, 0, '0000-00-00', '0000-00-00', '', '', ''),
 (666, 0, '0000-00-00', '0000-00-00', '', '', ''),
-(321, 4455, '2020-08-09', '2020-08-11', 'Pantai', 'Enak', '');
+(321, 4455, '2020-08-09', '2020-08-11', 'Pantai', 'Enak', ''),
+(322, 0, '0000-00-00', '0000-00-00', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -123,7 +125,10 @@ CREATE TABLE `tbl_jumlah_cuti` (
 
 INSERT INTO `tbl_jumlah_cuti` (`id_karyawan`, `jumlah_cuti_cuti`, `jumlah_cuti_izin`, `jumlah_cuti_sakit`) VALUES
 (321, 0, 0, 0),
-(666, 5, 6, 5);
+(322, 0, 0, 0),
+(333, 7, 7, 7),
+(666, 5, 6, 5),
+(999, 7, 7, 7);
 
 -- --------------------------------------------------------
 
@@ -153,7 +158,10 @@ CREATE TABLE `tbl_karyawan` (
 INSERT INTO `tbl_karyawan` (`id_karyawan`, `nama_karyawan`, `jenis_kelamin`, `kode_bagian`, `alamat`, `nomor_telepon`, `email`, `tanggal_lahir`, `password`, `status`, `role_id`, `foto`) VALUES
 (221, 'admin', 'L', 1, 'Kamboja ', '0898765', 'kristianmikhael@gmail.com', '2020-08-02', '123', 'AKTIF', 2, '7d9f924f58b70ac5361011298751c016.gif'),
 (321, 'DANANG AJI MUSTOFss', 'L', 4, 'Bekasi      ', '08162516271', 'magangsemester6@gmail.com', '2020-08-08', '123', 'NONE', 3, '9245357d656fffc5f1f29833bc22fb5c.jpg'),
-(666, 'Mikhael Kristian', 'L', 4, 'Depok ', '08162516271', 'kristian.mikhael@yahoo.com', '2020-08-04', '123', 'AKTIF', 3, '1c9886fd2c1751ecd1a370a493bcc5f1.jpg');
+(322, 'Mikhael Kristian', 'L', 4, 'eee', '089668997397', 'kristian.mikhael@yahoo.com', '2020-08-05', '123', 'AKTIF', 3, '836026f083cbe0462585a43c83e3969e.jpg'),
+(333, '321', 'P', 4, '111', '089668997397', '11', '2020-08-03', '123', 'AKTIF', 3, '8441bdb658a37104f16563783d34fbb1.jpg'),
+(666, 'Mikhael Kristian', 'L', 4, 'Depok  ', '08162516271', 'kristian.mikhael@yahoo.com', '2020-08-04', '9adcb29710e807607b683f62e555c22dc5659713', 'NONE', 3, '1c9886fd2c1751ecd1a370a493bcc5f1.jpg'),
+(999, 'DANANGdddsss', 'L', 4, 'd', '08162516271', 'magangsemester6@gmail.com', '2020-08-05', '123', 'AKTIF', 3, 'd19ec1bdc732c5a76e9f8499d0c352c6.jpg');
 
 -- --------------------------------------------------------
 
@@ -175,7 +183,10 @@ CREATE TABLE `tbl_kehadiran` (
 
 INSERT INTO `tbl_kehadiran` (`id_karyawan`, `jumlah_hadir`, `jumlah_cuti`, `jumlah_izin`, `jumlah_sakit`) VALUES
 (321, 1, 0, 0, 0),
-(666, 1, 1, 1, 2);
+(322, 0, 0, 0, 0),
+(333, 0, 0, 0, 0),
+(666, 1, 1, 1, 2),
+(999, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -224,7 +235,8 @@ CREATE TABLE `tbl_medical` (
 INSERT INTO `tbl_medical` (`id_karyawan`, `klaim_id`, `tanggal_pengajuan`, `status_pengajuan`, `tanggal_disetujui`, `jumlah_diajukan`, `jumlah_disetujui`, `struck`, `ket`) VALUES
 (666, 0, '0000-00-00', '', '0000-00-00', '0', '0', '', ''),
 (321, 223, '2020-08-09', 'menunggu', '0000-00-00', '1234', '-', 'f4aee1a229e6f30627f45926a6a065f4.png', '23'),
-(321, 222, '2020-08-09', 'menunggu', '0000-00-00', '666', '-', 'a38e14939a6e4c5d6c21a614d0f55435.jpg', '1112');
+(321, 222, '2020-08-09', 'menunggu', '0000-00-00', '666', '-', 'a38e14939a6e4c5d6c21a614d0f55435.jpg', '1112'),
+(322, 0, '0000-00-00', '', '0000-00-00', '0', '0', '', '');
 
 -- --------------------------------------------------------
 
@@ -278,7 +290,8 @@ CREATE TABLE `tbl_purcase_request` (
 INSERT INTO `tbl_purcase_request` (`id_karyawan`, `id_purchase_request`, `tgl_permintaan`, `keterangan`) VALUES
 (666, 0, '0000-00-00', ''),
 (666, 1122, '2020-08-08', 'hop'),
-(321, 0, '0000-00-00', '');
+(321, 0, '0000-00-00', ''),
+(322, 0, '0000-00-00', '');
 
 -- --------------------------------------------------------
 
@@ -299,6 +312,7 @@ CREATE TABLE `tbl_transportasi` (
 
 INSERT INTO `tbl_transportasi` (`id_karyawan`, `uang_bensin`, `uang_parkir`, `status`) VALUES
 (321, '0', '0', ''),
+(322, '0', '0', ''),
 (666, '0', '0', '');
 
 --
@@ -328,7 +342,6 @@ ALTER TABLE `tbl_dinas`
 -- Indeks untuk tabel `tbl_jumlah_cuti`
 --
 ALTER TABLE `tbl_jumlah_cuti`
-  ADD PRIMARY KEY (`id_karyawan`),
   ADD KEY `id_karyawan` (`id_karyawan`);
 
 --
@@ -403,19 +416,19 @@ ALTER TABLE `tbl_dinas`
 -- AUTO_INCREMENT untuk tabel `tbl_jumlah_cuti`
 --
 ALTER TABLE `tbl_jumlah_cuti`
-  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
+  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_karyawan`
 --
 ALTER TABLE `tbl_karyawan`
-  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
+  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_kehadiran`
 --
 ALTER TABLE `tbl_kehadiran`
-  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
+  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_manage_barang`
