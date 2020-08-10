@@ -54,14 +54,8 @@ class Dashboard_hrd extends CI_Controller{
 
 					 
 					$id = $this->input->get('id');
-<<<<<<< HEAD
 				
 					$this->karyawan->delete($id);
-=======
-					//$where = array('id_karyawan' => $id);
-					$this->karyawan->delete($id);
-					// $this->kehadiran->delete($id);
->>>>>>> 950e293d5dedb87976b5b51e3b83f4641050e6b4
 					$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);	
 	}
 
