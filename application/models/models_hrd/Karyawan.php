@@ -25,8 +25,8 @@ class Karyawan extends CI_Model{
 
 	public function delete($id)
 	{
-		$this->db->where($id);
-		$this->db->delete('tbl_karyawan');
+		$query=$this->db->query("DELETE a.*, b.* FROM tbl_karyawan a, tbl_purcase_request b WHERE a.id_karyawan = '$id' AND b.id_karyawan = '$id'");
+		return $query;
 	}
 
 	public function edit($id, $data)
