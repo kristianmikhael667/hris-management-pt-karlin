@@ -23,5 +23,27 @@ class Kehadiran extends CI_Controller{
 					 $this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
     }
 	
+	public function delete()
+	{		
+			//$data = array('title' => 'Data Karyawan',
+					  //'content' => 'user/tabelbarang/list'
+					 //);
+            //$id = $this->input->get('id');
+			//$where = array('id_karyawan' => $id);
+
+			//$this->manajemenbarang->jumlahdatabarang($where);
+			//$this->load->view('tamplate_bootstrap_user/wrapper', $data, FALSE);
+			$id = $this->input->get('id');
+			$this->kehadiran->delete($id);
+			//$this->manajemenbarang->deletecase($id);
+
+		//	$this->session->set_flashdata('success','Item Berhasil Di Hapus');
+			redirect(base_url('hrd/kehadiran/index'));
+			// redirect buat pindah ke halaman awalnya
+
+			//atau bisa juga make
+
+			redirect($_SERVER['HTTP_REFERER']);
+	}
     
 }

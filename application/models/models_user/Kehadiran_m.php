@@ -30,7 +30,6 @@ class Kehadiran_m extends CI_Model{
 		$this->db->insert($table,$data);
 	}
 
-
 	public function update_data($id, $data)
 	{
 		$this->db->update('tbl_kehadiran', $data, $id);
@@ -45,12 +44,6 @@ class Kehadiran_m extends CI_Model{
 		return $query;
 	}
 
-	public function hadir($id){
-		$this->db->select('*');
-		$this->db->from('tbl_absen');
-		$query = $this->db->get();    
-        return $query;
-	}
 
 	function insert_absen($data,$table){
 		$this->db->insert($table,$data);

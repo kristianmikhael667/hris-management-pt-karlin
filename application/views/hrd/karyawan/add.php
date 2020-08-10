@@ -83,6 +83,17 @@
                                 <input type="password" class="form-control" name="password" placeholder="PASSWORD" required>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="status" class="control-label col-sm-3">Status</label>
+                                <div class="col-sm-3">
+                                <select name="status">
+                                    <option value="aktif" <?php if("aktif") { echo "SELECTED"; } ?>>Aktif</option>
+                                    <option value="none" <?php if("none") { echo "SELECTED"; } ?>>Tidak Aktif</option>
+                                </select>
+                                </div>
+                        </div>
+
                         <div class="form-group row">
                             <label  class="col-sm-3 col-form-label"> TANGGAL LAHIR </label>
                             <div class="form-group col-sm-8">	

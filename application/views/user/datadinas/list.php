@@ -16,61 +16,34 @@
                     <th>Bulan Keberangkatan</th>
                     <th>Tujuan</th>
                     <th>Alasan</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                
+                <?php
+           
+                $id_karyawan = $this->session->userdata('id_karyawan');
+                  $cek_query=$this->datadinas->datadinass($id_karyawan); 
+                  
+                  foreach ($cek_query->result_array() as $row)
+                  {       
+                ?>
                   <tr>
-                    <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
-                          $cek_query=$this->datadinas->datadinass($id_karyawan); 
-                          foreach ($cek_query->result_array() as $row)
-                        {          
-                      ?><?php echo $row['id_karyawan'] ; ?> 
-                    <?php } ?></td>
-
-                    <td><?php
-                          $id_karyawan = $this->session->userdata('id_karyawan');
-                          $cek_query=$this->datadinas->datadinass($id_karyawan); 
-                            foreach ($cek_query->result_array() as $row)
-                            {       
-                          ?><?php echo $row['nomor_sppd'] ; ?> 
-                      <?php } ?></td>
-
-                    <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
-                          $cek_query=$this->datadinas->datadinass($id_karyawan); 
-                          foreach ($cek_query->result_array() as $row)
-                        {          
-                      ?><?php echo $row['tgl_keberangkatan'] ; ?> 
-                    <?php } ?></td>
-
-                    <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
-                          $cek_query=$this->datadinas->datadinass($id_karyawan); 
-                          foreach ($cek_query->result_array() as $row)
-                        {          
-                      ?><?php echo $row['bln_keberangkatan'] ; ?> 
-                    <?php } ?></td>
-
-                    <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
-                          $cek_query=$this->datadinas->datadinass($id_karyawan); 
-                          foreach ($cek_query->result_array() as $row)
-                        {          
-                      ?><?php echo $row['tujuan'] ; ?> 
-                    <?php } ?></td>
-
-                    <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
-                          $cek_query=$this->datadinas->datadinass($id_karyawan); 
-                          foreach ($cek_query->result_array() as $row)
-                        {          
-                      ?><?php echo $row['alasan'] ; ?> 
-                    <?php } ?></td>
-
+                    <td><?php echo $row['id_karyawan'] ; ?></td>
+                    <td><?php echo $row['nomor_sppd'] ; ?></td>
+                    <td><?php echo $row['tgl_keberangkatan'] ; ?></td>
+                    <td><?php echo $row['bln_keberangkatan'] ; ?></td>
+                    <td><?php echo $row['tujuan'] ; ?></td>
+                    <td><?php echo $row['alasan'] ; ?></td>
+                    <td><?php echo $row['status'] ; ?></td>
                     <td>
-                    <a href="<?php echo base_url(); ?>user/laporan_kehadiran_pdf/pdf" class="btn btn-warning"> Pdf </a>
+                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-warning"> Pdf </a>
                     <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-primary"> Edit </a>
                     <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-danger"> Delete </a>
-                    </td>
                   </tr>
+
+                  <?php } ?>
 
               
                 </tbody>

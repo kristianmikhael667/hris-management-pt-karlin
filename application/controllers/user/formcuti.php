@@ -48,26 +48,6 @@ class Formcuti extends CI_Controller{
 			redirect('user/formcuti/index');
 		}
 
-		else if($data['jumlah_izin'] >= $data_pengajuan['jumlah_cuti_izin']) {
-			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_izin'] . '
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>');
-			redirect('user/formcuti/index');
-		}
-
-		else if($data['jumlah_sakit'] >=  $data_pengajuan['jumlah_cuti_sakit']){
-			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_sakit'] . '
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>');
-			redirect('user/formcuti/index');
-		}
-
 		else{
 			
 			if($jenis_cuti == "Cuti"){ //cuti //misal

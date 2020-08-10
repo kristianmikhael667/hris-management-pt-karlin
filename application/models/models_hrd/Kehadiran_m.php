@@ -14,6 +14,17 @@ class Kehadiran_m extends CI_Model{
         return $query;
 	}
 
+	public function lists($id)
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_kehadiran t_hadir');
+		$this->db->join('tbl_jumlah_cuti t_jumlah_cuti', 't_hadir.id_karyawan = t_jumlah_cuti.id_karyawan');
+		$this->db->join('tbl_karyawan t_karyawan', 't_karyawan.id_karyawan = t_hadir.id_karyawan');
+		$query = $this->db->get();
+        
+        return $query;
+	}
+
 	public function check_kehadiran($jumlah, $id){
 		$this->db->select('jumlah_sakit');
 		$this->db->from('tbl_kehadiran');
@@ -36,9 +47,10 @@ class Kehadiran_m extends CI_Model{
 
 	public function delete($id)
 	{
-		$this->db->where($id);
-		$this->db->delete('tbl_kehadiran');
+		$query=$this->db->query("DELETE a.*, b.*, c.* FROM tbl_jumlah_cuti a, tbl_absen b, tbl_kehadiran c WHERE a.id_karyawan = '$id' AND b.id_karyawan = '$id' AND c.id_karyawan = '$id'");
+		return $query; 
 	}
+	
 
 	public function hitunguang($id)
 	{
@@ -48,6 +60,19 @@ class Kehadiran_m extends CI_Model{
          $this->db->where('id_karyawan', $id);
 	    $query = $this->db->get();
 	    return $query;
+	}
+
+	
+	public function hadir($id){
+		$this->db->select('*');
+		$this->db->from('tbl_absen');
+		$query = $this->db->get();    
+        return $query;
+	}
+	
+	public function hapushadir($id){
+		$this->db->where($id);
+		$this->db->delete('tbl_absen');
 	}
 
 }

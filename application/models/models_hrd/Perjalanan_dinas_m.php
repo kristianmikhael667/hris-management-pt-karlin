@@ -6,8 +6,8 @@ class Perjalanan_dinas_m extends CI_Model{
 		return $this->db->get('tbl_perjalanan_dinas');
 	}
 	
-	function input_data($data,$table){
-		$this->db->insert($table,$data);
+	function input_data($data){
+		$this->db->insert('tbl_perjalanan_dinas',$data);
 	}
 
 	public function delete($id)
