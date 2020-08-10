@@ -32,6 +32,10 @@ class Karyawan extends CI_Model{
 
 	public function delete($id)
 	{
+<<<<<<< HEAD
+		$query=$this->db->query("DELETE a.*, b.* FROM tbl_karyawan a, tbl_purcase_request b WHERE a.id_karyawan = '$id' AND b.id_karyawan = '$id'");
+		return $query;
+=======
 		
 
 		// $this->db->query("DELETE a.*, b.*, c.*, d.*, e.*, f.*, g.*, h.*, i.* FROM tbl_transportasi a, tbl_medical b, tbl_pengajuan_biaya c, tbl_perjalanan_dinas d, tbl_dinas e, tbl_dinas f, tbl_purcase_request g, tbl_absen h, tbl_jumlah_cuti i, tbl_kehadiran j WHERE a.id_karyawan = '$id' AND b.id_karyawan = '$id' AND c.id_karyawan = '$id' AND d.nomor_sppd = '$id' AND e.nomor_sppd = '$id' AND f.id_karyawan = '$id' AND g.id_karyawan = '$id' AND h.id_karyawan = '$id' AND i.id_karyawan = '$id' AND j.id_karyawan = '$id'");
@@ -88,6 +92,7 @@ class Karyawan extends CI_Model{
 		// AND tbl_dinas.id_karyawan = tbl_purcase_request.id_karyawan 
 		// AND tbl_purcase_request.id_karyawan = tbl_karyawan.id_karyawan
 		// AND tbl_karyawan.id_karyawan='".$id_karyawan."'");
+>>>>>>> 950e293d5dedb87976b5b51e3b83f4641050e6b4
 	}
 
 	// public function hapuss($id)
