@@ -21,16 +21,28 @@ class Auth extends CI_Controller{
             $this->load->view('form_login');
         }else{
             $auth = $this->model_auth->cek_login();
+            //$auth1 = $this->model_auth->status();
+            $status_karyawan = $auth->status;
 
             if($auth == FALSE){
-                $this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                $this->session->set_flashdata('pesan','<div class="alert alert-warning alert-dismissible fade show" role="alert">
                         Id Karyawan atau Password Anda Salah!
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>');
                     redirect('auth/login');
-            }else{
+            }
+            elseif($status_karyawan == "NONE")
+            {                  
+                $this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Akun Anda Dinonaktifkan
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>');
+            }
+            else{
                 $this->session->set_userdata('id_karyawan',$auth->id_karyawan);
                 $this->session->set_userdata('role_id',$auth->role_id);
                 $auth1 = $this->model_auth->cek_login();
@@ -41,26 +53,16 @@ class Auth extends CI_Controller{
                     $status_karyawan = $auth1->status;
                     $role = $auth1->role_id;
 
-                    if(($role == 1) && ($status_karyawan='AKTIF')){
+                    if(($role == '1') && ($status_karyawan='AKTIF')){
                         redirect('manajemen/dashboard_manajemen');
                     }
-                    else if(($role == 2) && ($status_karyawan='AKTIF')){
+                    else if(($role == '2') && ($status_karyawan='AKTIF')){
                         redirect('hrd/dashboard_hrd');
                     }
-                    else if(($role == 3) && ($status_karyawan='AKTIF')){
+                    else if(($role == '3') && ($status_karyawan='AKTIF')){
                         redirect('user/dashboard_user');
                     }
-                    else{
-                        $this->session->set_flashdata('pesan1','<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                         DINONAKTIFKAN
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                         <span aria-hidden="true">&times;</span>
-                         </button>
-                            </div>');
-                            redirect('auth/login');
-                         
-                    }
-
+                    
 
                     // switch($auth1->role_id){
                     // case 1 :

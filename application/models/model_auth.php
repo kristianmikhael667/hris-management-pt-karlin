@@ -5,7 +5,6 @@ class Model_auth extends CI_Model{
     {
         $id_karyawan    = set_value('id_karyawan');
         $password       = set_value('password');
-
         $result         = $this->db->where('id_karyawan',$id_karyawan)
                                     ->where('password',$password)
                                     ->limit(1)
@@ -16,6 +15,19 @@ class Model_auth extends CI_Model{
             return array();
         }
     }
+
+    // public function status()
+    // {
+    //     $status    = set_value('status');
+    //     $result         = $this->db->where('status',$status)
+    //                                 ->limit(1)
+    //                                 ->get('tbl_karyawan');
+    //     if($result->num_rows() > 0){
+    //         return $result->row();
+    //     }else{
+    //         return array();
+    //     }
+    // }
 
     public function check_employe($id){
         $this->db->select('*');
