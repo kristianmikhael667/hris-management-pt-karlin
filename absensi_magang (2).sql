@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Agu 2020 pada 05.05
+-- Waktu pembuatan: 10 Agu 2020 pada 19.50
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.2.16
 
@@ -160,7 +160,7 @@ INSERT INTO `tbl_karyawan` (`id_karyawan`, `nama_karyawan`, `jenis_kelamin`, `ko
 (321, 'DANANG AJI MUSTOFss', 'L', 4, 'Bekasi      ', '08162516271', 'magangsemester6@gmail.com', '2020-08-08', '123', 'NONE', 3, '9245357d656fffc5f1f29833bc22fb5c.jpg'),
 (322, 'Mikhael Kristian', 'L', 4, 'eee', '089668997397', 'kristian.mikhael@yahoo.com', '2020-08-05', '123', 'AKTIF', 3, '836026f083cbe0462585a43c83e3969e.jpg'),
 (333, '321', 'P', 4, '111', '089668997397', '11', '2020-08-03', '123', 'AKTIF', 3, '8441bdb658a37104f16563783d34fbb1.jpg'),
-(666, 'Mikhael Kristian', 'L', 4, 'Depok  ', '08162516271', 'kristian.mikhael@yahoo.com', '2020-08-04', '9adcb29710e807607b683f62e555c22dc5659713', 'NONE', 3, '1c9886fd2c1751ecd1a370a493bcc5f1.jpg'),
+(666, 'Mikhael Kristian', 'L', 4, 'Depok   ', '08162516271', 'kristian.mikhael@yahoo.com', '2020-08-04', '123', 'AKTIF', 3, '1c9886fd2c1751ecd1a370a493bcc5f1.jpg'),
 (999, 'DANANGdddsss', 'L', 4, 'd', '08162516271', 'magangsemester6@gmail.com', '2020-08-05', '123', 'AKTIF', 3, 'd19ec1bdc732c5a76e9f8499d0c352c6.jpg');
 
 -- --------------------------------------------------------
@@ -201,14 +201,6 @@ CREATE TABLE `tbl_manage_barang` (
   `harga` longtext NOT NULL,
   `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tbl_manage_barang`
---
-
-INSERT INTO `tbl_manage_barang` (`id_purchase_request`, `id_barang`, `nama_barang`, `harga`, `status`) VALUES
-(1122, 11, 'Mobil Honda Jazz', '500000', ''),
-(1122, 45, 'Mobil Kijang Inova', '23000000', '');
 
 -- --------------------------------------------------------
 
@@ -282,16 +274,6 @@ CREATE TABLE `tbl_purcase_request` (
   `tgl_permintaan` date NOT NULL,
   `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tbl_purcase_request`
---
-
-INSERT INTO `tbl_purcase_request` (`id_karyawan`, `id_purchase_request`, `tgl_permintaan`, `keterangan`) VALUES
-(666, 0, '0000-00-00', ''),
-(666, 1122, '2020-08-08', 'hop'),
-(321, 0, '0000-00-00', ''),
-(322, 0, '0000-00-00', '');
 
 -- --------------------------------------------------------
 
@@ -387,7 +369,7 @@ ALTER TABLE `tbl_perjalanan_dinas`
 -- Indeks untuk tabel `tbl_purcase_request`
 --
 ALTER TABLE `tbl_purcase_request`
-  ADD KEY `id_purchase_request` (`id_purchase_request`),
+  ADD PRIMARY KEY (`id_purchase_request`),
   ADD KEY `id_karyawan` (`id_karyawan`);
 
 --
@@ -452,7 +434,7 @@ ALTER TABLE `tbl_pengajuan_biaya`
 -- AUTO_INCREMENT untuk tabel `tbl_purcase_request`
 --
 ALTER TABLE `tbl_purcase_request`
-  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
+  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=323;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_transportasi`

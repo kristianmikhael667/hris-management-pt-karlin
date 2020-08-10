@@ -17,6 +17,13 @@ class Manajemenbarang_m extends CI_Model{
 		$query = $this->db->get();    
         return $query;
 	}
+
+	function tampil_dat(){
+		$this->db->select('*');
+		$this->db->from('tbl_manage_barang');
+		$query = $this->db->get();    
+        return $query;
+	}
 	
 	function input_data($data){
 		$this->db->insert('tbl_manage_barang',$data);

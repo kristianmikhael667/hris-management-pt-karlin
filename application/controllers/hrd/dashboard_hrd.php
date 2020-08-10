@@ -253,7 +253,7 @@ class Dashboard_hrd extends CI_Controller{
 				$nomor_telepon		= $this->input->post('nomor_telepon');
 				$email				= $this->input->post('email');
 				$tanggal_lahir		= $this->input->post('tanggal_lahir');
-				$password			= sha1($this->input->post('password'));
+				$password			= $this->input->post('password');
 				$status				= $this->input->post('status');
 				$role_id			= $this->input->post('role_id');
 				$config['image_library']='gd2';

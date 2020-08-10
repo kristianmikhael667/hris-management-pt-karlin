@@ -87,7 +87,7 @@
                         <div class="form-group row">
                             <label for="status" class="control-label col-sm-3">Status</label>
                                 <div class="col-sm-3">
-                                <select name="status">
+                                <select name="status" class="form-control">
                                     <option value="aktif" <?php if("aktif") { echo "SELECTED"; } ?>>Aktif</option>
                                     <option value="none" <?php if("none") { echo "SELECTED"; } ?>>Tidak Aktif</option>
                                 </select>

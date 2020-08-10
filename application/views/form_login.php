@@ -40,8 +40,7 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Form Login</h1>
                   </div>
-                  <?php echo $this->session->flashdata('pesan'); 
-                  echo $this->session->flashdata('pesan1');?>
+                  <?php echo $this->session->flashdata('pesan');?>
                   <form class="user" action="<?php echo base_url('auth/login') ?>" method="post">
                     <div class="form-group">
                       <input type="text" name="id_karyawan" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="ID KARYAWAN ">
