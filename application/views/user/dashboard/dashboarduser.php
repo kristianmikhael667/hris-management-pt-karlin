@@ -7,7 +7,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Halaman Utama Karyawan</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-dark shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Status Karyawan : <span class="mr-2 d-none d-lg-inline text-dark-600 large text-success"><?php
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-dark shadow-sm"><i class="fa fa-user fa-sm text-white-50"></i> Status Karyawan : <span class="mr-2 d-none d-lg-inline text-dark-600 large text-success"><?php
               $id_karyawan = $this->session->userdata('id_karyawan');
               $cek_query=$this->model_auth->check_employe($id_karyawan); 
                 foreach ($cek_query->result_array() as $row)
@@ -21,7 +21,7 @@
                         <!-- Area Chart Example-->
                         <div class="card mb-3">
                             <div class="card-header">
-                                <i class="fa fa-bullhorn mr-2" aria-hidden="true"></i> KARYAWAN</div>
+                                <i class="fa fa-user mr-2" aria-hidden="true"></i> KARYAWAN</div>
                             <div class="card-body">
 
                                 <div class="row">

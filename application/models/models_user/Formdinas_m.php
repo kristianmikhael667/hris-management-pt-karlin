@@ -10,6 +10,15 @@ class Formdinas_m extends CI_Model
         return $query;
 	}
 
+	public function datadinas($id)
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_dinas');
+		$this->db->where('id_karyawan', $id);
+		$query = $this->db->get();    
+        return $query;
+	}
+
     function input_data($data){
 		$this->db->insert('tbl_dinas',$data);
 	}

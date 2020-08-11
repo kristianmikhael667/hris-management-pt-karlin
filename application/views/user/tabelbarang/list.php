@@ -35,7 +35,7 @@
                     <td><?php echo $row['tgl_permintaan'] ; ?></td>
                     <td><?php echo $row['keterangan'] ; ?></td>
                     <td>
-                      <button class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#view" name=""><i class="fa fa-eye"></i></button>
+                      <button class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#view" name=""><i class="fas fa-file-pdf"></i></button>
                       <?php
                         $id_karyawan = $this->session->userdata('id_karyawan');
                         $cek_query=$this->manajemenbarang->tampil($id_karyawan); 

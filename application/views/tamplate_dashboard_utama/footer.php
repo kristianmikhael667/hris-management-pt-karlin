@@ -8,9 +8,10 @@
 							<div class="single-widget about">
 								<h2>ALAMAT</h2>
 								<ul class="list">
-									<li><i class="fa fa-phone"></i>Phone: +123457 </li>
-									<li><i class="fa fa-envelope"></i>Email: karlin@gmail.com <a href="mailto:info@youremail.com">Info@youremail.com</a></li>
-									<li><i class="fa fa-map-o"></i>ALAMAT : DIPO GROUP</li>
+									<li><i class="fa fa-phone"></i>Phone: (+62 21) 29866030 </li>
+									<li><i class="fa fa-phone"></i>Fax: (+62 21) 29866020 </li>
+									<li><i class="fa fa-envelope"></i>Email: info@karlin-mastrindo.com <a href="info@karlin-mastrindo.com">info@karlin-mastrindo.com</a></li>
+									<li><i class="fa fa-map-o"></i>ALAMAT : Dipo Tower, Jl. Gatot Subroto No.51-52, RW.7, Petamburan, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10260</li>
 								</ul>
 								<!-- Social -->
 								<ul class="social">
@@ -29,8 +30,8 @@
 							<div class="single-widget list">
 								<h2>Link terkait</h2>
 								<ul>
-									<li><i class="fa fa-angle-right"></i><a href="#">WEBSITE PT Karline Mastrindo</a></li>
-									<li><i class="fa fa-angle-right"></i><a href="#">PODOTUKU</a></li>
+									<li><i class="fa fa-angle-right"></i><a href="http://www.karlin.co.id/">WEBSITE PT Karline Mastrindo</a></li>
+									<li><i class="fa fa-angle-right"></i><a href="https://podotuku.com/">PODOTUKU</a></li>
 								</ul>
 							</div>
 							<!--/ End Useful Links -->

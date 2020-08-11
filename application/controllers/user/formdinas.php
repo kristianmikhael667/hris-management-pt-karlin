@@ -31,16 +31,18 @@ class Formdinas extends CI_Controller
         $bln_keberangkatan = $this->input->post('bln_keberangkatan');
         $tujuan = $this->input->post('tujuan');
 		$alasan = $this->input->post('alasan');
-
+		$status = $this->input->post('status');
 		$data = array(
 			'id_karyawan'	        => $id_karyawan,
 			'nomor_sppd'	        => $nomor_sppd,
 			'tgl_keberangkatan'     => $tgl_keberangkatan,
             'bln_keberangkatan' 	=> $bln_keberangkatan,
             'tujuan' 	            => $tujuan,
-			'alasan'		        => $alasan
+			'alasan'		        => $alasan,
+			'status'				=> 'Menunggu Konfirmasi'
 			);
 		$this->formdinas->input_data($data,'tbl_dinas');
 		redirect('user/formdinas/index');
 	}
+
 }

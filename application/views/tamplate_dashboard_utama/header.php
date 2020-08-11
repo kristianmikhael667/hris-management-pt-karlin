@@ -23,10 +23,9 @@
 													<li><a href="teachers.html">Teachers</a></li>
 												</ul>
 											</li> -->
-											<li><a href="courses.html"><i class="fa fa-clone"></i>PT Karlin Mastrindo</a></li>
+											<li><a href="#"><i class="fa fa-clone"></i>PT Karlin Mastrindo</a></li>
 											<!-- <li><a href="courses.html"><i class="fa fa-clone"></i>Download petunjuk</a></li> -->
-											<li><a href="login/login"><i class="fa fa-bullhorn"></i>Login</a></li>
-											<li><a href="portal/register.php"><i class="fa fa-address-book"></i>Daftar</a> </li>
+											<li><a href="login/login"><i class="fa fa-bullhorn"></i>Login Karyawan</a></li>
 										</ul>
 										<!-- End Main Menu -->
 									</div> 
