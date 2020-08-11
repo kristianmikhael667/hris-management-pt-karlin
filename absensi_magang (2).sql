@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Agu 2020 pada 19.50
+-- Waktu pembuatan: 11 Agu 2020 pada 10.11
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.2.16
 
@@ -61,24 +61,12 @@ CREATE TABLE `tbl_bagian` (
 --
 
 CREATE TABLE `tbl_cuti` (
-  `id_karyawan` int(11) NOT NULL,
+  `id_karyawan` int(10) NOT NULL,
   `mulai_cuti` date NOT NULL,
   `akhir_cuti` date NOT NULL,
   `jenis_cuti` varchar(50) NOT NULL,
   `alasan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tbl_cuti`
---
-
-INSERT INTO `tbl_cuti` (`id_karyawan`, `mulai_cuti`, `akhir_cuti`, `jenis_cuti`, `alasan`) VALUES
-(0, '2020-07-14', '2020-07-24', '03', 'hati'),
-(0, '2020-07-17', '2020-07-29', '02', 'monas'),
-(666, '2020-08-08', '2020-08-09', 'Cuti', 'pop'),
-(666, '2020-08-08', '2020-08-09', 'Izin', 'kl'),
-(666, '2020-08-08', '2020-08-10', 'Sakit', 'skt'),
-(333, '2020-08-10', '2020-08-12', 'Cuti', 'a');
 
 -- --------------------------------------------------------
 
@@ -95,16 +83,6 @@ CREATE TABLE `tbl_dinas` (
   `alasan` varchar(100) NOT NULL,
   `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tbl_dinas`
---
-
-INSERT INTO `tbl_dinas` (`id_karyawan`, `nomor_sppd`, `tgl_keberangkatan`, `bln_keberangkatan`, `tujuan`, `alasan`, `status`) VALUES
-(321, 0, '0000-00-00', '0000-00-00', '', '', ''),
-(666, 0, '0000-00-00', '0000-00-00', '', '', ''),
-(321, 4455, '2020-08-09', '2020-08-11', 'Pantai', 'Enak', ''),
-(322, 0, '0000-00-00', '0000-00-00', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -225,7 +203,6 @@ CREATE TABLE `tbl_medical` (
 --
 
 INSERT INTO `tbl_medical` (`id_karyawan`, `klaim_id`, `tanggal_pengajuan`, `status_pengajuan`, `tanggal_disetujui`, `jumlah_diajukan`, `jumlah_disetujui`, `struck`, `ket`) VALUES
-(666, 0, '0000-00-00', '', '0000-00-00', '0', '0', '', ''),
 (321, 223, '2020-08-09', 'menunggu', '0000-00-00', '1234', '-', 'f4aee1a229e6f30627f45926a6a065f4.png', '23'),
 (321, 222, '2020-08-09', 'menunggu', '0000-00-00', '666', '-', 'a38e14939a6e4c5d6c21a614d0f55435.jpg', '1112'),
 (322, 0, '0000-00-00', '', '0000-00-00', '0', '0', '', '');
@@ -314,10 +291,16 @@ ALTER TABLE `tbl_bagian`
   ADD PRIMARY KEY (`kode_bagian`);
 
 --
+-- Indeks untuk tabel `tbl_cuti`
+--
+ALTER TABLE `tbl_cuti`
+  ADD KEY `id_karyawan` (`id_karyawan`);
+
+--
 -- Indeks untuk tabel `tbl_dinas`
 --
 ALTER TABLE `tbl_dinas`
-  ADD KEY `nomor_sppd` (`nomor_sppd`),
+  ADD PRIMARY KEY (`nomor_sppd`),
   ADD KEY `id_karyawan` (`id_karyawan`);
 
 --
@@ -389,6 +372,12 @@ ALTER TABLE `tbl_bagian`
   MODIFY `kode_bagian` int(10) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `tbl_cuti`
+--
+ALTER TABLE `tbl_cuti`
+  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT untuk tabel `tbl_dinas`
 --
 ALTER TABLE `tbl_dinas`
@@ -416,7 +405,7 @@ ALTER TABLE `tbl_kehadiran`
 -- AUTO_INCREMENT untuk tabel `tbl_manage_barang`
 --
 ALTER TABLE `tbl_manage_barang`
-  MODIFY `id_barang` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_barang` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_medical`
@@ -434,7 +423,7 @@ ALTER TABLE `tbl_pengajuan_biaya`
 -- AUTO_INCREMENT untuk tabel `tbl_purcase_request`
 --
 ALTER TABLE `tbl_purcase_request`
-  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=323;
+  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_transportasi`
@@ -457,6 +446,12 @@ ALTER TABLE `tbl_absen`
 --
 ALTER TABLE `tbl_bagian`
   ADD CONSTRAINT `tbl_bagian_ibfk_1` FOREIGN KEY (`kode_bagian`) REFERENCES `tbl_karyawan` (`kode_bagian`);
+
+--
+-- Ketidakleluasaan untuk tabel `tbl_cuti`
+--
+ALTER TABLE `tbl_cuti`
+  ADD CONSTRAINT `tbl_cuti_ibfk_1` FOREIGN KEY (`id_karyawan`) REFERENCES `tbl_karyawan` (`id_karyawan`);
 
 --
 -- Ketidakleluasaan untuk tabel `tbl_dinas`
