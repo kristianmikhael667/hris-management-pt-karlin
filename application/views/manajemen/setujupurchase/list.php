@@ -6,54 +6,64 @@
 
 <div id="content-wrapper">
 <div class="container-fluid">
-<button class="btn btn-sm btn-success mb-2" data-toggle="modal" data-target="#manajemen" name=""><i class="fas fa-plus fa-sm"></i> Management Barang </button>
   <!-- DataTables Example -->
   <div class="card mb-3">
     <div class="card-header">
       <i class="fas fa-table"></i>
       Forum Purchase Request</div>
     <div class="card-body">
-        <form action="<?php echo base_url()?>user/formpurchase/add" method="post" enctype="multipart/form-data">
-            <div class="container"> 
-                <div class="form-group row">
-                    <label for="sel1" class="col-sm-3 col-form-label">Id Karyawan</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" name="id_karyawan" readonly value="<?php echo $this->session->userdata('id_karyawan')?>"  required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label"> Nomor Request </label>
-                        <div class="col-sm-8">
-                            <input type="number" class="form-control" name="id_purchase_request" required>
-                        </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label"> Tanggal Permintaan </label>
-                        <div class="col-sm-8">
-                            <input type="date" class="form-control" name="tgl_permintaan" required>
-                        </div>
-                </div>
-                <div class="form-group row">
-                    <label  class="col-sm-3 col-form-label"> Keterangan </label>
-                        <div class="form-group col-sm-8">	
-                            <textarea name="keterangan" class="form-control" cols="20" rows="4"></textarea>
-                        </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-10" style="float: right;">
-                        <button class="btn btn-md btn-primary" name="tambah">TAMBAH</button>	
-                        <button class="btn btn-md btn-danger" name="batal">BATAL</button>
-                    </div>	
-                </div>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Nomor Purchase Request</th>
+                    <th>ID Barang</th>
+                    <th>Nama Barang</th>
+                    <th>Harga</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                 $cek_query=$this->manajemenbarang->tampil_dat();
+                 foreach ($cek_query->result_array() as $row)
+                 {        
+                    //SELECT COUNT(nama_kolom) FROM nama_table
+                ?>
+                  <tr>
+                    <td><?php echo $row['id_purchase_request'] ; ?></td>
+                    <td><?php echo $row['id_barang'] ; ?></td>
+                    <td><?php echo $row['nama_barang'] ; ?></td>
+                    <td><?php echo $row['harga'] ; ?></td>
+                    <td><?php echo $row['status'] ; ?></td>
+                    <td>
+                    <button class="btn btn-sm btn-success mb-2" data-toggle="modal" data-target="#view" name=""><i class="fa fa-table" aria-hidden="true"></i></button>
+                      <?php
+                        $cek_query=$this->formpurchase->list(); 
+                  
+                        foreach ($cek_query->result_array() as $row)
+                        {    ?>
+                          <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('manajemen/setujupurchase/delete?id=') . $row['id_karyawan']; ?>"><i class="fa fa-trash"></i></a>
+                      <?php } ?>
+                        <button class="btn btn-sm btn-warning mb-2" data-toggle="modal" data-target="#edit" name=""><i class="fa fa-magic"></i></button>
+                        <button class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#setuju" name=""><i class="fa fa-check" aria-hidden="true"></i></button>
+                    </td>
+                    </td>
+                  </tr>
+
+                  <?php } ?>
+              
+                </tbody>
+              </table>
             </div>
-        </form>
     </div>
 <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
     
 </div>
 <!-- Modal -->
-<div class="modal fade" id="manajemen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="setuju" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Uang Transportasi</h5>
@@ -62,32 +72,56 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="<?php echo base_url()?>user/manajemenbarang/add"  method="post">
-              <div class="form-group">
-                <label>Nomor Purchase</label>
-                <br>
-                <select class="form-control" id="sel1" name="id_purchase_request">
-                    <?php 
-                    $cek_query=$this->formpurchase->list(); 
-                    foreach ($cek_query->result_array() as $row) { ?>
-                    <option> <?php echo $row['id_purchase_request'] ?> </option>
+        <?php 
+                $id_karyawan = $this->session->userdata('id_karyawan');
+                $cek_query=$this->manajemenbarang->tampil_dat($id_karyawan); 
+                foreach ($cek_query->result_array() as $row)
+                  {          
+                ?>
+                  <form action="<?php echo base_url(). 'manajemen/setujupurchase/update' ?>"  method="post">
+                    
+                    <div class="for-group row">
+                      <label class="col-sm-3 col-form-label">Nomor Purchase Request</label>
+                        <div class="col-sm-8">
+                          <input type="text" name="id_purchase_request" class="form-control" readonly value="<?php echo $row['id_purchase_request'] ?>">
+                        </div>
+                    </div>
+                      
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label"> ID Barang </label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" name="id_barang" readonly placeholder="" value="<?php echo $row['id_barang'] ?>" required>
+                          </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label"> Nama Barang </label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" name="nama_barang" readonly placeholder="" value="<?php echo $row['nama_barang'] ?>" required>
+                          </div>
+                    </div>   
+
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label"> Harga </label>
+                          <div class="col-sm-8">
+                            <input type="number" class="form-control" name="harga" readonly placeholder="" value="<?php echo $row['harga'] ?>" required>
+                          </div>
+                    </div>
+                    
+                      <div class="form-group row">
+                          <label for="status" class="control-label col-sm-3">Status</label>
+                            <select name="status" class="form-control">
+                              <option value="DISETUJUI" <?php echo ($row['status'] == 'DISETUJUI') ? "selected": "" ?>>Di Setujui</option>
+                              <option value="MENUNGGU" <?php echo ($row['status'] == 'MENUNGGU') ? "selected": "" ?>>Menunggu</option>
+                              <option value="DITOLAK" <?php echo ($row['status'] == 'DITOLAK') ? "selected": "" ?>>Di Tolak</option>
+                            </select>   
+                      </div>
+                              
+                      <button type="submit" class="btn btn-primary">Setujui</button>
+                      <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
+                      
+                      </form>
                     <?php } ?>
-                </select>
-                <br>
-
-                <label>Id Barang</label>
-                <input type="text" name="id_barang" class="form-control" placeholder="Id Barang" required>
-
-                <label>Nama Barang</label>
-                <input type="text" name="nama_barang" class="form-control" placeholder="Nama Barang" required>
-                
-                <label>Harga</label>
-                <input type="number" name="harga" class="form-control" placeholder="Harga" required>
-              </div>
-              
-              <button type="submit" class="btn btn-primary">Simpan</button>
-              <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </form>
         </div>
         <div class="modal-footer">
 

@@ -39,12 +39,14 @@ class Manajemenbarang extends CI_Controller{
 		$id_barang = $this->input->post('id_barang');
 		$nama_barang = $this->input->post('nama_barang');
 		$harga = $this->input->post('harga');
+		$status = $this->input->post('status');
 
 		$data = array(
 			'id_purchase_request'   => $id_purchase_request,
 			'id_barang'   			=> $id_barang,
 			'nama_barang'           => $nama_barang,
-			'harga'                 => $harga
+			'harga'                 => $harga,
+			'status'				=> 'MENUNGGU'
 			);
 		$this->manajemenbarang->input_data($data,'tbl_manage_barang');
 		redirect('user/manajemenbarang/index');

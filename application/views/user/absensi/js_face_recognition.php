@@ -168,7 +168,7 @@
                         function loadModels(callback) {
                         var utils = new Utils('');
                         var proto = 'https://raw.githubusercontent.com/opencv/opencv/master/samples/dnn/face_detector/deploy_lowres.prototxt';
-                        var weights = 'https://raw.githubusercontent.com/opencv/opencv_3rdparty/dnn_samples_face_detector_20180205_fp16/res10_300x300_ssd_iter_140000_fp16.caffemodel';
+                        var weights = '<?php echo base_url() ?>assets/res10_300x300_ssd_iter_140000_fp16.caffemodel';
                         var recognModel = '<?php echo base_url() ?>assets/face_recognition.t7';
                             
                         utils.createFileFromUrl('face_detector.prototxt', proto, () => {

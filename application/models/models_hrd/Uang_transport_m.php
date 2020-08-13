@@ -12,6 +12,15 @@ class Uang_transport_m extends CI_Model{
         return $query;
 	}
 
+	function tampil($id){
+		$this->db->select('*');
+		$this->db->from('tbl_transportasi t_transport');
+		$this->db->join('tbl_kehadiran t_hadir', 't_transport.id_karyawan = t_hadir.id_karyawan');
+		
+		$query = $this->db->get();    
+        return $query;
+	}
+
 	public function check_transportasi($id){
 		$this->db->select('*');
 		$this->db->from('tbl_transportasi');
@@ -39,6 +48,17 @@ class Uang_transport_m extends CI_Model{
 		$this->db->where($id);
 		$this->db->delete('tbl_transportasi');
 	}
+
+	public function edit($where,$table){
+		return $this->db->get_where($table,$where);
+	}
+
+	public function update_data($where,$data,$table)
+	{
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}
+
 }
 
 ?>

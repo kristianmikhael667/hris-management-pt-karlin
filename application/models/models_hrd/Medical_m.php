@@ -30,6 +30,16 @@ class Medical_m extends CI_Model{
 		$this->db->delete('tbl_medical');
 	}
 	
+	public function edit($where,$table){
+		return $this->db->get_where($table,$where);
+	}
+
+	public function update_data($where,$data,$table)
+	{
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}
+	
 }
 
 ?>

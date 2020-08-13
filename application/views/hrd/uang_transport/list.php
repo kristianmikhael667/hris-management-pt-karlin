@@ -20,6 +20,7 @@
                     <th>Id Karyawan</th>
                     <th>Uang Bensin</th>
                     <th>Uang Parkir</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -35,6 +36,7 @@
                     <td><?php echo $row['id_karyawan'] ; ?></td>
                     <td>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_bensin'])  ?></td>
                     <td>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_parkir'])  ?></td>
+                    <td><?php echo $row['status'] ; ?></td>
                     <td><a href="<?php echo base_url('hrd/dashboard_hrd/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-danger"> Hapus </a>
                     <a href="<?php echo base_url('hrd/dashboard_hrd/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Edit </a>  </td>
                   </tr>
@@ -77,14 +79,14 @@
                 <br>
 
                 <label>Uang Bensin</label>
-                <input type="number" name="uang_bensin" class="form-control" placeholder="Id Barang" required>
+                <input type="number" name="uang_bensin" class="form-control" placeholder="Input Uang Bensin" required>
 
                 <label>Uang Parkir</label>
-                <input type="number" name="uang_parkir" class="form-control" placeholder="Nama Barang" required>
+                <input type="number" name="uang_parkir" class="form-control" placeholder="Input Uang Parkir" required>
               
               </div>
               
-              <button type="submit" class="btn btn-primary">Simpan</button>
+              <button type="submit" class="btn btn-primary">Input</button>
               <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </form>
         </div>

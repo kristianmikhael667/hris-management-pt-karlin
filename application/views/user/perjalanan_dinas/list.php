@@ -16,12 +16,12 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Id Karyawan</th>
-                    <th>Lampiran</th>
+                    <th>Nomor SPPD</th>
                     <th>Tanggal</th>
                     <th>Biaya Transportasi</th>
                     <th>Keterangan</th>
                     <th>Uang Makan</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -35,16 +35,16 @@
                   {       
                 ?>
                   <tr>
-                    <td><?php echo $row['id_karyawan'] ; ?></td>
-                    <td><?php echo $row['lampiran'] ; ?></td>
+                    <td><?php echo $row['nomor_sppd'] ; ?></td>
                     <td><?php echo $row['tanggal'] ; ?></td>
                     <td><?php echo $row['biaya_transportasi'] ; ?></td>
                     <td><?php echo $row['ket'] ; ?></td>
                     <td><?php echo $row['uang_makan'] ; ?></td>
+                    <td><?php echo $row['status'] ; ?></td>
                     <td>
-                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-warning"> Pdf </a>
-                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-primary"> Edit </a>
-                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-danger"> Delete </a>
+                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['nomor_sppd']; ?>" class="btn btn-warning"> Pdf </a>
+                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['nomor_sppd']; ?>" class="btn btn-primary"> Edit </a>
+                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['nomor_sppd']; ?>" class="btn btn-danger"> Delete </a>
                     </td>
                   </tr>
 

@@ -73,8 +73,8 @@
       <div class="modal-body">
           <form action="<?php echo base_url()?>user/datadinas/update"  method="post" enctype="multipart/form-data">
           <?php
-          $id_karyawan = $this->session->userdata('id_karyawan');
-          $cek_query = $this->datadinas->datadinass($id_karyawan); 
+          $id = $this->input->get('id');
+          $cek_query = $this->datadinas->datadinass($id); 
 
                 foreach ($cek_query->result_array() as $row)
                 {  

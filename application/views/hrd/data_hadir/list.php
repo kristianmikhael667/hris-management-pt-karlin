@@ -20,6 +20,7 @@
                     <th>Bulan Keberangkatan</th>
                     <th>Tujuan</th>
                     <th>Alasan</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -39,6 +40,7 @@
                     <td><?php echo $row['bln_keberangkatan'] ; ?></td>
                     <td><?php echo $row['tujuan'] ; ?></td>
                     <td><?php echo $row['alasan'] ; ?></td>
+                    <td><?php echo $row['status']; ?></td>
                     <td>
                     <button class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#view" name=""><i class="fa fa-eye"></i></button>
                       <?php

@@ -39,7 +39,7 @@ class Formdinas extends CI_Controller
             'bln_keberangkatan' 	=> $bln_keberangkatan,
             'tujuan' 	            => $tujuan,
 			'alasan'		        => $alasan,
-			'status'				=> 'Menunggu Konfirmasi'
+			'status'				=> 'MENUNGGU'
 			);
 		$this->formdinas->input_data($data,'tbl_dinas');
 		redirect('user/formdinas/index');

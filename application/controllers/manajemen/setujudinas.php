@@ -5,6 +5,7 @@ class Setujudinas extends CI_Controller{
 	public function __construct(){
         parent::__construct();
 		$this->load->model('models_manajemen/Perjalanan_dinas_m', 'perjalanan_dinas');
+		$this->load->model('models_hrd/Datadinas_hrd', 'datadinas');
 		$this->load->library('session');
 		$this->load->library('upload');
 		$this->load->helper('url');
@@ -20,5 +21,32 @@ class Setujudinas extends CI_Controller{
                      );
                      
 		$this->load->view('tamplate_bootstrap_manajemen/wrapper', $data, FALSE);
-    }
+	}
+	
+	public function update(){
+		$id_karyawan = $this->input->post('id_karyawan');
+		$nomor_sppd = $this->input->post('nomor_sppd');
+		$tgl_keberangkatan = $this->input->post('tgl_keberangkatan');
+		$bln_keberangkatan = $this->input->post('bln_keberangkatan');
+		$tujuan = $this->input->post('tujuan');
+		$alasan = $this->input->post('alasan');
+		$status = $this->input->post('status');
+
+		$data = array(
+			'id_karyawan'			=> $id_karyawan,
+			'nomor_sppd'		=> $nomor_sppd,
+			'tgl_keberangkatan'		=> $tgl_keberangkatan,
+			'bln_keberangkatan'		=> $bln_keberangkatan,
+			'tujuan'   => $tujuan,
+			'alasan'	=> $alasan,
+			'status' => $status
+		);
+
+		$where = array(
+			'id_karyawan' => $id_karyawan
+		);
+
+		$this->manajemenbarang->update_data($where,$data, 'tbl_dinas');
+		redirect('manajemen/setujupurchase/index');
+	}
 }

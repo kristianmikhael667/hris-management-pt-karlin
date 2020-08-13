@@ -84,6 +84,7 @@
                     <th>ID Barang</th>
                     <th>Nama Barang</th>
                     <th>Harga</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -99,6 +100,7 @@
                     <td><?php echo $row['id_barang'] ; ?></td>
                     <td><?php echo $row['nama_barang'] ; ?></td>
                     <td><?php echo $row['harga'] ; ?></td>
+                    <td><?php echo $row['status'] ; ?></td>
                     <td>
                       <button class="btn btn-sm btn-danger mb-2" data-toggle="modal" data-target="#manajemen" name=""><i class="fa fa-trash"></i></button>
                       <button class="btn btn-sm btn-success mb-2" data-toggle="modal" data-target="#manajemen" name=""><i class="fa fa-magic"></i></button>

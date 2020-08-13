@@ -32,7 +32,7 @@
   </li>
   
   <li class="nav-item">
-    <a class="nav-link" href="<?php echo base_url() ?>manajemen/setujudinas">
+    <a class="nav-link" href="<?php echo base_url() ?>manajemen/setujupurchase">
       <i class="fas fa-fw fa-chart-area"></i>
       <span>Persetujuan Purchase Request</span></a>
   </li>

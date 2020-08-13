@@ -25,7 +25,7 @@ class Dinas extends CI_Controller{
     }
 	
 	public function add()
-	{
+	{	
 		$nomor_sppd = $this->input->post('nomor_sppd');
 		$tanggal = $this->input->post('tanggal');
 		$biaya_transportasi = $this->input->post('biaya_transportasi');
