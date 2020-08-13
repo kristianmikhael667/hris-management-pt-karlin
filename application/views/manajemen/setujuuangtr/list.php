@@ -38,16 +38,18 @@
                     <td><?php echo $row['status'] ; ?></td>
                     <td>
                     <form action="<?php echo base_url(); ?>manajemen/setujuuang/excel" method="post">
-                      <button class="btn btn-sm btn-success mb-2"type="submit"><i class="fa fa-table" aria-hidden="true"></i> Excel</button>
-                    <form>  
+                      <button class="btn btn-sm btn-success mb-2" type="submit"><i class="fa fa-table" aria-hidden="true"></i> Excel</button>
+                    </form>  
                       <?php
-                        $cek_query=$this->uang_transport->hitunguang(); 
+                        $cek_query=$this->uang_transport->list(); 
                   
                         foreach ($cek_query->result_array() as $row)
                         {    ?>
                           <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('manajemen/setujuuang/delete?id=') . $row['id_karyawan']; ?>"><i class="fa fa-trash"></i> Delete</a>
                       <?php } ?>
+                      <br>
                         <button class="btn btn-sm btn-warning mb-2" data-toggle="modal" data-target="#edit" name=""><i class="fa fa-magic"></i> Edit</button>
+                        <br>
                         <button class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#setuju" name=""><i class="fa fa-check" aria-hidden="true"></i> Setuju</button>
                     </td>
                   </tr>
