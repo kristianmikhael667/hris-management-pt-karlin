@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Agu 2020 pada 10.11
+-- Waktu pembuatan: 13 Agu 2020 pada 09.47
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.2.16
 
@@ -40,8 +40,7 @@ CREATE TABLE `tbl_absen` (
 --
 
 INSERT INTO `tbl_absen` (`id_karyawan`, `tanggal_masuk`, `jam_masuk`, `lokasi`) VALUES
-(666, '2020-08-08', '10:34:53', 'BogorWest JavaIndonesia'),
-(321, '2020-08-09', '22:35:47', 'BogorWest JavaIndonesia');
+(666, '2020-08-13', '08:58:30', 'DepokWest JavaIndonesia');
 
 -- --------------------------------------------------------
 
@@ -81,8 +80,15 @@ CREATE TABLE `tbl_dinas` (
   `bln_keberangkatan` date NOT NULL,
   `tujuan` varchar(50) NOT NULL,
   `alasan` varchar(100) NOT NULL,
-  `status` varchar(50) NOT NULL
+  `status` enum('DISETUJUI','MENUNGGU','DITOLAK') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_dinas`
+--
+
+INSERT INTO `tbl_dinas` (`id_karyawan`, `nomor_sppd`, `tgl_keberangkatan`, `bln_keberangkatan`, `tujuan`, `alasan`, `status`) VALUES
+(666, 1122, '2020-08-14', '2020-08-14', 'Raja Ampat', 'Gak Tau', 'MENUNGGU');
 
 -- --------------------------------------------------------
 
@@ -102,11 +108,7 @@ CREATE TABLE `tbl_jumlah_cuti` (
 --
 
 INSERT INTO `tbl_jumlah_cuti` (`id_karyawan`, `jumlah_cuti_cuti`, `jumlah_cuti_izin`, `jumlah_cuti_sakit`) VALUES
-(321, 0, 0, 0),
-(322, 0, 0, 0),
-(333, 7, 7, 7),
-(666, 5, 6, 5),
-(999, 7, 7, 7);
+(666, 7, 7, 7);
 
 -- --------------------------------------------------------
 
@@ -135,11 +137,8 @@ CREATE TABLE `tbl_karyawan` (
 
 INSERT INTO `tbl_karyawan` (`id_karyawan`, `nama_karyawan`, `jenis_kelamin`, `kode_bagian`, `alamat`, `nomor_telepon`, `email`, `tanggal_lahir`, `password`, `status`, `role_id`, `foto`) VALUES
 (221, 'admin', 'L', 1, 'Kamboja ', '0898765', 'kristianmikhael@gmail.com', '2020-08-02', '123', 'AKTIF', 2, '7d9f924f58b70ac5361011298751c016.gif'),
-(321, 'DANANG AJI MUSTOFss', 'L', 4, 'Bekasi      ', '08162516271', 'magangsemester6@gmail.com', '2020-08-08', '123', 'NONE', 3, '9245357d656fffc5f1f29833bc22fb5c.jpg'),
-(322, 'Mikhael Kristian', 'L', 4, 'eee', '089668997397', 'kristian.mikhael@yahoo.com', '2020-08-05', '123', 'AKTIF', 3, '836026f083cbe0462585a43c83e3969e.jpg'),
-(333, '321', 'P', 4, '111', '089668997397', '11', '2020-08-03', '123', 'AKTIF', 3, '8441bdb658a37104f16563783d34fbb1.jpg'),
-(666, 'Mikhael Kristian', 'L', 4, 'Depok   ', '08162516271', 'kristian.mikhael@yahoo.com', '2020-08-04', '123', 'AKTIF', 3, '1c9886fd2c1751ecd1a370a493bcc5f1.jpg'),
-(999, 'DANANGdddsss', 'L', 4, 'd', '08162516271', 'magangsemester6@gmail.com', '2020-08-05', '123', 'AKTIF', 3, 'd19ec1bdc732c5a76e9f8499d0c352c6.jpg');
+(666, 'Mikhael Kristian', 'L', 4, 'Depok ', '089668997397', 'kristianmikhael667@gmail.com', '2020-07-29', '123', 'AKTIF', 3, '9e49eb537ed030d6ef326c219298ad05.png'),
+(2020, 'Manajemen', 'L', 64, 'Curug', '0898765', 'magangsemester6@gmail.com', '2020-08-02', '123', 'AKTIF', 1, '');
 
 -- --------------------------------------------------------
 
@@ -160,11 +159,7 @@ CREATE TABLE `tbl_kehadiran` (
 --
 
 INSERT INTO `tbl_kehadiran` (`id_karyawan`, `jumlah_hadir`, `jumlah_cuti`, `jumlah_izin`, `jumlah_sakit`) VALUES
-(321, 1, 0, 0, 0),
-(322, 0, 0, 0, 0),
-(333, 0, 0, 0, 0),
-(666, 1, 1, 1, 2),
-(999, 0, 0, 0, 0);
+(666, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -177,8 +172,15 @@ CREATE TABLE `tbl_manage_barang` (
   `id_barang` int(20) NOT NULL,
   `nama_barang` varchar(50) NOT NULL,
   `harga` longtext NOT NULL,
-  `status` varchar(50) NOT NULL
+  `status` enum('DISETUJUI','MENUNGGU','DITOLAK') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_manage_barang`
+--
+
+INSERT INTO `tbl_manage_barang` (`id_purchase_request`, `id_barang`, `nama_barang`, `harga`, `status`) VALUES
+(1122, 321, 'Mobil Kijang Inova', '500', 'DISETUJUI');
 
 -- --------------------------------------------------------
 
@@ -190,7 +192,7 @@ CREATE TABLE `tbl_medical` (
   `id_karyawan` int(10) NOT NULL,
   `klaim_id` int(10) NOT NULL,
   `tanggal_pengajuan` date NOT NULL,
-  `status_pengajuan` varchar(20) NOT NULL,
+  `status_pengajuan` enum('DISETUJUI','MENUNGGU','DITOLAK') NOT NULL,
   `tanggal_disetujui` date NOT NULL,
   `jumlah_diajukan` longtext NOT NULL,
   `jumlah_disetujui` longtext NOT NULL,
@@ -203,9 +205,7 @@ CREATE TABLE `tbl_medical` (
 --
 
 INSERT INTO `tbl_medical` (`id_karyawan`, `klaim_id`, `tanggal_pengajuan`, `status_pengajuan`, `tanggal_disetujui`, `jumlah_diajukan`, `jumlah_disetujui`, `struck`, `ket`) VALUES
-(321, 223, '2020-08-09', 'menunggu', '0000-00-00', '1234', '-', 'f4aee1a229e6f30627f45926a6a065f4.png', '23'),
-(321, 222, '2020-08-09', 'menunggu', '0000-00-00', '666', '-', 'a38e14939a6e4c5d6c21a614d0f55435.jpg', '1112'),
-(322, 0, '0000-00-00', '', '0000-00-00', '0', '0', '', '');
+(666, 222, '2020-08-13', 'DISETUJUI', '2020-08-13', '1234', '23', '23bc14524859e6105dcf7ff9615b6766.png', '2');
 
 -- --------------------------------------------------------
 
@@ -235,9 +235,15 @@ CREATE TABLE `tbl_perjalanan_dinas` (
   `tanggal` date NOT NULL,
   `biaya_transportasi` longtext NOT NULL,
   `ket` varchar(200) NOT NULL,
-  `uang_makan` longtext NOT NULL,
-  `status` varchar(50) NOT NULL
+  `uang_makan` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_perjalanan_dinas`
+--
+
+INSERT INTO `tbl_perjalanan_dinas` (`nomor_sppd`, `tanggal`, `biaya_transportasi`, `ket`, `uang_makan`) VALUES
+(1122, '2020-08-14', '50000000', 'lolos', '123');
 
 -- --------------------------------------------------------
 
@@ -252,6 +258,13 @@ CREATE TABLE `tbl_purcase_request` (
   `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `tbl_purcase_request`
+--
+
+INSERT INTO `tbl_purcase_request` (`id_karyawan`, `id_purchase_request`, `tgl_permintaan`, `keterangan`) VALUES
+(666, 1122, '2020-08-12', 'tolol');
+
 -- --------------------------------------------------------
 
 --
@@ -262,7 +275,7 @@ CREATE TABLE `tbl_transportasi` (
   `id_karyawan` int(10) NOT NULL,
   `uang_bensin` longtext NOT NULL,
   `uang_parkir` longtext NOT NULL,
-  `status` enum('disetujui','menunggu','ditolak') NOT NULL
+  `status` enum('DISETUJUI','MENUNGGU','DITOLAK') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -270,9 +283,7 @@ CREATE TABLE `tbl_transportasi` (
 --
 
 INSERT INTO `tbl_transportasi` (`id_karyawan`, `uang_bensin`, `uang_parkir`, `status`) VALUES
-(321, '0', '0', ''),
-(322, '0', '0', ''),
-(666, '0', '0', '');
+(666, '70000', '90000', 'DISETUJUI');
 
 --
 -- Indexes for dumped tables
@@ -359,7 +370,7 @@ ALTER TABLE `tbl_purcase_request`
 -- Indeks untuk tabel `tbl_transportasi`
 --
 ALTER TABLE `tbl_transportasi`
-  ADD PRIMARY KEY (`id_karyawan`);
+  ADD KEY `id_karyawan` (`id_karyawan`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -375,7 +386,7 @@ ALTER TABLE `tbl_bagian`
 -- AUTO_INCREMENT untuk tabel `tbl_cuti`
 --
 ALTER TABLE `tbl_cuti`
-  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_dinas`
@@ -387,13 +398,13 @@ ALTER TABLE `tbl_dinas`
 -- AUTO_INCREMENT untuk tabel `tbl_jumlah_cuti`
 --
 ALTER TABLE `tbl_jumlah_cuti`
-  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
+  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_karyawan`
 --
 ALTER TABLE `tbl_karyawan`
-  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
+  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2021;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_kehadiran`
@@ -405,7 +416,7 @@ ALTER TABLE `tbl_kehadiran`
 -- AUTO_INCREMENT untuk tabel `tbl_manage_barang`
 --
 ALTER TABLE `tbl_manage_barang`
-  MODIFY `id_barang` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_barang` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=322;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_medical`
@@ -423,7 +434,7 @@ ALTER TABLE `tbl_pengajuan_biaya`
 -- AUTO_INCREMENT untuk tabel `tbl_purcase_request`
 --
 ALTER TABLE `tbl_purcase_request`
-  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_transportasi`
