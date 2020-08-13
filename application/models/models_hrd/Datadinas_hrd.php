@@ -2,8 +2,25 @@
 
 class Datadinas_hrd extends CI_Model{
 
-    function tampil_data(){
-		return $this->db->get('tbl_dinas');
+    public function tampil_data(){
+		$this->db->select('*');
+		$this->db->from('tbl_dinas');
+		$query = $this->db->get();    
+        return $query;
+	    if($query->num_rows()>0)
+	      {return $query->result();}
+	    else{return null;}
+	}
+
+	function tampil_dataa($id){
+		$this->db->select('*');
+		$this->db->from('tbl_dinas');
+		$this->db->where('id_karyawan', $id);	
+		$query = $this->db->get();    
+        return $query;
+	    if($query->num_rows()>0)
+	      {return $query->result();}
+	    else{return null;}
 	}
 	
 	function input_data($data){

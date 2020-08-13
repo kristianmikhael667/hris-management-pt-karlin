@@ -17,9 +17,9 @@ class Setujudinas extends CI_Controller{
     public function index()
 	{
 		$data = array('title' => '',
-					  'content' => 'manajemen/setujudinas/list'
+					  'content' => 'manajemen/setujudinas/list',
+					  'list' => $this->datadinas->tampil_data()
                      );
-                     
 		$this->load->view('tamplate_bootstrap_manajemen/wrapper', $data, FALSE);
 	}
 	
@@ -48,5 +48,11 @@ class Setujudinas extends CI_Controller{
 
 		$this->manajemenbarang->update_data($where,$data, 'tbl_dinas');
 		redirect('manajemen/setujupurchase/index');
+	}
+
+	public function excel(){
+		$data = array( 'title' => 'Laporan Excel Persetujuan Dinas',
+		'list' => $this->datadinas->tampil_data());
+		$this->load->view('manajemen/setujudinas/excel',$data);
 	}
 }

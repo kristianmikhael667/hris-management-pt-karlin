@@ -28,7 +28,8 @@ class Setujumedical extends CI_Controller{
 		$where = array('id_karyawan' => $id);
 		$data['karyawan'] = $this->uang_transport->edit($where, 'tbl_transportasi')->result();
 		$data = array('title' => '',
-					  'content' => 'manajemen/setujuuangtr/list'
+					  'content' => 'manajemen/setujuuangtr/list',
+					  'list' => $this->medical->list()
                      );
                      
 					 $this->load->view('tamplate_bootstrap_manajemen/wrapper', $data, FALSE);;
@@ -53,5 +54,11 @@ class Setujumedical extends CI_Controller{
 
 		$this->medical->update_data($where,$data, 'tbl_medical');
 		redirect('manajemen/setujumedical/index');
+	}
+
+	public function excel(){
+		$data = array( 'title' => 'Laporan Excel Persetujuan Medical',
+		'list' => $this->medical->list());
+		$this->load->view('manajemen/setujumedical/excel',$data);
 	}
 }

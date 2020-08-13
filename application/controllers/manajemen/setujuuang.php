@@ -29,7 +29,8 @@ class Setujuuang extends CI_Controller{
 		$where = array('id_karyawan' => $id);
 		$data['karyawan'] = $this->uang_transport->edit($where, 'tbl_transportasi')->result();
 		$data = array('title' => '',
-					  'content' => 'manajemen/setujuuangtr/list'
+					  'content' => 'manajemen/setujuuangtr/list',
+					  'list' => $this->uang_transport->hitunguang()
                      );
                      
 					 $this->load->view('tamplate_bootstrap_manajemen/wrapper', $data, FALSE);;
@@ -50,6 +51,12 @@ class Setujuuang extends CI_Controller{
 
 		$this->uang_transport->update_data($where,$data, 'tbl_transportasi');
 		redirect('manajemen/setujuuang/index');
+	}
+
+	public function excel(){
+		$data = array( 'title' => 'Laporan Excel Persetujuan Uang Transportasi',
+		'list' => $this->uang_transport->hitunguang());
+		$this->load->view('manajemen/setujuuangtr/excel',$data);
 	}
 
 }

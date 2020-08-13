@@ -22,7 +22,10 @@ class Manajemenbarang_m extends CI_Model{
 		$this->db->select('*');
 		$this->db->from('tbl_manage_barang');
 		$query = $this->db->get();    
-        return $query;
+		return $query;
+		if($query->num_rows()>0)
+	      {return $query->result();}
+	    else{return null;}
 	}
 	
 	function input_data($data){

@@ -8,8 +8,10 @@ class Uang_transport_m extends CI_Model{
 		$this->db->select('*');
 		$this->db->from('tbl_transportasi');
 		$query = $this->db->get();
-        
-        return $query;
+		return $query;
+		if($query->num_rows()>0)
+	      {return $query->result();}
+	    else{return null;}
 	}
 
 	function tampil($id){

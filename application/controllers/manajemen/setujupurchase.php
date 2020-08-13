@@ -18,7 +18,8 @@ class Setujupurchase extends CI_Controller{
     public function index()
 	{
 		$data = array('title' => '',
-					  'content' => 'manajemen/setujupurchase/list'
+					  'content' => 'manajemen/setujupurchase/list',
+					  'list' => $this->manajemenbarang->tampil_dat()
                      );
                      
 		$this->load->view('tamplate_bootstrap_manajemen/wrapper', $data, FALSE);
@@ -45,5 +46,11 @@ class Setujupurchase extends CI_Controller{
 
 		$this->manajemenbarang->update_data($where,$data, 'tbl_manage_barang');
 		redirect('manajemen/setujupurchase/index');
+	}
+
+	public function excel(){
+		$data = array( 'title' => 'Laporan Excel Persetujuan Purchase',
+		'list' => $this->manajemenbarang->tampil_dat());
+		$this->load->view('manajemen/setujupurchase/excel',$data);
 	}
 }
