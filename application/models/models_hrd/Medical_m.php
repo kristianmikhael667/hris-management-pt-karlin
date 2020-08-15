@@ -41,6 +41,13 @@ class Medical_m extends CI_Model{
 		$this->db->where($where);
 		$this->db->update($table,$data);
 	}
+
+	public function edita($id, $data)
+	{
+	
+		$this->db->update('tbl_medical', $data, $id);
+		
+	}
 	
 }
 

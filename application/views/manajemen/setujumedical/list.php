@@ -56,7 +56,7 @@
                   
                         foreach ($cek_query->result_array() as $row)
                         {    ?>
-                          <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('manajemen/setujuuang/delete?id=') . $row['id_karyawan']; ?>"><i class="fa fa-trash"></i> Delete</a>
+                          <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('manajemen/setujumedical/delete?id=') . $row['id_karyawan']; ?>"><i class="fa fa-trash"></i> Delete</a>
                       <?php } ?>
                         <button class="btn btn-sm btn-warning mb-2" data-toggle="modal" data-target="#edit" name=""><i class="fa fa-magic"></i> Edit</button>
                         <button class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#setuju" name=""><i class="fa fa-check" aria-hidden="true"> Setuju</i></button>
@@ -74,7 +74,7 @@
     </div>
 
     
-        <!-- Modal -->
+    <!-- Modal Setuju-->
     <div class="modal fade" id="setuju" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -151,6 +151,83 @@
                               <input type="number" class="form-control" name="ket" readonly placeholder="" value="<?php echo $row['ket'] ?>" required>
                             </div>
                       </div>
+                              
+                      <button type="submit" class="btn btn-primary">Setujui</button>
+                      <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
+                      
+                      </form>
+                    <?php } ?>
+
+            </div>  
+          </div>
+          <div class="modal-footer">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Edit-->
+    <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Medical</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <?php 
+                $id_karyawan = $this->session->userdata('id_karyawan');
+                $cek_query=$this->medical->list($id_karyawan); 
+                foreach ($cek_query->result_array() as $row)
+                  {          
+                ?>
+                  <form action="<?php echo base_url(). 'manajemen/setujumedical/edit' ?>"  method="post" enctype="multipart/form-data">
+                    
+                    <div class="for-group row">
+                      <label class="col-sm-3 col-form-label">ID Karyawan</label>
+                        <div class="col-sm-8">
+                          <input type="text" name="id_karyawan" class="form-control" readonly value="<?php echo $row['id_karyawan'] ?>">
+                        </div>
+                    </div>
+                      
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label"> Klaim ID </label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" name="klaim_id" placeholder="" value="<?php echo $row['klaim_id'] ?>" required>
+                          </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label"> Tanggal Pengajuan </label>
+                          <div class="col-sm-8">
+                            <input type="date" class="form-control" name="tanggal_pengajuan" placeholder="" value="<?php echo $row['tanggal_pengajuan'] ?>" required>
+                          </div>
+                    </div>   
+
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"> Jumlah Diajukan </label>
+                            <div class="col-sm-8">
+                              <input type="number" class="form-control" name="jumlah_diajukan" placeholder="" value="<?php echo $row['jumlah_diajukan'] ?>" required>
+                            </div>
+                      </div> 
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"> Keterangan </label>
+                            <div class="col-sm-8">
+                              <input type="number" class="form-control" name="ket" placeholder="" value="<?php echo $row['ket'] ?>" required>
+                            </div>
+                      </div>
+                    
+                    <div class="form-group row">
+                      <label  class="col-sm-3 col-form-label"> Struck </label>
+                        <div class="form-group col-sm-8">	
+                            <input type="file" name="filefoto">
+                        </div>
+                    </div>
                               
                       <button type="submit" class="btn btn-primary">Setujui</button>
                       <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>

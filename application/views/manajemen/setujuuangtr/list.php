@@ -74,11 +74,46 @@
             </button>
           </div>
           <div class="modal-body">
-            ...
+          <div class="container">
+
+            <?php 
+              $id_karyawan = $this->session->userdata('id_karyawan');
+              $cek_query=$this->uang_transport->tampil($id_karyawan); 
+              foreach ($cek_query->result_array() as $row)
+                {          
+              ?>
+              <form action="<?php echo base_url(). 'manajemen/setujuuang/updatee' ?>"  method="post">
+                
+                <div class="for-group row">
+                  <label class="col-sm-3 col-form-label">ID Karyawan</label>
+                    <div class="col-sm-8">
+                      <input type="text" name="id_karyawan" class="form-control" readonly value="<?php echo $row['id_karyawan'] ?>">
+                    </div>
+                </div>
+                  
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label"> Uang Bensin </label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" name="uang_bensin" placeholder="" value="<?php echo $row['uang_bensin'] ?>" required>
+                      </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label"> Uang Parkir </label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" name="uang_parkir" placeholder="" value="<?php echo $row['uang_parkir'] ?>" required>
+                      </div>
+                </div>   
+                          
+                  <button type="submit" class="btn btn-primary">Edit</button>
+                  <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
+                  
+                  </form>
+                  <?php } ?>
+            </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            
           </div>
         </div>
       </div>
@@ -115,14 +150,14 @@
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label"> Uang Bensin </label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" name="uang_bensin" placeholder="" value="<?php echo $row['uang_bensin'] ?>" required>
+                        <input type="text" class="form-control" name="uang_bensin" readonly placeholder="" value="<?php echo $row['uang_bensin'] ?>" required>
                       </div>
                 </div>
 
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label"> Uang Parkir </label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" name="uang_parkir" placeholder="" value="<?php echo $row['uang_parkir'] ?>" required>
+                        <input type="text" class="form-control" name="uang_parkir" readonly placeholder="" value="<?php echo $row['uang_parkir'] ?>" required>
                       </div>
                 </div>   
                 

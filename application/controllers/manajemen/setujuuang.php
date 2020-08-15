@@ -53,10 +53,39 @@ class Setujuuang extends CI_Controller{
 		redirect('manajemen/setujuuang/index');
 	}
 
+	public function updatee(){
+		$id = $this->input->post('id_karyawan');
+		$uang_bensin = $this->input->post('uang_bensin');
+		$uang_parkir = $this->input->post('uang_parkir');
+
+		$data = array(
+			'id_karyawan'		=> $id,
+			'uang_bensin'		=> $uang_bensin,
+			'uang_parkir'		=> $uang_parkir
+		);
+
+		$where = array(
+			'id_karyawan' => $id
+		);
+
+		$this->uang_transport->update_data($where,$data, 'tbl_transportasi');
+		redirect('manajemen/setujuuang/index');
+	}
+
 	public function excel(){
 		$data = array( 'title' => 'Laporan Excel Persetujuan Uang Transportasi',
 		'list' => $this->uang_transport->hitunguang());
 		$this->load->view('manajemen/setujuuangtr/excel',$data);
+	}
+
+	public function delete(){
+		$data = array('title' => 'Data Karyawan',
+					  'content' => 'manajemen/setujuuangtr/list'
+					 );
+		$id = $this->input->get('id');
+		$where = array('id_karyawan' => $id);
+		$this->uang_transport->delete($where);
+		$this->load->view('tamplate_bootstrap_manajemen/wrapper', $data, FALSE);	
 	}
 
 }
