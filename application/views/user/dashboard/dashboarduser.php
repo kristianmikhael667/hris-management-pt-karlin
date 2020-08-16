@@ -1,221 +1,262 @@
-<div id="content-wrapper">
+<?php
+function draw_calendar($month,$year){
 
-      
+// Draw table for Calendar 
+$calendar = '
+<table cellpadding="0" cellspacing="0" class="calendar">';
+
+// Draw Calendar table headings 
+$headings = array('Sun','Mon','Tue','Wed','Thur','Fri','Sat');
+$calendar.= '
+<tr class="calendar-row">
+    <td class="calendar-day-head">'.implode('</td>
+    <td class="calendar-day-head">',$headings).'</td>
+</tr>';
+
+//days and weeks variable for now ... 
+$running_day = date('w',mktime(0,0,0,$month,1,$year));
+$days_in_month = date('t',mktime(0,0,0,$month,1,$year));
+$days_in_this_week = 1;
+$day_counter = 0;
+$dates_array = array();
+
+// row for week one 
+$calendar.= '<tr class="calendar-row">';
+
+// Display "blank" days until the first of the current week 
+    for($x = 0; $x < $running_day; $x++):
+        $calendar.= '
+    <td class="calendar-day-np"> </td>';
+        $days_in_this_week++;
+    endfor;
+
+// Show days.... 
+    for($list_day = 1; $list_day <= $days_in_month; $list_day++):
+        if($list_day==date('d') && $month==date('n'))
+        {
+            $currentday='currentday';
+        }
+        else
+        {
+            $currentday='';
+        }
+    $calendar.= '<td class="calendar-day '.$currentday.'">';
+
+            // Add in the day number
+            if($list_day<date('d') && $month==date('n'))
+            {
+                $showtoday='<strong class="overday">'.$list_day.'</strong>';
+            }else
+            {
+                $showtoday=$list_day;
+            }
+            $calendar.= '<div class="day-number">'.$showtoday.'</div>';
+
+        // Draw table end
+        $calendar.= '</td>';
+        if($running_day == 6):
+            $calendar.= '</tr>';
+            if(($day_counter+1) != $days_in_month):
+                $calendar.= '<tr class="calendar-row">';
+            endif;
+            $running_day = -1;
+            $days_in_this_week = 0;
+        endif;
+        $days_in_this_week++; $running_day++; $day_counter++;
+    endfor;
+
+// Finish the rest of the days in the week
+if($days_in_this_week < 8):
+    for($x = 1; $x <= (8 - $days_in_this_week); $x++):
+        $calendar.= '<td class="calendar-day-np"> </td>';
+    endfor;
+endif;
+
+// Draw table final row
+$calendar.= '</tr>';
+
+// Draw table end the table 
+$calendar.= '</table>';
+
+// Finally all done, return result 
+return $calendar;
+}
+
+?>
+
+
+<div id="content-wrapper">
+<link href="<?php echo base_url() ?>tamplate/kalendercss.css" rel="stylesheet" type="text/css">
 
 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Halaman Utama Karyawan</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-dark shadow-sm"><i class="fa fa-user fa-sm text-white-50"></i> Status Karyawan : <span class="mr-2 d-none d-lg-inline text-dark-600 large text-success"><?php
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Halaman Utama Karyawan</h1>
+           <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-dark shadow-sm"><i class="fa fa-user fa-sm text-white-50"></i> Status Karyawan : <span class="mr-2 d-none d-lg-inline text-dark-600 large text-success">
+            <?php
               $id_karyawan = $this->session->userdata('id_karyawan');
               $cek_query=$this->model_auth->check_employe($id_karyawan); 
                 foreach ($cek_query->result_array() as $row)
                 {       
-              ?><?php echo $row['status'] ; ?> 
-          <?php } ?></span></a>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-                        <!-- Area Chart Example-->
-                        <div class="card mb-3">
-                            <div class="card-header">
-                                <i class="fa fa-user mr-2" aria-hidden="true"></i> KARYAWAN</div>
-                            <div class="card-body">
-
-                                <div class="row">
-                                    <div class="col-xl-3 col-sm-6 mb-3">
-                                        <div class="card text-white bg-primary o-hidden h-100">
-                                            <div class="card-body">
-                                                <div class="card-body-icon">
-                                                    <i class=""></i>
-                                                </div>
-                                                <div class="mr-5">RECORD KEHADIRAN</div>
-                                            </div>
-                                            <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/kehadiran') ?>">
-                                                <span class="float-left">View Details</span>
-                                                <span class="float-right">
-                                                  <i class="fas fa-angle-right"></i>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-sm-6 mb-3">
-                                        <div class="card text-white bg-warning o-hidden h-100">
-                                            <div class="card-body">
-                                                <div class="card-body-icon">
-                                                    <i class=""></i>
-                                                </div>
-                                                <div class="mr-5">UANG TRANSPORT</div>
-                                            </div>
-                                            <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/uangtransport') ?>">
-                                                <span class="float-left">View Details</span>
-                                                <span class="float-right">
-                                                  <i class="fas fa-angle-right"></i>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-sm-6 mb-3">
-                                        <div class="card text-white bg-success o-hidden h-100">
-                                            <div class="card-body">
-                                                <div class="card-body-icon">
-                                                    <i class=""></i>
-                                                </div>
-                                                <div class="mr-5">PERJALANAN DINAS</div>
-                                            </div>
-                                            <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/perjalanandinas') ?>">
-                                                <span class="float-left">View Details</span>
-                                                <span class="float-right">
-                                                  <i class="fas fa-angle-right"></i>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-sm-6 mb-3">
-                                        <div class="card text-white bg-danger o-hidden h-100">
-                                            <div class="card-body">
-                                                <div class="card-body-icon">
-                                                    <i class=""></i>
-                                                </div>
-                                                <div class="mr-5">MEDICAL REIMBUST</div>
-                                            </div>
-                                            <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/medicalreimbust') ?>">
-                                                <span class="float-left">View Details</span>
-                                                <span class="float-right">
-                                                  <i class="fas fa-angle-right"></i>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-sm-6 mb-3">
-                                        <div class="card text-white bg-success o-hidden h-100">
-                                            <div class="card-body">
-                                                <div class="card-body-icon">
-                                                    <i class=""></i>
-                                                </div>
-                                                <div class="mr-5">FORM CUTI</div>
-                                            </div>
-                                            <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/formcuti') ?>">
-                                                <span class="float-left">View Details</span>
-                                                <span class="float-right">
-                                                  <i class="fas fa-angle-right"></i>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-sm-6 mb-3">
-                                        <div class="card text-white bg-primary o-hidden h-100">
-                                            <div class="card-body">
-                                                <div class="card-body-icon">
-                                                    <i class=""></i>
-                                                </div>
-                                                <div class="mr-5">KETENTUAN PENGAJUAN CUTI</div>
-                                            </div>
-                                            <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/pengajuancuti') ?>">
-                                                <span class="float-left">View Details</span>
-                                                <span class="float-right">
-                                                  <i class="fas fa-angle-right"></i>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-sm-6 mb-3">
-                                        <div class="card text-white bg-warning o-hidden h-100">
-                                            <div class="card-body">
-                                                <div class="card-body-icon">
-                                                    <i class=""></i>
-                                                </div>
-                                                <div class="mr-5">FORM PERJALANAN DINAS</div>
-                                            </div>
-                                            <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/formdinas') ?>">
-                                                <span class="float-left">View Details</span>
-                                                <span class="float-right">
-                                                  <i class="fas fa-angle-right"></i>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-3 col-sm-6 mb-3">
-                                        <div class="card text-white bg-danger o-hidden h-100">
-                                            <div class="card-body">
-                                                <div class="card-body-icon">
-                                                    <i class=""></i>
-                                                </div>
-                                                <div class="mr-5">FORM PURCHASE REQUEST</div>
-                                            </div>
-                                            <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/formpurchase') ?>">
-                                                <span class="float-left">View Details</span>
-                                                <span class="float-right">
-                                                  <i class="fas fa-angle-right"></i>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-3 col-sm-6 mb-3">
-                                        <div class="card text-white bg-warning o-hidden h-100">
-                                            <div class="card-body">
-                                                <div class="card-body-icon">
-                                                    <i class=""></i>
-                                                </div>
-                                                <div class="mr-5">DATA PURCHASE REQUEST</div>
-                                            </div>
-                                            <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/databarang') ?>">
-                                                <span class="float-left">View Details</span>
-                                                <span class="float-right">
-                                                  <i class="fas fa-angle-right"></i>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="card-footer small text-muted"></div>
-                        </div>
-
-                        <!-- Area Chart Example-->
-
-                    </div>
-
-
-                    <!-- Content Row -->
-
-                    <div class="row">
-
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-                    </div>
-
-                </div>
-                <!-- /.container-fluid -->
-
-            </div>
-            <!-- End of Main Content -->
-
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Apakah Anda Ingin Keluar?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-                </div>
-                <div class="modal-body">Pilih Logout Untuk Keluar dari Halaman Karyawan</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger" href="<?php echo base_url() ?>auth/logout">Logout</a>
-                </div>
-            </div>
-        </div>
+                     echo $row['status'] ; 
+                } 
+            ?></span></a>
     </div>
+<!-- Content Row -->
+
+<div class="row">
+
+  <!-- Area Chart -->
+  <div class="col-xl-8 col-lg-7">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Record Activity</h6>
+        <div class="dropdown no-arrow">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+          </a>
+          
+        </div>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body">
+        <div class="chart-area">
+                 <!-- Color System -->
+                 <div class="row">
+                        <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="card text-white bg-primary o-hidden h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                   <i class=""></i>
+                                </div>
+                                <div class="mr-5">RECORD KEHADIRAN</div>
+                            </div>
+                                <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/kehadiran') ?>">
+                                    <span class="float-left">View Details</span>
+                                    <span class="float-right">
+                                        <i class="fas fa-angle-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 mb-3">
+                            <div class="card text-white bg-warning o-hidden h-100">
+                                <div class="card-body">
+                                    <div class="card-body-icon">
+                                        <i class=""></i>
+                                    </div>
+                                <div class="mr-5">UANG TRANSPORT</div>
+                            </div>
+                                <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/uangtransport') ?>">
+                                    <span class="float-left">View Details</span>
+                                    <span class="float-right">
+                                        <i class="fas fa-angle-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 mb-3">
+                            <div class="card text-white bg-success o-hidden h-100">
+                                <div class="card-body">
+                                    <div class="card-body-icon">
+                                        <i class=""></i>
+                                    </div>
+                                    <div class="mr-5">PERJALANAN DINAS</div>
+                                </div>
+                                    <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/perjalanandinas') ?>">
+                                        <span class="float-left">View Details</span>
+                                        <span class="float-right">
+                                            <i class="fas fa-angle-right"></i>
+                                        </span>
+                                    </a>
+                                 </div>
+                            </div>
+                        <div class="col-xl-3 col-sm-6 mb-3">
+                            <div class="card text-white bg-danger o-hidden h-100">
+                                <div class="card-body">
+                                    <div class="card-body-icon">
+                                        <i class=""></i>
+                                    </div>
+                                <div class="mr-5">MEDICAL REIMBUST</div>
+                                </div>
+                                    <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/medicalreimbust') ?>">
+                                        <span class="float-left">View Details</span>
+                                        <span class="float-right">
+                                        <i class="fas fa-angle-right"></i>
+                                    </span>
+                                    </a>
+                         </div>
+                        </div>
+                   
+                </div>
+            
+                  </div>
+                  <div class="col-lg-18 mb-4">
+                    <div class="card bg-info text-white shadow">
+                    <div class="card-body">
+                        Private Note 
+                        <div class="text-white-50 small"><textarea  class="form-control" rows="8"></textarea></div>
+                    </div>
+                    <button class="form-control">Edit Note</button>
+                    </div>
+                 </div>
+                  <div class="mt-4 text-center small">
+                     
+                      
+                  </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Pie Chart -->
+  <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Calender</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                   
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+                    <?php
+                        date_default_timezone_set('Asia/Jakarta');
+                        $bulan = date('m');
+                        $tahun = date('Y');
+                        echo '<h2>' . $bulan . ' - ' . $tahun .'</h2>';
+                        echo draw_calendar($bulan,$tahun)
+                    ?>
+               
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+<!-- Content Row -->
+<div class="row">
+
+  <!-- Content Column -->
+  <div class="col-lg-6 mb-4">
+
+    
+
+
+  </div>
+</div>
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
