@@ -100,6 +100,5 @@ class Dashboard_user extends CI_Controller{
 		}
 		
 	}
-
 	
 }
