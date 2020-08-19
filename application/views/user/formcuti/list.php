@@ -38,7 +38,12 @@
                             <label class="col-sm-3 col-form-label"> JENIS CUTI </label>
                             <div class="col-sm-8">
                                 <select class="form-control" name="jenis_cuti" required >
-                                    <option> Cuti </option>
+                                    <option> Cuti Tahunan </option>
+                                    <option> Cuti Melahirkan </option>
+                                    <option> Cuti Keluarga Meninggal </option>
+                                    <option> Cuti Menikahkan Anak </option>
+                                    <option> Cuti Anak Khitan</option>
+                                    <option> Cuti Pembaptisan Anak</option>
                                     <option> Izin </option>
                                     <option> Sakit </option>
                                 </select>

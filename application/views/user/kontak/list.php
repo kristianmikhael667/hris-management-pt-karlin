@@ -41,13 +41,7 @@
                   foreach ($cek_query->result_array() as $row)
                   {   
                     $no++;  
-                    
-                    if ($row['is_logged_in'] == 3) {
-                        $logged_status = '<b> > <u>Online</b>';
-                    } else {
-                        $logged_status = 'Offline';
-                    }
-                    ?>
+                  ?>
                     <tr>
                     <td><?php echo $no++; ?></td>
                     <td><img style="width: 100px;" src="<?php echo base_url().'assets/images/'.$row['foto'];?>"></td>
