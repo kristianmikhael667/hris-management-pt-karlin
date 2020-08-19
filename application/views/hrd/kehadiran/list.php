@@ -48,11 +48,11 @@
                     <td align="center"><?php echo $row['jumlah_cuti_izin'] ; ?></td>
                     <td align="center"><?php echo $row['jumlah_sakit'] ; ?></td>
                     <td align="center"><?php echo $row['jumlah_cuti_sakit'] ; ?></td>
-                    <td align="center"><a href="<?php echo base_url('hrd/kehadiran/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-danger"> Hapus </a>
-                    <a href="<?php echo base_url('hrd/dashboard_hrd/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Edit </a>  </td>
+                    <td align="center"><a href="<?php echo base_url('hrd/kehadiran/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-danger"> Edit Jumlah Cuti </a>
+                    <a href="<?php echo base_url('hrd/kehadiran/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Edit Sisa Cuti </a>  </td>
                     <td align="center"><a href="<?php echo base_url('hrd/dashboard_hrd/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Excel </a>  </td>
                   </tr>
-
+ 
                   <?php } ?>
               
                 </tbody>

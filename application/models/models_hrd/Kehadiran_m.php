@@ -25,6 +25,28 @@ class Kehadiran_m extends CI_Model{
         return $query;
 	}
 
+	public function list_cuti($id)
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_kehadiran t_hadir');
+		$this->db->join('tbl_jumlah_cuti t_jumlah_cuti', 't_hadir.id_karyawan = t_jumlah_cuti.id_karyawan');
+		$this->db->join('tbl_karyawan t_karyawan', 't_karyawan.id_karyawan = t_hadir.id_karyawan');
+		$this->db->where('t_karyawan.id_karyawan', $id);
+		$query = $this->db->get();
+        
+        return $query;
+	}
+
+	public function update_jumlah_cuti($id, $data)
+	{
+		$this->db->update('tbl_kehadiran', $data, $id);
+	}
+
+	public function update_sisa_cuti($id, $data)
+	{
+		$this->db->update('tbl_jumlah_cuti', $data, $id);
+	}
+
 	public function check_kehadiran($jumlah, $id){
 		$this->db->select('jumlah_sakit');
 		$this->db->from('tbl_kehadiran');
