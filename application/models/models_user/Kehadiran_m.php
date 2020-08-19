@@ -48,6 +48,17 @@ class Kehadiran_m extends CI_Model{
 	function insert_absen($data,$table){
 		$this->db->insert($table,$data);
 	}
+
+	public function jumlah_absen($id){
+		$this->db->select('*');
+		$this->db->from('tbl_kehadiran t_hadir');
+		$this->db->join('tbl_absen t_absen', 't_hadir.id_karyawan = t_absen.id_karyawan');
+		$this->db->join('tbl_karyawan t_karyawan', 't_karyawan.id_karyawan = t_hadir.id_karyawan');
+		$this->db->where('t_karyawan.id_karyawan', $id);
+		$query = $this->db->get();
+        
+        return $query;
+	}
 }
 
 ?>
