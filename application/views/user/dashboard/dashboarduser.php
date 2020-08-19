@@ -125,83 +125,60 @@ return $calendar;
         <div class="chart-area">
                  <!-- Color System -->
                  <div class="row">
-                        <div class="col-xl-3 col-sm-6 mb-3">
-                        <div class="card text-white bg-primary o-hidden h-100">
+                    
+                        <div class="card mr-4 ml-4 mb-4" style="width: 33rem;">
                             <div class="card-body">
-                                <div class="card-body-icon">
-                                   <i class=""></i>
-                                </div>
-                                <div class="mr-5">RECORD KEHADIRAN</div>
+                                <h5 class="card-title text-center text-primary">RECORD KEHADIRAN</h5>
+                                <center>
+                                <i class="fa fa-users fa-10x center" aria-hidden="true"></i>
+                                </center>
                             </div>
-                                <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/kehadiran') ?>">
-                                    <span class="float-left">View Details</span>
-                                    <span class="float-right">
-                                        <i class="fas fa-angle-right"></i>
-                                    </span>
-                                </a>
+                            <div class="card-footer">
+                                <a href="<?php echo base_url('user/kehadiran') ?>" class="btn btn-primary btn-block">KLIK SAYA</a>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-sm-6 mb-3">
-                            <div class="card text-white bg-warning o-hidden h-100">
-                                <div class="card-body">
-                                    <div class="card-body-icon">
-                                        <i class=""></i>
-                                    </div>
-                                <div class="mr-5">UANG TRANSPORT</div>
+
+                        <div class="card mr-4 ml-4 mb-4" style="width: 33rem;">
+                            <div class="card-body">
+                                <h5 class="card-title text-center text-success">UANG TRANSPORT</h5>
+                                <center>
+                                <i class="fa fa-credit-card fa-10x center" aria-hidden="true"></i>
+                                </center>
                             </div>
-                                <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/uangtransport') ?>">
-                                    <span class="float-left">View Details</span>
-                                    <span class="float-right">
-                                        <i class="fas fa-angle-right"></i>
-                                    </span>
-                                </a>
+                            <div class="card-footer">
+                                <a href="<?php echo base_url('user/uangtransport') ?>" class="btn btn-primary btn-block">KLIK SAYA</a>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-sm-6 mb-3">
-                            <div class="card text-white bg-success o-hidden h-100">
-                                <div class="card-body">
-                                    <div class="card-body-icon">
-                                        <i class=""></i>
-                                    </div>
-                                    <div class="mr-5">PERJALANAN DINAS</div>
-                                </div>
-                                    <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/perjalanandinas') ?>">
-                                        <span class="float-left">View Details</span>
-                                        <span class="float-right">
-                                            <i class="fas fa-angle-right"></i>
-                                        </span>
-                                    </a>
-                                 </div>
+
+                        <div class="card mr-4 ml-4 mb-4" style="width: 33rem;">
+                            <div class="card-body">
+                                <h5 class="card-title text-center text-warning">PERJALANAN DINAS</h5>
+                                <center>
+                                <i class="fa fa-road fa-10x center" aria-hidden="true"></i>
+                                </center>
                             </div>
-                        <div class="col-xl-3 col-sm-6 mb-3">
-                            <div class="card text-white bg-danger o-hidden h-100">
-                                <div class="card-body">
-                                    <div class="card-body-icon">
-                                        <i class=""></i>
-                                    </div>
-                                <div class="mr-5">MEDICAL REIMBUST</div>
-                                </div>
-                                    <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('user/medicalreimbust') ?>">
-                                        <span class="float-left">View Details</span>
-                                        <span class="float-right">
-                                        <i class="fas fa-angle-right"></i>
-                                    </span>
-                                    </a>
-                         </div>
+                            <div class="card-footer">
+                                <a href="<?php echo base_url('user/perjalanandinas') ?>" class="btn btn-primary btn-block">KLIK SAYA</a>
+                            </div>
                         </div>
+
+                        <div class="card mr-4 ml-4 mb-4" style="width: 33rem;">
+                            <div class="card-body">
+                                <h5 class="card-title text-center text-danger">MEDICAL REIMBUST</h5>
+                                <center>
+                                <i class="fa fa-medkit fa-10x center" aria-hidden="true"></i>
+                                </center>
+                            </div>
+                            <div class="card-footer">
+                                <a href="<?php echo base_url('user/medicalreimbust') ?>" class="btn btn-primary btn-block">KLIK SAYA</a>
+                            </div>
+                        </div>
+                        
                    
                 </div>
             
                   </div>
-                  <div class="col-lg-18 mb-4">
-                    <div class="card bg-info text-white shadow">
-                    <div class="card-body">
-                        Private Note 
-                        <div class="text-white-50 small"><textarea  class="form-control" rows="8"></textarea></div>
-                    </div>
-                    <button class="form-control">Edit Note</button>
-                    </div>
-                 </div>
+                  
                   <div class="mt-4 text-center small">
                      
                       

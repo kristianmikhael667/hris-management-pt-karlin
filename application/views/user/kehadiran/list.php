@@ -18,7 +18,6 @@
                     <th>Jumlah Cuti</th>
                     <th>Jumlah Izin</th>
                     <th>Jumlah Sakit</th>
-                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -43,21 +42,21 @@
                           $cek_query=$this->model_auth->hadir($id_karyawan); 
                           foreach ($cek_query->result_array() as $row)
                         {          
-                      ?><?php echo $row['jam_masuk'] ; ?> 
+                      ?><?php echo $row['jam_masuk'] ; ?> <br>
                     <?php } ?></td>
 
                     <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
                           $cek_query=$this->model_auth->hadir($id_karyawan); 
                           foreach ($cek_query->result_array() as $row)
                         {          
-                      ?><?php echo $row['tanggal_masuk'] ; ?> 
+                      ?><?php echo $row['tanggal_masuk'] ; ?> <br>
                     <?php } ?></td>
 
                     <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
                           $cek_query=$this->model_auth->hadir($id_karyawan); 
                           foreach ($cek_query->result_array() as $row)
                         {          
-                      ?><?php echo $row['lokasi'] ; ?> 
+                      ?><?php echo $row['lokasi'] ; ?> <br>
                     <?php } ?></td>
 
                     <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
@@ -79,11 +78,6 @@
                           foreach ($cek_query->result_array() as $row)
                         {          
                       ?><?php echo $row['jumlah_sakit'] ; ?> 
-                    </td>
-                    <td>
-                    <a href="<?php echo base_url(); ?>user/laporan_kehadiran_pdf/pdf" class="btn btn-warning"> Pdf </a>
-                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-primary"> Edit </a>
-                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-danger"> Delete </a>
                     </td>
                   </tr>
 
