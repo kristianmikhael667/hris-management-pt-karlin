@@ -9,8 +9,8 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-      <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
+      <div class="sidebar-brand-icon rotate-n-20">
+      <i class="fa fa-lock" aria-hidden="true"></i>
       </div>
       <div class="sidebar-brand-text mx-3">Halaman HRD</div>
     </a>
@@ -21,8 +21,8 @@
     <!-- Nav Item - Dashboard -->
     <li class="nav-item collapsed">
       <a class="nav-link" href="index.html">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
+      <i class="fa fa-home" aria-hidden="true"></i>
+        <span>Dashboard HRD</span></a>
     </li>
 
     <!-- Divider -->
@@ -30,13 +30,13 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-      Menu
+      Menu HRD
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-cog"></i>
+      <i class="fa fa-users" aria-hidden="true"></i>
         <span>Karyawan</span>
       </a>
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -51,7 +51,7 @@
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
       <a class="nav-link collapsed" href="<?php echo base_url() ?>hrd/kehadiran" >
-        <i class="fas fa-fw fa-wrench"></i>
+      <i class="fa fa-check-square" aria-hidden="true"></i>
         <span>Kehadiran Karyawan</span>
       </a>
     </li>
@@ -59,7 +59,7 @@
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
       <a class="nav-link collapsed" href="<?php echo base_url() ?>hrd/uangtransport">
-        <i class="fas fa-fw fa-wrench"></i>
+      <i class="fa fa-credit-card" aria-hidden="true"></i>
         <span>Uang Transport</span>
       </a>
     </li>
