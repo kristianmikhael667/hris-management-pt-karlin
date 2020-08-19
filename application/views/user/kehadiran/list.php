@@ -42,21 +42,21 @@
                           $cek_query=$this->model_auth->hadir($id_karyawan); 
                           foreach ($cek_query->result_array() as $row)
                         {          
-                      ?><?php echo $row['jam_masuk'] ; ?> 
+                      ?><?php echo $row['jam_masuk'] ; ?> <br>
                     <?php } ?></td>
 
                     <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
                           $cek_query=$this->model_auth->hadir($id_karyawan); 
                           foreach ($cek_query->result_array() as $row)
                         {          
-                      ?><?php echo $row['tanggal_masuk'] ; ?> 
+                      ?><?php echo $row['tanggal_masuk'] ; ?> <br>
                     <?php } ?></td>
 
                     <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
                           $cek_query=$this->model_auth->hadir($id_karyawan); 
                           foreach ($cek_query->result_array() as $row)
                         {          
-                      ?><?php echo $row['lokasi'] ; ?> 
+                      ?><?php echo $row['lokasi'] ; ?> <br>
                     <?php } ?></td>
 
                     <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
