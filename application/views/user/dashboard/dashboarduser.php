@@ -207,9 +207,10 @@ return $calendar;
                   <div class="chart-pie pt-4 pb-2">
                     <?php
                         date_default_timezone_set('Asia/Jakarta');
+                        $tgl = date('d-M-Y');
                         $bulan = date('m');
                         $tahun = date('Y');
-                        echo '<h2>' . $bulan . ' - ' . $tahun .'</h2>';
+                        echo '<h2>' . $tgl .'</h2>';
                         echo draw_calendar($bulan,$tahun)
                     ?>
                
