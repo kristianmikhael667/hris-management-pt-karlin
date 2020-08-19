@@ -96,6 +96,7 @@
 
 
   <!-- Pie Chart -->
+<<<<<<< HEAD
 <div class="col-xl-4 col-lg-5">
   <div class="card shadow mb-4">
     <!-- Card Header - Dropdown -->
@@ -142,6 +143,99 @@
                 <?php } ?>    
               </tbody>
               </table>
+=======
+  <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Timesheet</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                   
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+                  <div class="card mb-3">
+                    <div class="card-header">
+                      <i class="fas fa-table"></i>
+                      Record Kehadiran</div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+                            <tr>
+                             <th>Hadir</th>
+                              <th>Cuti</th>
+                              <th>Izin</th>
+                              <th>Sakit</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                                <?php $id_karyawan = $this->session->userdata('id_karyawan');
+                                    $cek_query=$this->kehadiran->record_cuti($id_karyawan); 
+                                    foreach ($cek_query->result_array() as $row):        
+                                ?>
+                            <tr>
+                           
+                              <td><?php echo $row['jumlah_hadir'] ; ?></td>
+                              
+                              <td><?php echo $row['jumlah_cuti'] ; ?> </td>
+
+                              <td><?php echo $row['jumlah_izin'] ; ?> </td>
+
+                              <td><?php echo $row['jumlah_sakit'] ; ?> </td>
+                            </tr>
+
+                           
+                        
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                </div> 
+               
+               
+                  <div class="card mb-3">
+                    <div class="card-header">
+                      <i class="fas fa-table"></i>
+                      Pengajuan Cuti</div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+                            <tr>
+                              <th>Sisa Cuti</th>
+                              <th>Sisa Izin</th>
+                              <th>Sisa Sakit</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                               
+                            <tr>
+                              
+                              <td><?php echo $row['jumlah_cuti_cuti'] ; ?> </td>
+
+                              <td><?php echo $row['jumlah_cuti_izin'] ; ?> </td>
+
+                              <td><?php echo $row['jumlah_cuti_sakit'] ; ?> </td>
+                            </tr>
+
+                            <?php endforeach ?>
+                        
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                </div> 
+               
+                  </div>
+                </div>
+              </div>
+>>>>>>> ee50ce5286cf37123f002e55c686d783aaadbe2b
             </div>
           </div>
         </div> 
