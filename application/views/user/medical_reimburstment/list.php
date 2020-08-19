@@ -74,7 +74,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="<?php echo base_url()?>user/Medicalreimbust/add"  method="post" enctype="multipart/form-data">
+          <form action="<?php echo base_url()?>user/medicalreimbust/add"  method="post" enctype="multipart/form-data">
               <div class="form-group">
                
                 <label>Id Karyawan</label>
@@ -95,7 +95,7 @@
                 <input type="number" name="ket" class="form-control" placeholder="Keterangan" required>
               </div>
               
-              <button type="submit" class="btn btn-primary">Simpan</button>
+              <button type="submit" class="btn btn-primary">Tambah</button>
               <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </form>
         </div>
