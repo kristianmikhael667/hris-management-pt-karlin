@@ -27,8 +27,7 @@ class Auth extends CI_Controller{
 
             if($auth == FALSE){
                 $this->session->set_flashdata('pesan','<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        Id Karyawan atau Password Anda Salah ||
-                        Akun Anda DiNone Aktif
+                        Id Karyawan atau Password Anda Salah
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -56,6 +55,16 @@ class Auth extends CI_Controller{
                     }
                     else if(($role == '3') && ($status_karyawan=="AKTIF")){
                         redirect('user/dashboard_user');
+                    }
+                    else{
+                        $this->session->set_flashdata('pesan','<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        Akun Anda DiNoneAktifkan
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>');
+               
+                        redirect('auth/login');
                     }
                     
 
