@@ -92,7 +92,7 @@ return $calendar;
 
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Halaman Utama Karyawan</h1>
+        <h1 class="h3 mb-0 text-gray-800"><b>Halaman Utama Karyawan</b></h1>
            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-dark shadow-sm"><i class="fa fa-user fa-sm text-white-50"></i> Status Karyawan : <span class="mr-2 d-none d-lg-inline text-dark-600 large text-success">
             <?php
               $id_karyawan = $this->session->userdata('id_karyawan');
@@ -128,7 +128,7 @@ return $calendar;
                     
                         <div class="card mr-4 ml-4 mb-4" style="width: 33rem;">
                             <div class="card-body">
-                                <h5 class="card-title text-center text-primary">RECORD KEHADIRAN</h5>
+                                <h5 class="card-title text-center text-primary"><b>RECORD KEHADIRAN</b></h5>
                                 <center>
                                 <i class="fa fa-users fa-10x center" aria-hidden="true"></i>
                                 </center>
@@ -140,37 +140,37 @@ return $calendar;
 
                         <div class="card mr-4 ml-4 mb-4" style="width: 33rem;">
                             <div class="card-body">
-                                <h5 class="card-title text-center text-success">UANG TRANSPORT</h5>
+                                <h5 class="card-title text-center text-success"><b>UANG TRANSPORT</b></h5>
                                 <center>
                                 <i class="fa fa-credit-card fa-10x center" aria-hidden="true"></i>
                                 </center>
                             </div>
                             <div class="card-footer">
-                                <a href="<?php echo base_url('user/uangtransport') ?>" class="btn btn-primary btn-block">KLIK SAYA</a>
+                                <a href="<?php echo base_url('user/uangtransport') ?>" class="btn btn-success btn-block">KLIK SAYA</a>
                             </div>
                         </div>
 
                         <div class="card mr-4 ml-4 mb-4" style="width: 33rem;">
                             <div class="card-body">
-                                <h5 class="card-title text-center text-warning">PERJALANAN DINAS</h5>
+                                <h5 class="card-title text-center text-warning"><b>PERJALANAN DINAS</b></h5>
                                 <center>
                                 <i class="fa fa-road fa-10x center" aria-hidden="true"></i>
                                 </center>
                             </div>
                             <div class="card-footer">
-                                <a href="<?php echo base_url('user/perjalanandinas') ?>" class="btn btn-primary btn-block">KLIK SAYA</a>
+                                <a href="<?php echo base_url('user/perjalanandinas') ?>" class="btn btn-warning btn-block">KLIK SAYA</a>
                             </div>
                         </div>
 
                         <div class="card mr-4 ml-4 mb-4" style="width: 33rem;">
                             <div class="card-body">
-                                <h5 class="card-title text-center text-danger">MEDICAL REIMBUST</h5>
+                                <h5 class="card-title text-center text-danger"><b>MEDICAL REIMBUST</b></h5>
                                 <center>
                                 <i class="fa fa-medkit fa-10x center" aria-hidden="true"></i>
                                 </center>
                             </div>
                             <div class="card-footer">
-                                <a href="<?php echo base_url('user/medicalreimbust') ?>" class="btn btn-primary btn-block">KLIK SAYA</a>
+                                <a href="<?php echo base_url('user/medicalreimbust') ?>" class="btn btn-danger btn-block">KLIK SAYA</a>
                             </div>
                         </div>
                         

@@ -52,7 +52,7 @@ class Medicalreimbust extends CI_Controller{
 				$jumlah_diajukan	= $this->input->post('jumlah_diajukan');
 				$jumlah_disetujui	= "-";
 				$ket				= $this->input->post('ket');
-				$struck 				= $gbr['file_name'];
+				$struck 			= $gbr['file_name'];
 				$cek_claim_id 		= $this->medical->check_claim_id($klaim_id);
 				$cek_data_claim_id 	= $cek_claim_id->num_rows();
 					if($cek_data_claim_id > 0){
