@@ -40,9 +40,12 @@
       <div class="card-body">
         <div class="chart-area">
                  <!-- Color System -->
-                 <div class="row">
-                
-                 <div class="table-responsive">
+              <div class="row">
+                <div class="col-xl-12 col-lg-5">
+                  <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                      <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                           <thead>
                             <tr>
@@ -76,7 +79,10 @@
                           </tbody>
                         </table>
                       </div>
-            </div>
+                    </div>
+                  </div>
+                  </div>
+                    </div>
                   </div>
                   
                   <div class="mt-4 text-center small">
