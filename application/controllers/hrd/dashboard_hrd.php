@@ -126,12 +126,12 @@ class Dashboard_hrd extends CI_Controller{
 						 $data_hadir = array(
 						 	'id_karyawan'		=> $id_karyawan,
 						 	'jumlah_hadir'		=> 0,
-						 	'jumlah_cuti_tahunan'					=> 7,
-						 	'jumlah_cuti_melahirkan'				=> 7,
-							'jumlah_cuti_keluarga_meninggal'		=> 7,
-							'jumlah_cuti_menikahkan_anak'			=> 7,
-							'jumlah_cuti_anak_khitan'				=> 7,
-							'jumlah_cuti_pembaptisan_anak'			=> 7,
+						 	'jumlah_cuti_tahunan'					=> 0,
+						 	'jumlah_cuti_melahirkan'				=> 0,
+							'jumlah_cuti_keluarga_meninggal'		=> 0,
+							'jumlah_cuti_menikahkan_anak'			=> 0,
+							'jumlah_cuti_anak_khitan'				=> 0,
+							'jumlah_cuti_pembaptisan_anak'			=> 0,
 						 	'jumlah_izin'							=> 0,
 						 	'jumlah_sakit'							=> 0
 						 );
