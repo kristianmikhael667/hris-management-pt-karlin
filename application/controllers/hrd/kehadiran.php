@@ -21,7 +21,57 @@ class Kehadiran extends CI_Controller{
                      );
                      
 					 $this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
-    }
+	}
+	
+	public function kosongkan_jumlah_cuti(){
+		$data = array('title' => 'Add Karyawan',
+					  'content' => 'hrd/kehadiran/list'
+		);
+		$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
+		$id = $this->input->get('id');
+		$id_karyawan = $id;
+		$data_kehadiran = array(
+			'jumlah_cuti_tahunan'					=> 0,
+			'jumlah_cuti_melahirkan'				=> 0,
+		   	'jumlah_cuti_keluarga_meninggal'		=> 0,
+		  	'jumlah_cuti_menikahkan_anak'			=> 0,
+		    'jumlah_cuti_anak_khitan'				=> 0,
+		    'jumlah_cuti_pembaptisan_anak'			=> 0,
+			'jumlah_izin'							=> 0,
+			'jumlah_sakit'							=> 0
+		);
+		
+		$where = array(
+			'id_karyawan' => $id_karyawan
+		);
+
+		$this->kehadiran->update_jumlah_cuti($where, $data_kehadiran);
+		redirect('hrd/kehadiran');
+	}
+
+	public function kosongkan_sisa_cuti(){
+		$data = array('title' => 'Add Karyawan',
+					  'content' => 'hrd/kehadiran/list'
+		);
+		$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
+		$id = $this->input->get('id');
+		$id_karyawan = $id;
+		$data_sisa_cuti = array(
+			'jumlah_cuti_cuti_tahunan'					=> 0,
+			'jumlah_cuti_cuti_melahirkan'				=> 0,
+		   	'jumlah_cuti_cuti_keluarga_meninggal'		=> 0,
+		  	'jumlah_cuti_cuti_menikahkan_anak'			=> 0,
+		    'jumlah_cuti_cuti_anak_khitan'				=> 0,
+		    'jumlah_cuti_cuti_pembaptisan_anak'			=> 0
+		);
+		
+		$where = array(
+			'id_karyawan' => $id_karyawan
+		);
+
+		$this->kehadiran->update_sisa_cuti($where, $data_sisa_cuti);
+		redirect('hrd/kehadiran');
+	}
 	
 	// public function delete()
 	// {		
@@ -55,31 +105,56 @@ class Kehadiran extends CI_Controller{
 		$id = $this->input->get('id');
 
 		$id_karyawan = $this->input->post('id_karyawan');
-		$jumlah_cuti = $this->input->post('jumlah_cuti');
-		$jumlah_izin = $this->input->post('jumlah_izin');
-		$jumlah_sakit = $this->input->post('jumlah_sakit');
-		$jumlah_sisa_cuti = $this->input->post('jumlah_cuti_cuti');
-		$jumlah_sisa_sakit = $this->input->post('jumlah_cuti_sakit');
-		$jumlah_sisa_izin = $this->input->post('jumlah_cuti_izin');
 
-		$data_jumlah_cuti = array(
-			'jumlah_cuti'		=> $jumlah_cuti,
-			'jumlah_izin'		=> $jumlah_izin,
-			'jumlah_sakit'		=> $jumlah_sakit
+		//jumlah kehadiran pada tale kehadiran
+		$jumlah_hadir		 			= $this->input->post('jumlah_hadir');
+		$jumlah_cuti_tahunan 			= $this->input->post('jumlah_cuti_tahunan');
+		$jumlah_cuti_melahirkan 		= $this->input->post('jumlah_cuti_melahirkan');
+		$jumlah_cuti_keluarga_meninggal = $this->input->post('jumlah_cuti_keluarga_meninggal');
+		$jumlah_cuti_menikahkan_anak	= $this->input->post('jumlah_cuti_menikahkan_anak');
+		$jumlah_cuti_anak_khitan		= $this->input->post('jumlah_cuti_anak_khitan');
+		$jumlah_cuti_pembaptisan_anak	= $this->input->post('jumlah_cuti_pembaptisan_anak');
+		$jumlah_izin					= $this->input->post('jumlah_izin');
+		$jumlah_sakit					= $this->input->post('jumlah_sakit');
+		
+		//jumlah sisa cuti pada table jumlah cuti
+		$jumlah_cuti_cuti_tahunan 				= $this->input->post('jumlah_cuti_cuti_tahunan');
+		$jumlah_cuti_cuti_melahirkan 			= $this->input->post('jumlah_cuti_cuti_melahirkan');
+		$jumlah_cuti_cuti_keluarga_meninggal 	= $this->input->post('jumlah_cuti_cuti_keluarga_meninggal');
+		$jumlah_cuti_cuti_menikahkan_anak		= $this->input->post('jumlah_cuti_cuti_menikahkan_anak');
+		$jumlah_cuti_cuti_anak_khitan			= $this->input->post('jumlah_cuti_cuti_anak_khitan');
+		$jumlah_cuti_cuti_pembaptisan_anak		= $this->input->post('jumlah_cuti_cuti_pembaptisan_anak');
+
+		$data_kehadiran = array(
+			'jumlah_hadir'							=> $jumlah_hadir,
+			'jumlah_cuti_tahunan'					=> $jumlah_cuti_tahunan,
+			'jumlah_cuti_melahirkan'				=> $jumlah_cuti_melahirkan,
+		   	'jumlah_cuti_keluarga_meninggal'		=> $jumlah_cuti_keluarga_meninggal,
+		  	'jumlah_cuti_menikahkan_anak'			=> $jumlah_cuti_menikahkan_anak,
+		    'jumlah_cuti_anak_khitan'				=> $jumlah_cuti_cuti_anak_khitan,
+		    'jumlah_cuti_pembaptisan_anak'			=> $jumlah_cuti_cuti_pembaptisan_anak,
+			'jumlah_izin'							=> $jumlah_izin,
+			'jumlah_sakit'							=> $jumlah_sakit
 		);
 
 		$data_sisa_cuti = array(
-			'jumlah_cuti_cuti'		=> $jumlah_sisa_cuti,
-			'jumlah_cuti_izin'		=> $jumlah_sisa_izin,
-			'jumlah_cuti_sakit'		=> $jumlah_sisa_sakit
+			'jumlah_cuti_cuti_tahunan'					=> $jumlah_cuti_cuti_tahunan,
+			'jumlah_cuti_cuti_melahirkan'				=> $jumlah_cuti_cuti_melahirkan,
+		   	'jumlah_cuti_cuti_keluarga_meninggal'		=> $jumlah_cuti_cuti_keluarga_meninggal,
+		  	'jumlah_cuti_cuti_menikahkan_anak'			=> $jumlah_cuti_cuti_menikahkan_anak,
+		    'jumlah_cuti_cuti_anak_khitan'				=> $jumlah_cuti_cuti_anak_khitan,
+		    'jumlah_cuti_cuti_pembaptisan_anak'			=> $jumlah_cuti_cuti_pembaptisan_anak
 		);
-
+		
 		$where = array(
 			'id_karyawan' => $id_karyawan
 		);
 
-		$this->kehadiran->update_jumlah_cuti($where, $data_jumlah_cuti);
+
+		$this->kehadiran->update_jumlah_cuti($where, $data_kehadiran);
 		$this->kehadiran->update_sisa_cuti($where, $data_sisa_cuti);
+
+		
 	}
     
 }

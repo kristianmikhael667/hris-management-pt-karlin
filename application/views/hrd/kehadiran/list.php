@@ -66,9 +66,18 @@
                     <td align="center"><?php echo $row['jumlah_cuti_cuti_anak_khitan'] ; ?></td>
                     <td align="center"><?php echo $row['jumlah_izin'] ; ?></td>       
                     <td align="center"><?php echo $row['jumlah_sakit'] ; ?></td>
-                    <td align="center"><a href="<?php echo base_url('hrd/kehadiran/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-danger"> Kosongkan </a>
-                    <a href="<?php echo base_url('hrd/kehadiran/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Edit Sisa Cuti </a>  </td>
-                    <td align="center"><a href="<?php echo base_url('hrd/dashboard_hrd/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Excel </a>  </td>
+                    <td>
+                      <div class="btn-group" role="group">
+                          <a id="btnGroupDrop1" type="button" class="btn btn-outline-danger" data-toggle="dropdown" href="<?php echo base_url('hrd/kehadiran/edit?id=') . $row['id_karyawan']; ?>"> Kosongkan </a>
+                          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                              <a class="dropdown-item btn btn-outline-primary" href="<?php echo base_url('hrd/kehadiran/kosongkan_jumlah_cuti?id=') . $row['id_karyawan']; ?>" > Kosongkan Jumlah Cuti</a><br>
+                              <a class="dropdown-item btn btn-outline-primary" href="<?php echo base_url('hrd/kehadiran/kosongkan_sisa_cuti?id=') . $row['id_karyawan']; ?>"> Kosongkan Sisa Cuti</a><br>
+                          </div>
+                      </div>
+                      <a href="<?php echo base_url('hrd/kehadiran/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Edit </a>
+                    </td>
+                    
+                    <td align="center"><a href="<?php echo base_url('hrd/kehadiran/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Excel </a>  </td>
                   </tr>
  
                   <?php } ?>

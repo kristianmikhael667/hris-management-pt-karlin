@@ -34,15 +34,45 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label"> Jumlah Cuti </label>
+                            <label class="col-sm-3 col-form-label"> Jumlah Cuti Tahunan </label>
                             <div class="col-sm-8">
-                                <input type="number" class="form-control" name="jumlah_cuti" value="<?php echo $row['jumlah_cuti'] ?>" required >
+                                <input type="number" class="form-control" name="jumlah_cuti_tahunan" value="<?php echo $row['jumlah_cuti_tahunan'] ?>" required >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"> Jumlah Cuti Melahirkan </label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="jumlah_cuti_melahirkan" value="<?php echo $row['jumlah_cuti_melahirkan'] ?>" required >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"> Jumlah Cuti Keluarga Meninggal </label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="jumlah_cuti_keluarga_meninggal" value="<?php echo $row['jumlah_cuti_keluarga_meninggal'] ?>" required >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"> Jumlah Cuti Menikahkan Anak </label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="jumlah_cuti_menikahkan_anak" value="<?php echo $row['jumlah_cuti_menikahkan_anak'] ?>" required >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"> Jumlah Cuti Anak Khitanan </label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="jumlah_cuti_anak_khitan" value="<?php echo $row['jumlah_cuti_anak_khitan'] ?>" required >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"> Jumlah Cuti Pembaptisan Anak Khitanan </label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="jumlah_cuti_pembaptisan_anak" value="<?php echo $row['jumlah_cuti_pembaptisan_anak'] ?>" required >
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label"> Jumlah Izin </label>
                             <div class="col-sm-8">
-                                <input type="number" class="form-control" name="jumlah_izin" value="<?php echo $row['jumlah_sakit'] ?>" required >
+                                <input type="number" class="form-control" name="jumlah_izin" value="<?php echo $row['jumlah_izin'] ?>" required >
                             </div>
                         </div>
                         <div class="form-group row">
@@ -52,23 +82,42 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label"> Jumlah Sisa Cuti </label>
+                            <label class="col-sm-3 col-form-label"> Jumlah Sisa Cuti Tahunan </label>
                             <div class="col-sm-8">
-                                <input type="number" class="form-control" name="jumlah_cuti_cuti" value="<?php echo $row['jumlah_cuti_cuti'] ?>" required >
+                                <input type="number" class="form-control" name="jumlah_cuti_cuti_tahunan" value="<?php echo $row['jumlah_cuti_cuti_tahunan'] ?>" required >
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label"> Jumlah Sisa Izin </label>
+                            <label class="col-sm-3 col-form-label"> Jumlah Sisa Melahirkan </label>
                             <div class="col-sm-8">
-                                <input type="number" class="form-control" name="jumlah_cuti_izin"  value="<?php echo $row['jumlah_cuti_izin'] ?>" required >
+                                <input type="number" class="form-control" name="jumlah_cuti_cuti_melahirkan" value="<?php echo $row['jumlah_cuti_cuti_melahirkan'] ?>" required >
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label"> Jumlah Sisa Sakit </label>
+                            <label class="col-sm-3 col-form-label"> Jumlah Sisa Keluarga Meninggal </label>
                             <div class="col-sm-8">
-                                 <input type="number" class="form-control" name="jumlah_cuti_sakit"  value="<?php echo $row['jumlah_cuti_sakit'] ?>" required >
+                                <input type="number" class="form-control" name="jumlah_cuti_cuti_keluarga_meninggal" value="<?php echo $row['jumlah_cuti_cuti_keluarga_meninggal'] ?>" required >
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"> Jumlah Sisa Menikahkan Anak </label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="jumlah_cuti_cuti_menikahkan_anak" value="<?php echo $row['jumlah_cuti_cuti_menikahkan_anak'] ?>" required >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"> Jumlah Sisa Anak Khitanan </label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="jumlah_cuti_cuti_anak_khitan" value="<?php echo $row['jumlah_cuti_cuti_anak_khitan'] ?>" required >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"> Jumlah Sisa Cuti Pembaptisan Anak </label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="jumlah_cuti_cuti_pembaptisan_anak" value="<?php echo $row['jumlah_cuti_cuti_pembaptisan_anak'] ?>" required >
+                            </div>
+                        </div>
+                       
                         <div class="form-group row">
                             <div class="col-sm-10" style="float: right;">	
                                 <button class="btn btn-lg btn-danger" name="batal">BATAL</button>
