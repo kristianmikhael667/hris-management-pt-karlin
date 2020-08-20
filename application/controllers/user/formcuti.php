@@ -59,8 +59,10 @@ class Formcuti extends CI_Controller{
 
 		else{
 			
-			if($jenis_cuti == "Cuti Tahunan"){ //cuti //misal
-				$data = array(
+			
+
+			if($jenis_cuti == "Cuti Melahirkan"){ //cuti melahirkan
+				$data_cuti = array(
 					'mulai_cuti'	=> $mulai_cuti,
 					'akhir_cuti'    => $akhir_cuti,
 					'jenis_cuti' 	=> $jenis_cuti,
@@ -76,49 +78,15 @@ class Formcuti extends CI_Controller{
 					$months 			= floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
 					$days 				= floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 					
-					$cuti_tahunan 		= $data['jumlah_cuti_pertahun'] + $days;
-					$update_cuti_tahunan = array(
-						'jumlah_cuti_pertahun' => $cuti_tahunan
-					);
-					$sisa_cuti_tahunan 	= $data_pengajuan['jumlah_cuti_cuti_tahunan'] - $days;
-					$update_sisa_cuti_tahunan 	= array(
-						'jumlah_cuti_cuti_tahunan' => $sisa_cuti_tahunan
-					);
-
-					$where = array(
-						'id_karyawan' => $id_karyawan
-					);
-	
-					$this->formcuti->update_sisa_pengajuan($where, $update_sisa_cuti_tahunan);
-					$this->formcuti->update_kehadiran($where, $update_cuti_tahunan);
-					$this->formcuti->input_data($data,'tbl_cuti');
-					redirect('user/formcuti/index');
-			}
-
-			if($jenis_cuti == "Cuti Melahirkan"){ //cuti //misal
-				$data = array(
-					'mulai_cuti'	=> $mulai_cuti,
-					'akhir_cuti'    => $akhir_cuti,
-					'jenis_cuti' 	=> $jenis_cuti,
-					'alasan'		=> $alasan,
-					'id_karyawan'	=> $id_karyawan
-					);
-	
 					
-					$date1				= $mulai_cuti; //tanggal mulai
-					$date2				= $akhir_cuti; //tanggal akhir
-					$diff 				= abs(strtotime($date2) - strtotime($date1));
-					$years				= floor($diff / (365*60*60*24));
-					$months 			= floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-					$days 				= floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-					
-					$cuti_melahirkan 		= $data['jumlah_cuti_melahirkan'] + $days;
-					$update_cuti_melahirkan = array(
-						'jumlah_cuti_melahirkan' => $cuti_melahirkan
-					);
 					$sisa_cuti_melahirkan 	= $data_pengajuan['jumlah_cuti_cuti_melahirkan'] - $days;
 					$update_sisa_cuti_melahirkan 	= array(
 						'jumlah_cuti_cuti_melahirkan' => $sisa_cuti_melahirkan
+					);
+
+					$cuti_melahirkan 	= $data['jumlah_cuti_melahirkan'] + $days;
+					$tambah_cuti_melahirkan 	= array(
+						'jumlah_cuti_melahirkan' => $cuti_melahirkan
 					);
 
 					$where = array(
@@ -126,87 +94,12 @@ class Formcuti extends CI_Controller{
 					);
 	
 					$this->formcuti->update_sisa_pengajuan($where, $update_sisa_cuti_melahirkan);
-					$this->formcuti->update_kehadiran($where, $update_cuti_melahirkan);
-					$this->formcuti->input_data($data,'tbl_cuti');
+					$this->formcuti->update_kehadiran($where, $tambah_cuti_melahirkan);
+					$this->formcuti->input_data($data_cuti,'tbl_cuti');
 					redirect('user/formcuti/index');
 			}
-
-			if($jenis_cuti == "Izin"){ //jika cuti izin
-				$data_array = array(
-					'mulai_cuti'	=> $mulai_cuti,
-					'akhir_cuti'    => $akhir_cuti,
-					'jenis_cuti' 	=> $jenis_cuti,
-					'alasan'		=> $alasan,
-					'id_karyawan'	=> $id_karyawan
-					);
 
 			
-					$date1				= $mulai_cuti; //tanggal mulai
-					$date2				= $akhir_cuti; //tanggal akhir
-					$diff 				= abs(strtotime($date2) - strtotime($date1));
-					$years 				= floor($diff / (365*60*60*24));
-					$months 			= floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-					$days 				= floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-					
-					
-
-					$cuti 	= 	$data['jumlah_izin'] + $days;
-					$update_sakit = array(
-						'jumlah_izin' => $cuti
-					);
-
-					$sisa_izin 			= $data_pengajuan['jumlah_cuti_izin'] - $days;
-					$update_sisa_izin 	= array(
-						'jumlah_cuti_izin' => $sisa_izin
-					);
-
-					$where = array(
-						'id_karyawan' => $id_karyawan
-					);
-	
-					$this->formcuti->update_sisa_pengajuan($where, $update_sisa_izin);
-					$this->formcuti->update_kehadiran($where, $update_sakit);
-					$this->formcuti->input_data($data_array,'tbl_cuti');
-					redirect('user/formcuti/index');
-
-			}
-			else if($jenis_cuti == "Sakit"){ //jika cuti sakit
-				$data_array = array(
-					'mulai_cuti'	=> $mulai_cuti,
-					'akhir_cuti'    => $akhir_cuti,
-					'jenis_cuti' 	=> $jenis_cuti,
-					'alasan'		=> $alasan,
-					'id_karyawan'	=> $id_karyawan
-					);
-	
-					
-
-					$date1				= $mulai_cuti; //tanggal mulai
-					$date2				= $akhir_cuti; //tanggal akhir
-					$diff 				= abs(strtotime($date2) - strtotime($date1));
-					$years 				= floor($diff / (365*60*60*24));
-					$months 			= floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-					$days 				= floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-
-					$cuti 				= $data['jumlah_sakit'] + $days;
-					$update_cuti = array(
-						'jumlah_sakit' => $cuti
-					);
-					$sisa_sakit 			= $data_pengajuan['jumlah_cuti_sakit'] - $days;
-					$update_sisa_sakit 	= array(
-						'jumlah_cuti_sakit' => $sisa_sakit
-					);
-
-					$where = array(
-						'id_karyawan' => $id_karyawan
-					);
-	
-					$this->formcuti->update_sisa_pengajuan($where, $update_sisa_sakit);
-					$this->formcuti->update_kehadiran($where, $update_cuti);
-					$this->formcuti->input_data($data_array,'tbl_cuti');
-					
-					redirect('user/formcuti/index');
-			}
 			
 			
 		}
