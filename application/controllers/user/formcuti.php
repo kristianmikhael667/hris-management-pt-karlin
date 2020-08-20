@@ -36,10 +36,16 @@ class Formcuti extends CI_Controller{
 
 		$chek_pengajuan	= $this->formcuti->check_sisa_pengajuan($id_karyawan);
 		$data_pengajuan			=	$chek_pengajuan->row_array();
-
-		if($data_pengajuan['jumlah_cuti_cuti_tahunan'] <= 0){
+		
+		$ketentuan_cuti_tahunan					= $data_pengajuan['jumlah_cuti_cuti_tahunan'] <= 0;
+		$ketentuan_cuti_melahirkan				= $data_pengajuan['jumlah_cuti_cuti_melahirkan'] <= 0;
+		$ketentuan_cuti_keluarga_meninggal 		= $data_pengajuan['jumlah_cuti_cuti_keluarga_meninggal'] <= 0;
+		$ketentuan_cuti_menikahkan_anak			= $data_pengajuan['jumlah_cuti_cuti_menikahkan_anak'] <= 0;
+		$ketentuan_cuti_anak_khitan				= $data_pengajuan['jumlah_cuti_cuti_anak_khitan'] <= 0;
+		$ketentuan_cuti_cuti_pembaptisan_anak	= $data_pengajuan['jumlah_cuti_cuti_pembaptisan_anak'] <= 0;
+		if($ketentuan_cuti_tahunan || $ketentuan_cuti_melahirkan || $ketentuan_cuti_keluarga_meninggal || $ketentuan_cuti_menikahkan_anak || $ketentuan_cuti_anak_khitan || $ketentuan_cuti_cuti_pembaptisan_anak){
 			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_cuti_tahunan'] . '
+                        Maaf Jumlah Cuti Anda Sudah Melebihi 
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -47,15 +53,57 @@ class Formcuti extends CI_Controller{
 			redirect('user/formcuti/index');
 		}
 
-		if($data_pengajuan['jumlah_cuti_cuti_tahunan'] <= 0){
-			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_cuti_melahirkan'] . '
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>');
-			redirect('user/formcuti/index');
-		}
+		// else if($data_pengajuan['jumlah_cuti_cuti_melahirkan'] <= 0){
+		// 	$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        //                 Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_cuti_melahirkan'] . '
+        //                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        //                 <span aria-hidden="true">&times;</span>
+        //                 </button>
+        //             </div>');
+		// 	redirect('user/formcuti/index');
+		// }
+
+		// else if($data_pengajuan['jumlah_cuti_cuti_keluarga_meninggal'] <= 0){
+		// 	$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        //                 Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_cuti_melahirkan'] . '
+        //                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        //                 <span aria-hidden="true">&times;</span>
+        //                 </button>
+        //             </div>');
+		// 	redirect('user/formcuti/index');
+		// }
+
+		// else if($data_pengajuan['jumlah_cuti_cuti_menikahkan_anak'] <= 0){
+		// 	$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        //                 Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_cuti_melahirkan'] . '
+        //                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        //                 <span aria-hidden="true">&times;</span>
+        //                 </button>
+        //             </div>');
+		// 	redirect('user/formcuti/index');
+		// }
+
+		// else if($data_pengajuan['jumlah_cuti_cuti_anak_khitan'] <= 0){
+		// 	$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        //                 Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_cuti_melahirkan'] . '
+        //                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        //                 <span aria-hidden="true">&times;</span>
+        //                 </button>
+        //             </div>');
+		// 	redirect('user/formcuti/index');
+		// }
+
+		// else if($data_pengajuan['jumlah_cuti_cuti_pembaptisan_anak'] <= 0){
+		// 	$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        //                 Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_cuti_melahirkan'] . '
+        //                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        //                 <span aria-hidden="true">&times;</span>
+        //                 </button>
+        //             </div>');
+		// 	redirect('user/formcuti/index');
+		// }
+
+
 
 		else{
 			
