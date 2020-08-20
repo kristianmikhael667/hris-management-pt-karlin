@@ -37,7 +37,7 @@ class Formcuti extends CI_Controller{
 		$chek_pengajuan	= $this->formcuti->check_sisa_pengajuan($id_karyawan);
 		$data_pengajuan			=	$chek_pengajuan->row_array();
 
-		if($data['jumlah_cuti_tahunan'] >= 0){
+		if($data_pengajuan['jumlah_cuti_cuti_tahunan'] <= 0){
 			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
                         Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_cuti_tahunan'] . '
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -47,7 +47,7 @@ class Formcuti extends CI_Controller{
 			redirect('user/formcuti/index');
 		}
 
-		if($data['jumlah_cuti_melahirkan'] >= 0){
+		if($data_pengajuan['jumlah_cuti_cuti_tahunan'] <= 0){
 			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
                         Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_cuti_melahirkan'] . '
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
