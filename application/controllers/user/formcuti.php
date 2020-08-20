@@ -37,7 +37,7 @@ class Formcuti extends CI_Controller{
 		$chek_pengajuan	= $this->formcuti->check_sisa_pengajuan($id_karyawan);
 		$data_pengajuan			=	$chek_pengajuan->row_array();
 
-		if($data['jumlah_cuti_pertahun'] >= $data_pengajuan['jumlah_cuti_cuti_tahunan']){
+		if($data['jumlah_cuti_tahunan'] >= 0){
 			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
                         Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_cuti_tahunan'] . '
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -47,7 +47,7 @@ class Formcuti extends CI_Controller{
 			redirect('user/formcuti/index');
 		}
 
-		if($data['jumlah_cuti_melahirkan'] >= $data_pengajuan['jumlah_cuti_cuti_melahirkan']){
+		if($data['jumlah_cuti_melahirkan'] >= 0){
 			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
                         Maaf Jumlah Cuti Anda Sudah Melebihi ' . $data_pengajuan['jumlah_cuti_cuti_melahirkan'] . '
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -60,6 +60,43 @@ class Formcuti extends CI_Controller{
 		else{
 			
 			
+			if($jenis_cuti == "Cuti Tahunan"){ //cuti Tahunan
+				$data_cuti = array(
+					'mulai_cuti'	=> $mulai_cuti,
+					'akhir_cuti'    => $akhir_cuti,
+					'jenis_cuti' 	=> $jenis_cuti,
+					'alasan'		=> $alasan,
+					'id_karyawan'	=> $id_karyawan
+					);
+	
+					
+					$date1				= $mulai_cuti; //tanggal mulai
+					$date2				= $akhir_cuti; //tanggal akhir
+					$diff 				= abs(strtotime($date2) - strtotime($date1));
+					$years				= floor($diff / (365*60*60*24));
+					$months 			= floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+					$days 				= floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+					
+					
+					$sisa_cuti_tahunan 	= $data_pengajuan['jumlah_cuti_cuti_tahunan'] - $days;
+					$update_sisa_cuti_tahunan 	= array(
+						'jumlah_cuti_cuti_tahunan' => $sisa_cuti_tahunan
+					);
+
+					$cuti_tahunan 	= $data['jumlah_cuti_tahunan'] + $days;
+					$tambah_cuti_tahunan 	= array(
+						'jumlah_cuti_tahunan' => $cuti_tahunan
+					);
+
+					$where = array(
+						'id_karyawan' => $id_karyawan
+					);
+	
+					$this->formcuti->update_sisa_pengajuan($where, $update_sisa_cuti_tahunan);
+					$this->formcuti->update_kehadiran($where, $tambah_cuti_tahunan);
+					$this->formcuti->input_data($data_cuti,'tbl_cuti');
+					redirect('user/formcuti/index');
+			}
 
 			if($jenis_cuti == "Cuti Melahirkan"){ //cuti melahirkan
 				$data_cuti = array(
