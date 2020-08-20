@@ -66,7 +66,7 @@
                     <td align="center"><?php echo $row['jumlah_cuti_cuti_anak_khitan'] ; ?></td>
                     <td align="center"><?php echo $row['jumlah_izin'] ; ?></td>       
                     <td align="center"><?php echo $row['jumlah_sakit'] ; ?></td>
-                    <td align="center"><a href="<?php echo base_url('hrd/kehadiran/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-danger"> Edit Jumlah Cuti </a>
+                    <td align="center"><a href="<?php echo base_url('hrd/kehadiran/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-danger"> Kosongkan </a>
                     <a href="<?php echo base_url('hrd/kehadiran/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Edit Sisa Cuti </a>  </td>
                     <td align="center"><a href="<?php echo base_url('hrd/dashboard_hrd/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Excel </a>  </td>
                   </tr>
