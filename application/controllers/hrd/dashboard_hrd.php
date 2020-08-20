@@ -126,9 +126,14 @@ class Dashboard_hrd extends CI_Controller{
 						 $data_hadir = array(
 						 	'id_karyawan'		=> $id_karyawan,
 						 	'jumlah_hadir'		=> 0,
-						 	'jumlah_cuti'		=> 0,
-						 	'jumlah_izin'		=> 0,
-						 	'jumlah_sakit'		=> 0
+						 	'jumlah_cuti_tahunan'					=> 7,
+						 	'jumlah_cuti_melahirkan'				=> 7,
+							'jumlah_cuti_keluarga_meninggal'		=> 7,
+							'jumlah_cuti_menikahkan_anak'			=> 7,
+							'jumlah_cuti_anak_khitan'				=> 7,
+							'jumlah_cuti_pembaptisan_anak'			=> 7,
+						 	'jumlah_izin'							=> 0,
+						 	'jumlah_sakit'							=> 0
 						 );
 						 $this->kehadiran->add_kehadiran($data_hadir); //tbl_kehadiran
 
@@ -147,9 +152,12 @@ class Dashboard_hrd extends CI_Controller{
 
 						$data_jml_cuti = array(
 						 	'id_karyawan'		=> $id_karyawan,
-						 	'jumlah_cuti_cuti'		=> 7,
-						 	'jumlah_cuti_izin'		=> 7,
-						 	'jumlah_cuti_sakit'		=> 7
+						 	'jumlah_cuti_cuti_tahunan'					=> 7,
+						 	'jumlah_cuti_cuti_melahirkan'				=> 7,
+							'jumlah_cuti_cuti_keluarga_meninggal'		=> 7,
+							'jumlah_cuti_cuti_menikahkan_anak'			=> 7,
+							'jumlah_cuti_cuti_anak_khitan'				=> 7,
+							'jumlah_cuti_cuti_pembaptisan_anak'			=> 7
 						 );
 						 $this->cuti->add_cuti($data_jml_cuti); //tbl_jumlah_cuti
 

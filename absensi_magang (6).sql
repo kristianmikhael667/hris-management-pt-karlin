@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Agu 2020 pada 09.47
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.2.16
+-- Waktu pembuatan: 20 Agu 2020 pada 09.27
+-- Versi server: 10.1.34-MariaDB
+-- Versi PHP: 7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -40,7 +40,17 @@ CREATE TABLE `tbl_absen` (
 --
 
 INSERT INTO `tbl_absen` (`id_karyawan`, `tanggal_masuk`, `jam_masuk`, `lokasi`) VALUES
-(666, '2020-08-13', '08:58:30', 'DepokWest JavaIndonesia');
+(666, '2020-08-13', '08:58:30', 'DepokWest JavaIndonesia'),
+(666, '2020-08-19', '12:55:33', 'BekasiWest JavaIndonesia'),
+(666, '0000-00-00', '00:00:33', '333'),
+(666, '0000-00-00', '00:00:33', '3333'),
+(666, '0000-00-00', '00:03:33', '333'),
+(666, '0000-00-00', '00:03:33', '33'),
+(666, '0000-00-00', '00:00:33', '33'),
+(666, '0000-00-00', '00:00:33', '33'),
+(666, '0000-00-00', '00:00:33', '33'),
+(666, '0000-00-00', '00:00:33', '333'),
+(666, '0000-00-00', '00:00:33', '333');
 
 -- --------------------------------------------------------
 
@@ -67,6 +77,46 @@ CREATE TABLE `tbl_cuti` (
   `alasan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `tbl_cuti`
+--
+
+INSERT INTO `tbl_cuti` (`id_karyawan`, `mulai_cuti`, `akhir_cuti`, `jenis_cuti`, `alasan`) VALUES
+(666, '2020-08-19', '2020-08-20', 'Cuti Tahunan', '222'),
+(666, '2020-08-19', '2020-08-20', 'Cuti Tahunan', '222'),
+(666, '2020-08-19', '2020-08-20', '01', 'eee'),
+(666, '2020-08-19', '2020-08-20', 'Cuti Tahunan', 'iiii'),
+(666, '2020-08-19', '2020-08-20', 'Cuti Melahirkan', 'lahiran'),
+(666, '2020-08-19', '2020-08-20', 'Cuti Tahunan', 'ioio'),
+(666, '2020-08-19', '2020-08-21', 'Cuti Melahirkan', 'popop'),
+(666, '2020-08-19', '2020-08-20', 'Cuti Tahunan', 'mmmmmlmllm'),
+(666, '2020-08-19', '2020-08-20', 'Cuti Tahunan', 'bismillah'),
+(666, '2020-08-19', '2020-08-20', 'Cuti Tahunan', 'test cuti tahunan'),
+(666, '2020-08-19', '2020-08-20', 'Cuti Melahirkan', '...'),
+(666, '2020-08-19', '2020-08-20', 'Cuti Tahunan', 'l;l;'),
+(666, '2020-08-20', '2020-08-22', 'Cuti Melahirkan', 'e'),
+(666, '2020-08-20', '2020-08-23', 'Cuti Melahirkan', '22'),
+(666, '2020-08-20', '2020-08-27', 'Cuti Melahirkan', '22'),
+(666, '2020-08-20', '2020-08-22', 'Cuti Melahirkan', '2 hari'),
+(666, '2020-08-20', '2020-08-23', 'Cuti Tahunan', '3 hari'),
+(666, '2020-08-20', '2020-08-22', 'Cuti Melahirkan', '2 hari lahiran'),
+(666, '2020-08-20', '2020-08-24', 'Cuti Melahirkan', 'ee'),
+(666, '2020-08-20', '2020-08-22', 'Cuti Melahirkan', 'harusnya jadi 6. 4+2'),
+(666, '2020-08-20', '2020-08-23', 'Cuti Melahirkan', 'www'),
+(666, '2020-08-20', '2020-08-21', 'Cuti Melahirkan', 'oo'),
+(666, '2020-08-20', '2020-08-23', 'Cuti Melahirkan', '3'),
+(666, '2020-08-20', '2020-08-23', 'Cuti Melahirkan', 'o'),
+(666, '2020-08-20', '2020-08-27', 'Cuti Melahirkan', 'pp'),
+(666, '2020-08-20', '2020-08-22', 'Cuti Melahirkan', 'kok'),
+(666, '2020-08-20', '2020-08-22', 'Cuti Tahunan', 'sss'),
+(666, '2020-08-20', '2020-08-21', 'Cuti Tahunan', 'sss'),
+(666, '2020-08-21', '2020-08-21', 'Cuti Tahunan', '111'),
+(666, '2020-08-20', '2020-08-22', 'Cuti Tahunan', 'eee'),
+(666, '2020-08-20', '2020-08-23', 'Cuti Tahunan', '22'),
+(666, '2020-08-20', '2020-08-21', 'Cuti Melahirkan', 'ee'),
+(666, '2020-08-20', '2020-08-22', 'Cuti Melahirkan', 'dd'),
+(666, '2020-08-20', '2020-08-22', 'Cuti Melahirkan', 'ss');
+
 -- --------------------------------------------------------
 
 --
@@ -88,7 +138,7 @@ CREATE TABLE `tbl_dinas` (
 --
 
 INSERT INTO `tbl_dinas` (`id_karyawan`, `nomor_sppd`, `tgl_keberangkatan`, `bln_keberangkatan`, `tujuan`, `alasan`, `status`) VALUES
-(666, 1122, '2020-08-14', '2020-08-14', 'Raja Ampat', 'Gak Tau', 'MENUNGGU');
+(666, 1122, '2020-08-14', '2020-08-14', 'Raja Ampat', 'Gak Tau', 'DISETUJUI');
 
 -- --------------------------------------------------------
 
@@ -98,17 +148,20 @@ INSERT INTO `tbl_dinas` (`id_karyawan`, `nomor_sppd`, `tgl_keberangkatan`, `bln_
 
 CREATE TABLE `tbl_jumlah_cuti` (
   `id_karyawan` int(10) NOT NULL,
-  `jumlah_cuti_cuti` int(10) NOT NULL,
-  `jumlah_cuti_izin` int(2) NOT NULL,
-  `jumlah_cuti_sakit` int(2) NOT NULL
+  `jumlah_cuti_cuti_tahunan` int(10) NOT NULL,
+  `jumlah_cuti_cuti_melahirkan` int(10) NOT NULL,
+  `jumlah_cuti_cuti_keluarga_meninggal` int(10) NOT NULL,
+  `jumlah_cuti_cuti_menikahkan_anak` int(10) NOT NULL,
+  `jumlah_cuti_cuti_anak_khitan` int(10) NOT NULL,
+  `jumlah_cuti_cuti_pembaptisan_anak` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_jumlah_cuti`
 --
 
-INSERT INTO `tbl_jumlah_cuti` (`id_karyawan`, `jumlah_cuti_cuti`, `jumlah_cuti_izin`, `jumlah_cuti_sakit`) VALUES
-(666, 7, 7, 7);
+INSERT INTO `tbl_jumlah_cuti` (`id_karyawan`, `jumlah_cuti_cuti_tahunan`, `jumlah_cuti_cuti_melahirkan`, `jumlah_cuti_cuti_keluarga_meninggal`, `jumlah_cuti_cuti_menikahkan_anak`, `jumlah_cuti_cuti_anak_khitan`, `jumlah_cuti_cuti_pembaptisan_anak`) VALUES
+(666, 12, 10, 12, 12, 12, 12);
 
 -- --------------------------------------------------------
 
@@ -137,6 +190,8 @@ CREATE TABLE `tbl_karyawan` (
 
 INSERT INTO `tbl_karyawan` (`id_karyawan`, `nama_karyawan`, `jenis_kelamin`, `kode_bagian`, `alamat`, `nomor_telepon`, `email`, `tanggal_lahir`, `password`, `status`, `role_id`, `foto`) VALUES
 (221, 'admin', 'L', 1, 'Kamboja ', '0898765', 'kristianmikhael@gmail.com', '2020-08-02', '123', 'AKTIF', 2, '7d9f924f58b70ac5361011298751c016.gif'),
+(222, 'DANANG AJI', 'L', 2, '112', '0813127372600', 'lab01unas@gmail.com', '2020-08-02', '123', 'AKTIF', 3, '3018abc0272479e121349082917e7cee.jpg'),
+(223, 'DANANG', 'L', 2, '123', '123', '123', '2020-08-21', '123', 'AKTIF', 3, '70f4a3066fc03232f31fe53c37df28ab.jpg'),
 (666, 'Mikhael Kristian', 'L', 4, 'Depok ', '089668997397', 'kristianmikhael667@gmail.com', '2020-07-29', '123', 'AKTIF', 3, '9e49eb537ed030d6ef326c219298ad05.png'),
 (2020, 'Manajemen', 'L', 64, 'Curug', '0898765', 'magangsemester6@gmail.com', '2020-08-02', '123', 'AKTIF', 1, '');
 
@@ -149,7 +204,12 @@ INSERT INTO `tbl_karyawan` (`id_karyawan`, `nama_karyawan`, `jenis_kelamin`, `ko
 CREATE TABLE `tbl_kehadiran` (
   `id_karyawan` int(10) NOT NULL,
   `jumlah_hadir` int(11) NOT NULL,
-  `jumlah_cuti` int(11) NOT NULL,
+  `jumlah_cuti_tahunan` int(11) NOT NULL,
+  `jumlah_cuti_melahirkan` int(11) NOT NULL,
+  `jumlah_cuti_keluarga_meninggal` int(11) NOT NULL,
+  `jumlah_cuti_menikahkan_anak` int(10) NOT NULL,
+  `jumlah_cuti_anak_khitan` int(10) NOT NULL,
+  `jumlah_cuti_pembaptisan_anak` int(11) NOT NULL,
   `jumlah_izin` int(11) NOT NULL,
   `jumlah_sakit` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -158,8 +218,8 @@ CREATE TABLE `tbl_kehadiran` (
 -- Dumping data untuk tabel `tbl_kehadiran`
 --
 
-INSERT INTO `tbl_kehadiran` (`id_karyawan`, `jumlah_hadir`, `jumlah_cuti`, `jumlah_izin`, `jumlah_sakit`) VALUES
-(666, 1, 0, 0, 0);
+INSERT INTO `tbl_kehadiran` (`id_karyawan`, `jumlah_hadir`, `jumlah_cuti_tahunan`, `jumlah_cuti_melahirkan`, `jumlah_cuti_keluarga_meninggal`, `jumlah_cuti_menikahkan_anak`, `jumlah_cuti_anak_khitan`, `jumlah_cuti_pembaptisan_anak`, `jumlah_izin`, `jumlah_sakit`) VALUES
+(666, 2, 9, 17, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -318,7 +378,7 @@ ALTER TABLE `tbl_dinas`
 -- Indeks untuk tabel `tbl_jumlah_cuti`
 --
 ALTER TABLE `tbl_jumlah_cuti`
-  ADD KEY `id_karyawan` (`id_karyawan`);
+  ADD PRIMARY KEY (`id_karyawan`);
 
 --
 -- Indeks untuk tabel `tbl_karyawan`
@@ -386,7 +446,7 @@ ALTER TABLE `tbl_bagian`
 -- AUTO_INCREMENT untuk tabel `tbl_cuti`
 --
 ALTER TABLE `tbl_cuti`
-  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_dinas`
@@ -410,7 +470,7 @@ ALTER TABLE `tbl_karyawan`
 -- AUTO_INCREMENT untuk tabel `tbl_kehadiran`
 --
 ALTER TABLE `tbl_kehadiran`
-  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
+  MODIFY `id_karyawan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_manage_barang`
