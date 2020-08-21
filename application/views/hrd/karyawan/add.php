@@ -1,18 +1,10 @@
 <div id="content-wrapper">
-
     <div class="container-fluid">
-
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-            <a> Tambah Data Karyawan</a>
-            </li>   
-        </ol>
 
         <!-- Area Chart Example-->
         <div class="card mb-3">
             <div class="card-header">
-            <i class="fas fa-chart-area"></i>
+            <i class="fas fa-users"></i>
             Input Data Karyawan</div>
             <div class="card-body">
                 
@@ -117,8 +109,6 @@
             </div>
         </div>
     </div>
-<!-- /.content-wrapper -->
-
 </div>
 <!-- /#wrapper -->
 

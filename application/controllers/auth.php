@@ -51,7 +51,7 @@ class Auth extends CI_Controller{
                         redirect('manajemen/dashboard_manajemen');
                     }
                     else if(($role == '2') && ($status_karyawan=="AKTIF")){
-                        redirect('hrd/dashboard_hrd');
+                        redirect('hrd/utama_hrd');
                     }
                     else if(($role == '3') && ($status_karyawan=="AKTIF")){
                         redirect('user/dashboard_user');

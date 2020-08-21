@@ -8,7 +8,7 @@
   <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
       <div class="sidebar-brand-icon rotate-n-20">
       <i class="fa fa-lock" aria-hidden="true"></i>
       </div>
@@ -20,7 +20,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item collapsed">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="<?php echo base_url() ?>hrd/utama_hrd">
       <i class="fa fa-home" aria-hidden="true"></i>
         <span>Dashboard HRD</span></a>
     </li>

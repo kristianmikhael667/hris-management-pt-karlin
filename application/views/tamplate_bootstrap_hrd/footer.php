@@ -1,9 +1,9 @@
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <footer class="sticky-footer bg-gradient-success">
         <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+          <div class="copyright text-center my-auto text-white">
+            <span>Copyright &copy; PT Karlin Mastrindo 2020</span>
           </div>
         </div>
       </footer>
