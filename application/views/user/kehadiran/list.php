@@ -111,8 +111,13 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                           <thead>
                             <tr>
-                             <th>Hadir</th>
-                              <th>Cuti</th>
+                              <th>Hadir</th>
+                              <th>Cuti Tahunan</th>
+                              <th>Cuti Melahirkan</th>
+                              <th>Cuti Keluarga Meninggal</th>
+                              <th>Cuti Pernikahan Anak</th>
+                              <th>Cuti Anak Khinatan</th>
+                              <th>Cuti Pembaptisan Anak</th>
                               <th>Izin</th>
                               <th>Sakit</th>
                             </tr>
@@ -125,11 +130,13 @@
                             <tr>
                            
                               <td><?php echo $row['jumlah_hadir'] ; ?></td>
-                              
-                              <td><?php echo $row['jumlah_cuti'] ; ?> </td>
-
+                              <td><?php echo $row['jumlah_cuti_tahunan'] ; ?> </td>
+                              <td><?php echo $row['jumlah_cuti_melahirkan'] ; ?> </td>
+                              <td><?php echo $row['jumlah_cuti_keluarga_meninggal'] ; ?> </td>
+                              <td><?php echo $row['jumlah_cuti_menikahkan_anak'] ; ?> </td>
+                              <td><?php echo $row['jumlah_cuti_anak_khitan'] ; ?> </td>
+                              <td><?php echo $row['jumlah_cuti_pembaptisan_anak'] ; ?> </td>
                               <td><?php echo $row['jumlah_izin'] ; ?> </td>
-
                               <td><?php echo $row['jumlah_sakit'] ; ?> </td>
                             </tr>
 
@@ -145,26 +152,29 @@
                   <div class="card mb-3">
                     <div class="card-header">
                       <i class="fas fa-table"></i>
-                      Pengajuan Cuti</div>
+                      Sisa Cuti</div>
                     <div class="card-body">
                       <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                           <thead>
                             <tr>
-                              <th>Sisa Cuti</th>
-                              <th>Sisa Izin</th>
-                              <th>Sisa Sakit</th>
+                              <th>Sisa Cuti Tahunan</th>
+                              <th>Sisa Cuti Melahirkan</th>
+                              <th>Sisa Cuti Keluarga Meninggal</th>
+                              <th>Sisa Cuti Pernikahan Anak</th>
+                              <th>Sisa Cuti Anak Khinatan</th>
+                              <th>Sisa Cuti Pembaptisan Anak</th>
                             </tr>
                           </thead>
                           <tbody>
                                
                             <tr>
-                              
-                              <td><?php echo $row['jumlah_cuti_cuti'] ; ?> </td>
-
-                              <td><?php echo $row['jumlah_cuti_izin'] ; ?> </td>
-
-                              <td><?php echo $row['jumlah_cuti_sakit'] ; ?> </td>
+                              <td><?php echo $row['jumlah_cuti_cuti_tahunan'] ; ?> </td>
+                              <td><?php echo $row['jumlah_cuti_cuti_melahirkan'] ; ?> </td>
+                              <td><?php echo $row['jumlah_cuti_cuti_keluarga_meninggal'] ; ?> </td>
+                              <td><?php echo $row['jumlah_cuti_cuti_menikahkan_anak'] ; ?> </td>
+                              <td><?php echo $row['jumlah_cuti_cuti_anak_khitan'] ; ?> </td>
+                              <td><?php echo $row['jumlah_cuti_cuti_pembaptisan_anak'] ; ?> </td>
                             </tr>
 
                             <?php endforeach ?>

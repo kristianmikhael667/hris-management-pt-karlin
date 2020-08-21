@@ -35,7 +35,7 @@
                     <td><?php echo $row['tgl_permintaan'] ; ?></td>
                     <td><?php echo $row['keterangan'] ; ?></td>
                     <td>
-                      <button class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#view" name=""><i class="fas fa-file-pdf"></i></button>
+                      <button class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#view" name=""><i class="fas fa-eye"></i></button>
                       <?php
                         $id_karyawan = $this->session->userdata('id_karyawan');
                         $cek_query=$this->manajemenbarang->tampil($id_karyawan); 
@@ -90,8 +90,8 @@
                 </thead>
                 <tbody>
                 <?php
-                  //$id_karyawan = $this->session->userdata('id_purchase_request');
-                  $cek_query=$this->manajemenbarang->tampil_dat();
+                  $id_karyawan = $this->session->userdata('id_purchase_request');
+                  $cek_query=$this->manajemenbarang->tampil_dat($id_karyawan);
                   foreach ($cek_query->result_array() as $row)
                   {       
                 ?>

@@ -152,7 +152,7 @@ return $calendar;
 
                         <div class="card mr-4 ml-4 mb-4" style="width: 33rem;">
                             <div class="card-body">
-                                <h5 class="card-title text-center text-warning"><b>PERJALANAN DINAS</b></h5>
+                                <h5 class="card-title text-center text-warning"><b>DATA DINAS DAN PERJALANAN DINAS</b></h5>
                                 <center>
                                 <i class="fa fa-road fa-10x center" aria-hidden="true"></i>
                                 </center>
@@ -171,6 +171,18 @@ return $calendar;
                             </div>
                             <div class="card-footer">
                                 <a href="<?php echo base_url('user/medicalreimbust') ?>" class="btn btn-danger btn-block">KLIK SAYA</a>
+                            </div>
+                        </div>
+
+                        <div class="card mr-4 ml-4 mb-4" style="width: 33rem;">
+                            <div class="card-body">
+                                <h5 class="card-title text-center text-dark"><b>PURCHASE REQUEST & MANAJEMEN BARANG</b></h5>
+                                <center>
+                                <i class="fa fa-cubes fa-10x" aria-hidden="true"></i>
+                                </center>
+                            </div>
+                            <div class="card-footer">
+                                <a href="<?php echo base_url('user/databarang') ?>" class="btn btn-dark btn-block">KLIK SAYA</a>
                             </div>
                         </div>
                         

@@ -10,9 +10,10 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
+                    <td rowspan="3" align="center">No</td>
                     <td rowspan="3" align="center">Id Karyawan</th>
                     <td rowspan="3" align="center">Nama Karyawan</th>
-                    <td colspan="15" align="center">Record Timesheet</th>
+                    <td colspan="17" align="center">Record Timesheet</th>
                   </tr>
                   <tr>
                     <td rowspan="2" align="center">Jumlah Hadir</th>
@@ -21,11 +22,14 @@
                     <td colspan="2" align="center">Cuti Keluarga Meninggal</th>
                     <td colspan="2" align="center">Cuti Menikahkan Anak</th>
                     <td colspan="2" align="center">Cuti Anak Khitan</th>
+                    <td colspan="2" align="center">Cuti Pembaptisan Anak</th>
                     <td rowspan="2" align="center">Cuti Izin</th>
                     <td rowspan="2" align="center">Cuti Sakit</th>
                     <td colspan="2" align="center">Action</th>
                   </tr>
                   <tr>
+                    <td align="center">Jumlah</th>
+                    <td align="center">Sisa</th>
                     <td align="center">Jumlah</th>
                     <td align="center">Sisa</th>
                     <td align="center">Jumlah</th>
@@ -46,11 +50,12 @@
                  
                  
                   $cek_query=$this->kehadiran->list(); 
-                  
+                  $no = 1;
                   foreach ($cek_query->result_array() as $row)
                   {       
                 ?>
                   <tr>
+                    <td><?php echo $no++;?></td>
                     <td align="center"><?php echo $row['id_karyawan'] ; ?></td>
                     <td align="center"><?php echo $row['nama_karyawan'] ; ?></td>
                     <td align="center"><?php echo $row['jumlah_hadir'] ; ?></td>
@@ -64,6 +69,8 @@
                     <td align="center"><?php echo $row['jumlah_cuti_cuti_menikahkan_anak'] ; ?></td>
                     <td align="center"><?php echo $row['jumlah_cuti_anak_khitan'] ; ?></td>
                     <td align="center"><?php echo $row['jumlah_cuti_cuti_anak_khitan'] ; ?></td>
+                    <td align="center"><?php echo $row['jumlah_cuti_pembaptisan_anak'] ; ?></td>
+                    <td align="center"><?php echo $row['jumlah_cuti_cuti_pembaptisan_anak'] ; ?></td>
                     <td align="center"><?php echo $row['jumlah_izin'] ; ?></td>       
                     <td align="center"><?php echo $row['jumlah_sakit'] ; ?></td>
                     <td>
