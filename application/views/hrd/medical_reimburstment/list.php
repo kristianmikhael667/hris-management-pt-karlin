@@ -17,6 +17,7 @@
                 <thead>
                   <tr>
                     <th>Id Karyawan</th>
+                    <th>Nama Karyawan</th>
                     <th>Klaim ID</th>
                     <th>Tanggal Pengajuan</th>
                     <th>Status Pengajuan</th>
@@ -39,6 +40,7 @@
                 ?>
                   <tr>
                     <td><?php echo $row['id_karyawan'] ; ?></td>
+                    <td><?php echo $row['nama_karyawan'] ; ?></td>
                     <td><?php echo $row['klaim_id'] ; ?></td>
                     <td><?php echo $row['tanggal_pengajuan'] ; ?></td>
                     <td><?php echo $row['status_pengajuan'] ; ?></td>
@@ -47,8 +49,8 @@
                     <td><?php echo $row['jumlah_disetujui'] ; ?></td>
                     <td><img style="width: 100px;" src="<?php echo base_url().'assets/images/'.$row['struck'];?>"></td>
                     <td><?php echo $row['ket'] ; ?></td>
-                    <td><a href="<?php echo base_url('hrd/dashboard_hrd/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-danger"> Hapus </a>
-                    <a href="<?php echo base_url('hrd/dashboard_hrd/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Edit </a>  </td>
+                    <td><a href="<?php echo base_url('hrd/medicalreimbust/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-danger"> Hapus </a>
+                    <a href="<?php echo base_url('hrd/medicalreimbust/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-outline-success"> Edit </a>  </td>
                   </tr>
 
                   <?php } ?>

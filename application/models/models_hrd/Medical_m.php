@@ -6,7 +6,8 @@ class Medical_m extends CI_Model{
     public function list()
 	{
 		$this->db->select('*');
-		$this->db->from('tbl_medical');
+		$this->db->from('tbl_medical t_medical');
+		$this->db->join('tbl_karyawan t_karyawan', 't_karyawan.id_karyawan = t_medical.id_karyawan');
 		$query = $this->db->get();
 		return $query;
 		if($query->num_rows()>0)
@@ -15,11 +16,13 @@ class Medical_m extends CI_Model{
 	}
 
 	public function check_medical($id){
+
 		$this->db->select('*');
-		$this->db->from('tbl_medical');
+		$this->db->from('tbl_medical ');
 		$this->db->where('id_karyawan', $id);
 		$query = $this->db->get();
-        return $query;
+        
+    
 	}
 
 	public function add_medical($id){	
