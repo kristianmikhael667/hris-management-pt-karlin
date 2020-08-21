@@ -45,10 +45,11 @@
                       <button class="btn btn-sm btn-warning mb-2" name=""><i class="fa fa-file"></i> Pdf</button>
                     </form>
                       <?php
-                        $cek_query=$this->datadinas->list(); 
+                      $id_karyawan = $this->session->userdata('id_karyawan');
+                        $cek_query=$this->datadinas->list($id_karyawan); 
                         foreach ($cek_query->result_array() as $row)
                         { ?>
-                          <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('user/perjalanandinas/delete?id=') . $row['id_karyawan']; ?>"><i class="fa fa-trash"></i> Delete</a>
+                          <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('user/perjalanandinas/delete?id=') . $row['nomor_sppd']; ?>"><i class="fa fa-trash"></i> Delete</a>
                       <?php } ?>
                         <button class="btn btn-sm btn-success mb-2" data-toggle="modal" data-target="#edit" name=""><i class="fa fa-magic"></i> Edit</button></td>
                   </tr>
