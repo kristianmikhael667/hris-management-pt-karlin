@@ -36,8 +36,21 @@
         </div>
       </li>
 
+      <li class="nav-item dropdown no-arrow mx-1 mt-1">
+      <a href="#" class="nav-link dropdown-toggle"><i class="fa fa-user fa-sm text-white-50"></i> Status HRD : <span class="mr-2 d-none d-lg-inline text-dark-600 large text-dark">
+            <?php
+              $id_karyawan = $this->session->userdata('id_karyawan');
+              $cek_query=$this->model_auth->check_employe($id_karyawan); 
+              $a = 1;
+                foreach ($cek_query->result_array() as $row)
+                {       
+                     echo $row['status'] ; 
+                } 
+            ?></span></a>
+      </li>
+
       <!-- Nav Item - Alerts -->
-      <li class="nav-item dropdown no-arrow mx-1">
+      <li class="nav-item dropdown no-arrow mx-1 mt-1">
         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-bell fa-fw"></i>
           <!-- Counter - Alerts -->
@@ -54,7 +67,7 @@
       </li>
 
       <div class="topbar-divider d-none d-sm-block"></div>
-
+      
       <!-- Nav Item - User Information -->
       <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

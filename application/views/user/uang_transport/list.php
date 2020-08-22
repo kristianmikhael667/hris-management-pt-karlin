@@ -41,7 +41,6 @@
                     <td><?php echo $row['status']; ?> </td>  
                     <td>
                     <a href="<?php echo base_url('user/laporan_uangtr/pdfuangtr?id=') . $row['id_karyawan']; ?>" class="btn btn-warning"> Pdf </a>
-                    <a href="<?php echo base_url('user/uangtransport/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-primary"> Edit </a>
                     <a href="<?php echo base_url('user/uangtransport/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-danger"> Delete </a>
                     </td>
                     

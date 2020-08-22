@@ -6,34 +6,34 @@
 
 <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url() ?>manajemen/dashboard_manajemen">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <i class="fa fa-home"></i>
       <span>Dashboard Manajemen</span>
     </a>
   </li>
 
   <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url() ?>manajemen/setujudinas">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <i class="fa fa-road"></i>
       <span>Persetujuan Perjalanan Dinas</span>
     </a>
   </li>
   
   <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url() ?>manajemen/setujumedical">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <i class="fa fa-plus-square"></i>
       <span>Persetujuan Medical Reimbust</span>
     </a>
   </li>
 
   <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url() ?>manajemen/setujuuang">
-      <i class="fas fa-fw fa-chart-area"></i>
+      <i class="fa fa-credit-card"></i>
       <span>Persetujuan Uang Transport</span></a>
   </li>
   
   <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url() ?>manajemen/setujupurchase">
-      <i class="fas fa-fw fa-chart-area"></i>
+      <i class="fa fa-cubes"></i>
       <span>Persetujuan Purchase Request</span></a>
   </li>
 </ul>

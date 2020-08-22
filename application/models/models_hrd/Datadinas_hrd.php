@@ -52,10 +52,9 @@ class Datadinas_hrd extends CI_Model{
 		return $query;
 	}
 
-	public function update_data($where,$data,$table)
+	public function edit($id, $data)
 	{
-		$this->db->where($where);
-		$this->db->update($table,$data);
+		$this->db->update('tbl_dinas', $data, $id);	
 	}
 	
 }

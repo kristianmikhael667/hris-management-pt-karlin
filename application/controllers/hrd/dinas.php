@@ -40,7 +40,32 @@ class Dinas extends CI_Controller{
 			'uang_makan' => $uang_makan
 			);
 		$this->perjalanan_dinas->input_data($data,'tbl_perjalanan_dinas');
-		redirect('hrd/perjalanandinas/index');
+		redirect('hrd/dinas/index');
+	}
+
+	public function update(){
+		$id_karyawan		= $this->input->post('id_karyawan');
+		$nomor_sppd = $this->input->post('nomor_sppd');
+		$tgl_keberangkatan = $this->input->post('tgl_keberangkatan');
+		$bln_keberangkatan = $this->input->post('bln_keberangkatan');
+		$tujuan = $this->input->post('tujuan');
+		$alasan = $this->input->post('alasan');
+
+		$data = array(
+			'id_karyawan' => $id_karyawan,
+			'nomor_sppd' => $nomor_sppd,
+			'tgl_keberangkatan' => $tgl_keberangkatan,
+			'bln_keberangkatan' => $bln_keberangkatan,
+			'tujuan' => $tujuan,
+			'alasan'	=> $alasan
+			);
+
+		$where = array(
+			'id_karyawan' => $id_karyawan
+		);
+
+		$this->datadinas->edit($where,$data, 'tbl_dinas');
+		redirect('hrd/dinas/index');
 	}
     
 }

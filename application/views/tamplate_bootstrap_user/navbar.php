@@ -41,7 +41,7 @@
       </li>
 
       <!-- Nav Item - Alerts -->
-      <li class="nav-item dropdown no-arrow mx-1">
+      <li class="nav-item dropdown no-arrow mx-1 mt-1">
       <a href="#" class="nav-link dropdown-toggle"><i class="fa fa-user fa-sm text-white-50"></i> Status Karyawan : <span class="mr-2 d-none d-lg-inline text-dark-600 large text-success">
             <?php
               $id_karyawan = $this->session->userdata('id_karyawan');

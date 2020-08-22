@@ -1,8 +1,6 @@
 <div id="content-wrapper">
 
       <div class="container-fluid">
-      <button class="btn btn-sm btn-success mb-2 mt-2" data-toggle="modal" data-target="#tambahuang" name=""><i class="fas fa-plus fa-sm"></i> Input Perjalanan Dinas</button>
-
       
         <!-- DataTables Example -->
         <div class="card mb-3">
@@ -42,14 +40,16 @@
                     <td><?php echo $row['alasan'] ; ?></td>
                     <td><?php echo $row['status']; ?></td>
                     <td>
-                    <button class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#view" name=""><i class="fa fa-eye"></i></button>
+                    <button class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#view" name=""><i class="fa fa-eye"></i> View</button>
+                    <button class="btn btn-sm btn-warning mb-3 mt-2" data-toggle="modal" data-target="#tambahuang" name=""><i class="fas fa-plus fa-sm"></i> Input Perjalanan Dinas</button>
+
                       <?php
                         $cek_query=$this->datadinas->tampil_data(); 
                         foreach ($cek_query->result_array() as $row)
                         { ?>
-                          <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('hrd/perjalanandinas/delete?id=') . $row['id_karyawan']; ?>"><i class="fa fa-trash"></i></a>
+                          <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('hrd/perjalanandinas/delete?id=') . $row['nomor_sppd']; ?>"><i class="fa fa-trash"></i> Delete</a>
                       <?php } ?>
-                        <button class="btn btn-sm btn-success mb-2" data-toggle="modal" data-target="#edit" name=""><i class="fa fa-magic"></i></button></td>
+                        <button class="btn btn-sm btn-success mb-2" data-toggle="modal" data-target="#edit" name=""><i class="fa fa-magic"></i> Edit</button></td>
                   </tr>
 
                   <?php } ?>
@@ -59,11 +59,16 @@
             </div>
           </div>
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-          <div class="modal fade" id="tambahuang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="tambahuang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Uang Transportasi</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Data Perjalanan Dinas</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -75,7 +80,7 @@
                 <br>
                 <select class="form-control" id="sel1" name="nomor_sppd">
                     <?php 
-                     $cek_query=$this->datadinas->tampil_data(); 
+                    $cek_query=$this->datadinas->tampil_data(); 
                     foreach ($cek_query->result_array() as $row) { ?>
                     <option> <?php echo $row['nomor_sppd'] ?> </option>
                     <?php } ?>
@@ -106,6 +111,58 @@
   </div>
 </div>
 
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Data Dinas</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+        <form action="<?php echo base_url()?>hrd/dinas/update"  method="post">
+        <?php	
+            $id = $this->input->get('id');
+            $cek_query = $this->datadinas->tampil_data($id);
+
+            foreach ($cek_query->result_array() as $row)
+            {  
+              ?>
+              <div class="form-group">
+                <label>ID Karyawan</label>
+                <input type="number" name="id_karyawan" class="form-control" readonly placeholder="Nomor SPPD" value="<?php echo $row['id_karyawan'] ?>" required>
+
+                <label>Nomor SPPD</label>
+                <input type="number" name="nomor_sppd" class="form-control" placeholder="Nomor SPPD" value="<?php echo $row['nomor_sppd'] ?>" required>
+
+                <label>Tanggal Keberangkatan</label>
+                <input type="date" name="tgl_keberangkatan" class="form-control" placeholder="Tanggal Keberangkatan" value="<?php echo $row['tgl_keberangkatan'] ?>" required>
+
+                <label>Bulan Keberangkatan</label>
+                <input type="date" name="bln_keberangkatan" class="form-control" placeholder="Keterangan" value="<?php echo $row['bln_keberangkatan'] ?>" required>
+                
+                <label>Tujuan</label>
+                <input type="text" name="tujuan" class="form-control" placeholder="Uang Makan" value="<?php echo $row['tujuan'] ?>" required>
+
+                <label>Alasan</label>
+                <input type="text" name="alasan" class="form-control" placeholder="Uang Makan" value="<?php echo $row['alasan'] ?>" required>
+
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Edit</button>
+              <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <?php } ?>
+          </form>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIEW -->
 <div class="modal fade" id="view" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
@@ -116,12 +173,7 @@
           </button>
         </div>
         <div class="modal-body">
-        <?php
-          $cek_query=$this->datadinas->tampil_data(); 
-            foreach ($cek_query->result_array() as $row)
-          { ?>
-              <a class="btn btn-sm btn-danger mb-2" href="<?php echo base_url('hrd/perjalanandinas/delete?id=') . $row['id_karyawan']; ?>"><i class="fa fa-trash"></i></a>
-          <?php } ?>
+        
         <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -163,4 +215,7 @@
         </div>
     </div>
   </div>
+
+
+
 </div>

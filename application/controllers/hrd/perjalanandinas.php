@@ -47,6 +47,8 @@ class Perjalanandinas extends CI_Controller{
 
 	public function delete()
 	{
-		
+		$id = $this->input->get('id');
+		$this->perjalanan_dinas->delete($id);
+		redirect(base_url('hrd/dinas/index'));
 	}
 }
