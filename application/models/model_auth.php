@@ -45,6 +45,14 @@ class Model_auth extends CI_Model{
         return $query;
     }
 
+    public function uangtr($id){
+        $this->db->select('*');
+        $this->db->from('tbl_transportasi');
+        $this->db->where('id_karyawan', $id);
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function transport($id){
         $this->db->select('*');
         $this->db->from('tbl_transportasi');

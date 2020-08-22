@@ -214,7 +214,8 @@ class Dashboard_hrd extends CI_Controller{
 						// );
 						// $this->kehadiran->hadir($absen); //tbl_absen
 
-						echo "<script>alert('UPLOAD DATA BERHASIL')</script>";
+						echo "<script>alert('UPLOAD DATA KARYAWAN BERHASIL')</script>";
+						redirect('hrd/dashboard_hrd/index');
 					}
 			}
 		}
@@ -277,7 +278,8 @@ class Dashboard_hrd extends CI_Controller{
 					'id_karyawan' => $id_karyawan
 				);
 				$this->karyawan->edit($where, $data_user1);
-				//echo "<script>alert('Berhasil mengupload data')</script>";
+				echo "<script>alert('DATA KARYAWAN BERHASIL DI EDIT')</script>";
+				redirect('hrd/dashboard_hrd/index');
 			
 			}
 		}
@@ -310,7 +312,8 @@ class Dashboard_hrd extends CI_Controller{
 				'id_karyawan' => $id_karyawan
 			);
 			$this->karyawan->edit($where, $data_user1);
-			//echo "<script>alert('Berhasil mengupload data')</script>";
+			echo "<script>alert('DATA KARYAWAN BERHASIL DI EDIT')</script>";
+			redirect('hrd/dashboard_hrd/index');
 			
 		}
 

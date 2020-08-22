@@ -149,6 +149,6 @@ class Medicalreimbust extends CI_Controller{
 		$id = $this->input->get('id');
 		$where = array('id_karyawan' => $id);
 		$this->medical->delete($where);
-		
+		redirect('user/medicalreimbust/index');
 	}
 }

@@ -16,7 +16,8 @@
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Id Transportasi</th>
+                    <th>Id Karyawan</th>
+                    <th>Tanggal</th>
                     <th>Uang Bensin</th>
                     <th>Uang Parkir</th>
                     <th>Status</th>
@@ -34,13 +35,14 @@
                 <tr>
                     <td><?php echo $no++ ?></td>
                     <td><?php echo $row['id_karyawan'] ; ?></td>
+                    <td><?php echo $row['tanggal'] ; ?></td>
                     <td>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_bensin'])  ?></td>
                     <td>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_parkir'])  ?></td>
                     <td><?php echo $row['status']; ?> </td>  
                     <td>
-                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-warning"> Pdf </a>
-                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-primary"> Edit </a>
-                    <a href="<?php echo base_url('user/pengajuancuti/ajukan?id=') . $row['id_karyawan']; ?>" class="btn btn-danger"> Delete </a>
+                    <a href="<?php echo base_url('user/laporan_uangtr/pdfuangtr?id=') . $row['id_karyawan']; ?>" class="btn btn-warning"> Pdf </a>
+                    <a href="<?php echo base_url('user/uangtransport/edit?id=') . $row['id_karyawan']; ?>" class="btn btn-primary"> Edit </a>
+                    <a href="<?php echo base_url('user/uangtransport/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-danger"> Delete </a>
                     </td>
                     
                 </tr>

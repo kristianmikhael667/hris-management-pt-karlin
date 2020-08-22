@@ -91,7 +91,7 @@
                 <br>
 
                 <label>Keterangan</label>
-                <input type="number" name="ket" class="form-control" placeholder="Keterangan" required>
+                <input type="text" name="ket" class="form-control" placeholder="Keterangan" required>
               </div>
               
               <button type="submit" class="btn btn-primary">Tambah</button>

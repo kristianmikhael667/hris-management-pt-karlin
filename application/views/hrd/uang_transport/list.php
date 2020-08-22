@@ -77,6 +77,9 @@
                     <?php } ?>
                 </select>
                 <br>
+                
+                <label for="">Tanggal</label>
+                <input type="date" name="tanggal" class="form-control" required>
 
                 <label>Uang Bensin</label>
                 <input type="number" name="uang_bensin" class="form-control" placeholder="Input Uang Bensin" required>

@@ -13,6 +13,7 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
+                    <th>No</th>
                     <th>Id Karyawan</th>
                     <th>Nama Karyawan</th>
                     <th>Kode Bagian</th>
@@ -28,13 +29,14 @@
                 <tbody>
                 <?php
                  
-                 
+                 $no = 1;
                   $cek_query=$this->karyawan->list(); 
                   
                   foreach ($cek_query->result_array() as $row)
                   {       
                 ?>
                   <tr>
+                    <td><?php echo $no++ ?></td>
                     <td><?php echo $row['id_karyawan'] ; ?></td>
                     <td><?php echo $row['nama_karyawan'] ; ?></td>
                     <td><?php echo $row['kode_bagian'] ; ?></td>

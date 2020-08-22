@@ -30,25 +30,41 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label"> DEVISI </label>
+                            <label class="col-sm-3 col-form-label"> DIVISI </label>
                             <div class="col-sm-8">
                                 <select class="form-control" name="kode_bagian" required >
-                                    <option value="01"> CEO </option>
-                                    <option value="02"> MANAGER </option>
-                                    <option value="03"> AM </option>
-                                    <option value="04"> HR </option>
-                                    <option value="04"> WEB DEV </option>
-                                    <option value="04"> DESAIN GRAFIS </option>
-                                    <option value="04"> SALES </option>
+                                    <option> -- Pilih Divisi -- </option>
+                                    <option value="CEO"> CEO </option>
+                                    <option value="GENERAL MANAGER"> GENERAL MANAGER </option>
+                                    <option value="FINANCE & HRD MANAGER"> FINANCE & HRD MANAGER </option>
+                                    <option value="SALES MANAGER"> SALES MANAGER </option>
+                                    <option value="SECRETARY/HRD"> SECRETARY/HRD </option>
+                                    <option value="MANAGER IT"> MANAGER IT </option>
+                                    <option value="ACCOUNTING"> ACCOUNTING </option>
+                                    <option value="FINANCE"> FINANCE </option>
+                                    <option value="SALES ADMIN"> SALES ADMIN </option>
+                                    <option value="ADMIN"> ADMIN </option>
+                                    <option value="PURCHASING"> PURCHASING </option>
+                                    <option value="ACCOUNT MANAGER"> ACCOUNT MANAGER </option>
+                                    <option value="AM"> AM </option>
+                                    <option value="RECEPTIONIST"> RECEPTIONIST </option>
+                                    <option value="ADMIN WEB"> ADMIN WEB </option>
+                                    <option value="PRODUCT SPECIALIST"> PRODUCT SPECIALIST </option>
+                                    <option value="SPV SALES"> SPV SALES </option>
+                                    <option value="ADM LPSE"> ADM LPSE </option>
+                                    <option value="HR"> HR </option>
+                                    <option value="WEB DEVELOPER"> WEB DEVELOPER </option>
+                                    <option value="DESAIN GRAFIS"> DESAIN GRAFIS </option>
+                                    <option value="SALES"> SALES </option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label  class="col-sm-3 col-form-label"> AKSES WEB </label>
                             <div class="form-group col-sm-6">	
-                                    <input type="radio"  name="role_id" value="1" > MANAGEMENT <br>
-                                    <input type="radio"  name="role_id" value="2" > HR <br>
-                                    <input type="radio"  name="role_id" value="3" > USER
+                                    <input type="radio" name="role_id" value="1" > MANAGEMENT <br>
+                                    <input type="radio" name="role_id" value="2" > HR <br>
+                                    <input type="radio" name="role_id" value="3" > KARYAWAN
                             </div>
                         </div>
                         <div class="form-group row">

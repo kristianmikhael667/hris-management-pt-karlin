@@ -24,31 +24,7 @@ $id_karyawan = $this->session->userdata('id_karyawan');
                   Nama
                   <div class="card-footer small text-muted"><?php echo $row['nama_karyawan'] ?></div><br>
                   Jabatan
-                  <div class="card-footer small text-muted"><?php
-                   $jabatan = $row['kode_bagian'];
-                   
-                  if($jabatan == 1){
-                     echo "CEO";
-                  }
-                  else if($jabatan == 2){
-                    echo "Manger";
-                  }
-                  else if($jabatan == 3){
-                    echo "AM";
-                  }
-                  else if($jabatan == 4){
-                    echo "HR";
-                  }
-                  else if($jabatan == 5){
-                    echo "Web Dev";
-                  }
-                  else if($jabatan == 6){
-                    echo "Desain Grafis";
-                  }
-                  else if($jabatan == 7){
-                    echo "Sales";
-                  }
-                   ?></div><br>
+                  <div class="card-footer small text-muted"><?php echo $row['kode_bagian'] ?></div><br>
                   Alamat
                   <div class="card-footer small text-muted"><?php echo $row['alamat']  ?></div><br>
                   Nomor Telepon

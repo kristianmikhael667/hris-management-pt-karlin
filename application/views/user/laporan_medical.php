@@ -60,7 +60,7 @@
                           $cek_query=$this->model_auth->check_medical($id_karyawan);
                           foreach ($cek_query->result_array() as $row)
                         {          
-                      ?><?php echo $row['struck'] ; ?> 
+                      ?><img style="width: 100px;" src="<?php echo base_url().'assets/images/'.$row['struck'];?>"> 
                     <?php } ?></td>
             <td><?php $id_karyawan = $this->session->userdata('id_karyawan');
                           $cek_query=$this->model_auth->check_medical($id_karyawan); 
