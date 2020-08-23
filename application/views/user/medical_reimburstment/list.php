@@ -15,7 +15,7 @@
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
-                  <tr>
+                  <tr class="text-center">
                     <th>Id Karyawan</th>
                     <th>Klaim ID</th>
                     <th>Tanggal Pengajuan</th>
@@ -37,7 +37,7 @@
                   foreach ($cek_query->result_array() as $row)
                   {       
                 ?>
-                  <tr>
+                  <tr class="text-center">
                     <td><?php echo $row['id_karyawan'] ; ?></td>
                     <td><?php echo $row['klaim_id'] ; ?></td>
                     <td><?php echo $row['tanggal_pengajuan'] ; ?></td>

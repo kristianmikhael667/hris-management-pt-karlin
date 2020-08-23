@@ -39,7 +39,7 @@
                       <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                           <thead>
-                            <tr>
+                            <tr class="text-center">
                               <th>No.</th>
                               <th>Waktu Hadir</th>
                               <th>Tanggal Hadir</th>
@@ -53,7 +53,7 @@
                                     foreach ($cek_query->result_array() as $row)
                                   {          
                                 ?>
-                            <tr>
+                            <tr class="text-center">
                              
                               <td> <?php echo  $a++; ?> </td>
                               <td><?php echo $row['jam_masuk'] ; ?> </td>
@@ -110,7 +110,7 @@
                       <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                           <thead>
-                            <tr>
+                            <tr class="text-center">
                               <th>Hadir</th>
                               <th>Cuti Tahunan</th>
                               <th>Cuti Melahirkan</th>
@@ -127,7 +127,7 @@
                                     $cek_query=$this->kehadiran->record_cuti($id_karyawan); 
                                     foreach ($cek_query->result_array() as $row):        
                                 ?>
-                            <tr>
+                            <tr class="text-center">
                            
                               <td><?php echo $row['jumlah_hadir'] ; ?></td>
                               <td><?php echo $row['jumlah_cuti_tahunan'] ; ?> </td>
@@ -157,7 +157,7 @@
                       <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                           <thead>
-                            <tr>
+                            <tr class="text-center">
                               <th>Sisa Cuti Tahunan</th>
                               <th>Sisa Cuti Melahirkan</th>
                               <th>Sisa Cuti Keluarga Meninggal</th>
@@ -168,7 +168,7 @@
                           </thead>
                           <tbody>
                                
-                            <tr>
+                            <tr class="text-center">
                               <td><?php echo $row['jumlah_cuti_cuti_tahunan'] ; ?> </td>
                               <td><?php echo $row['jumlah_cuti_cuti_melahirkan'] ; ?> </td>
                               <td><?php echo $row['jumlah_cuti_cuti_keluarga_meninggal'] ; ?> </td>

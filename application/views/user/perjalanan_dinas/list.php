@@ -11,7 +11,7 @@
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
-                  <tr>
+                  <tr class="text-center">
                     <th>Id Karyawan</th>
                     <th>Nomor SPPD</th>
                     <th>Tanggal Keberangkatan</th>
@@ -31,7 +31,7 @@
                   foreach ($cek_query->result_array() as $row)
                   {       
                 ?>
-                  <tr>
+                  <tr class="text-center">
                     <td><?php echo $row['id_karyawan'] ; ?></td>
                     <td><?php echo $row['nomor_sppd'] ; ?></td>
                     <td><?php echo $row['tgl_keberangkatan'] ; ?></td>
@@ -78,7 +78,7 @@
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
-                  <tr>
+                  <tr class="text-center">
                     <th>Nomor SPPD</th>
                     <th>Tanggal</th>
                     <th>Biaya Transportasi</th>
@@ -93,7 +93,7 @@
                   foreach ($cek_query->result_array() as $row)
                   {       
                 ?>
-                  <tr>
+                  <tr class="text-center">
                     <td><?php echo $row['nomor_sppd'] ; ?></td>
                     <td><?php echo $row['tanggal'] ; ?></td>
                     <td><?php echo $row['biaya_transportasi'] ; ?></td>

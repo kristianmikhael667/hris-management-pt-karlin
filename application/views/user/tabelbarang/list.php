@@ -12,7 +12,7 @@
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
-                  <tr>
+                  <tr class="text-center">
                     <th>ID Karyawan</th>
                     <th>ID Purchase Request</th>
                     <th>Tanggal Permintaan</th>
@@ -29,7 +29,7 @@
                   {       
                     //SELECT COUNT(nama_kolom) FROM nama_table
                 ?>
-                  <tr>
+                  <tr class="text-center">
                     <td><?php echo $row['id_karyawan'] ; ?></td>
                     <td><?php echo $row['id_purchase_request'] ; ?></td>
                     <td><?php echo $row['tgl_permintaan'] ; ?></td>

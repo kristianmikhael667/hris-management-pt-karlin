@@ -14,7 +14,7 @@
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
-                  <tr>
+                  <tr class="text-center">
                     <th>No</th>
                     <th>Id Karyawan</th>
                     <th>Tanggal</th>
@@ -32,7 +32,7 @@
                         {          
                       ?>
                 <tbody>
-                <tr>
+                <tr class="text-center">
                     <td><?php echo $no++ ?></td>
                     <td><?php echo $row['id_karyawan'] ; ?></td>
                     <td><?php echo $row['tanggal'] ; ?></td>
