@@ -11,7 +11,7 @@
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
-                  <tr>
+                  <tr class="text-center">
                     <th>Id Karyawan</th>
                     <th>Nomor SPPD</th>
                     <th>Tanggal Keberangkatan</th>
@@ -31,7 +31,7 @@
                   foreach ($cek_query->result_array() as $row)
                   {       
                 ?>
-                  <tr>
+                  <tr class="text-center">
                     <td><?php echo $row['id_karyawan'] ; ?></td>
                     <td><?php echo $row['nomor_sppd'] ; ?></td>
                     <td><?php echo $row['tgl_keberangkatan'] ; ?></td>
@@ -167,7 +167,7 @@
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Data Barang</h5>
+          <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-bus-alt"></i> Data Perjalanan Dinas</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -178,7 +178,8 @@
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
-                  <tr>
+                  <tr class="text-center">
+                    <th>No</th>
                     <th>Nomor SPPD</th>
                     <th>Tanggal</th>
                     <th>Biaya Transportasi</th>
@@ -190,10 +191,12 @@
                 <tbody>
                 <?php
                   $cek_query=$this->perjalanan_dinas->tampil_data(); 
+                  $no=1;
                   foreach ($cek_query->result_array() as $row)
                   {       
                 ?>
-                  <tr>
+                  <tr class="text-center">
+                    <td><?php echo $no++ ?></td>
                     <td><?php echo $row['nomor_sppd'] ; ?></td>
                     <td><?php echo $row['tanggal'] ; ?></td>
                     <td><?php echo $row['biaya_transportasi'] ; ?></td>
