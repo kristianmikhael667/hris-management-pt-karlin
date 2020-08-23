@@ -46,7 +46,6 @@
                     <td><img style="width: 100px;" src="<?php echo base_url().'assets/images/'.$row['struck'];?>"></td>
                     <td><?php echo $row['ket'] ; ?></td>
                     <td>
-                    <button class="btn btn-sm btn-primary mb-2" data-toggle="modal" data-target="#view" name=""><i class="fa fa-eye"></i> View</button>
                   
                       <?php
                         $cek_query=$this->medical->list(); 
@@ -75,16 +74,16 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Data Dinas</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Data Medical Reimbust</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
       </div>
       <div class="modal-body">
-        <form action="<?php echo base_url()?>hrd/medicalreimbust/edit"  method="post">
+        <form action="<?php echo base_url()?>hrd/medicalreimbust/update"  method="post">
         <?php	
             $id = $this->input->get('id');
-            $cek_query = $this->medical->check_medical($id);
+            $cek_query = $this->medical->list($id);
 
             foreach ($cek_query->result_array() as $row)
             {  
@@ -93,11 +92,8 @@
                 <label>ID Karyawan</label>
                 <input type="number" name="id_karyawan" class="form-control" readonly placeholder="Nomor SPPD" value="<?php echo $row['id_karyawan'] ?>" required readonly>
 
-                <label>Nama Karyawan</label>
-                <input type="number" name="nama_karyawan" class="form-control" placeholder="Nama Karyawan" value="<?php echo $row['nama_karyawan'] ?>" required readonly>
-
                 <label>Claim ID</label>
-                <input type="date" name="klaim_id" class="form-control" placeholder="Claim ID" value="<?php echo $row['klaim_id'] ?>" required>
+                <input type="number" name="klaim_id" class="form-control" placeholder="Claim ID" value="<?php echo $row['klaim_id'] ?>" required>
 
                 <label>Tanggal Pengajuan</label>
                 <input type="date" name="tanggal_pengajuan" class="form-control" placeholder="Keterangan" value="<?php echo $row['tanggal_pengajuan'] ?>" required>
@@ -111,10 +107,10 @@
                 <label>Jumlah Diajukan</label>
                 <input type="text" name="jumlah_diajukan" class="form-control" placeholder="Jumlah Diajukan" value="<?php echo $row['jumlah_diajukan'] ?>" required>
 
-                <label>Tanggal DIsetujui</label>
-                <input type="text" name="tanggal_disetujui" class="form-control" placeholder="Uang Makan" value="<?php echo $row['tanggal_disetujui'] ?>" required readonly>
+                <label>Jumlah DIsetujui</label>
+                <input type="text" name="jumlah_disetujui" class="form-control" placeholder="Jumlah Disetujui" value="<?php echo $row['jumlah_disetujui'] ?>" required readonly>
 
-
+                
               </div>
               
               <button type="submit" class="btn btn-primary">Edit</button>

@@ -40,7 +40,7 @@
                     <td><?php echo $row['status'] ; ?></td>
                     <td>  
                       <button class="btn btn-sm btn-primary mb-4 mt-4 btn-block" data-toggle="modal" data-target="#edit" name=""><i class="fas fa-tools"></i> Edit Data Uang Transport</button>  
-                      <a href="<?php echo base_url('hrd/uangtransport/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-sm btn-danger mb-4 mt-4 btn-block"> Hapus </a>
+                      <a href="<?php echo base_url('hrd/uangtransport/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-sm btn-danger mb-4 mt-4 btn-block"><i class="fas fa-trash"></i> Hapus Data Uang Transportasi </a>
                     </td>
                   </tr>
                   <?php } ?>
