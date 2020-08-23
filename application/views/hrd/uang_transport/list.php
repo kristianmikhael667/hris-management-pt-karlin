@@ -38,9 +38,8 @@
                     <td>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_bensin'])  ?></td>
                     <td>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_parkir'])  ?></td>
                     <td><?php echo $row['status'] ; ?></td>
-                    <td>  <button class="btn btn-sm btn-primary mb-4 mt-4" data-toggle="modal" data-target="#edit" name=""><i class="fas fa-tools"></i> Edit Data Uang Transport</button>  </td>
+                    <td>  <button class="btn btn-sm btn-primary mb-4 mt-4" data-toggle="modal" data-target="#edit" name=""><i class="fas fa-tools"></i> Edit Data Uang Transport</button>  
 
-                    <td>
                       <a href="<?php echo base_url('hrd/uangtransport/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-sm btn-danger mb-4 mt-4 btn-block"> Hapus </a>
                     </td>
                   </tr>
