@@ -7,7 +7,6 @@
       <div class="container-fluid">
         <!-- DataTables Example -->
         <button class="btn btn-sm btn-success mb-4 mt-4" data-toggle="modal" data-target="#tambahuang" name=""><i class="fas fa-plus fa-sm"></i> Input Uang Transportasi </button>
-        <button class="btn btn-sm btn-primary mb-4 mt-4" data-toggle="modal" data-target="#edit" name=""><i class="fas fa-tools"></i> Edit Data Uang Transport</button> 
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
@@ -39,6 +38,8 @@
                     <td>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_bensin'])  ?></td>
                     <td>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_parkir'])  ?></td>
                     <td><?php echo $row['status'] ; ?></td>
+                    <td>  <button class="btn btn-sm btn-primary mb-4 mt-4" data-toggle="modal" data-target="#edit" name=""><i class="fas fa-tools"></i> Edit Data Uang Transport</button>  </td>
+
                     <td>
                       <a href="<?php echo base_url('hrd/uangtransport/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-sm btn-danger mb-4 mt-4 btn-block"> Hapus </a>
                     </td>
@@ -73,17 +74,17 @@
                 <label>ID Karyawan</label>
                 <br>
                 <select class="form-control" id="sel1" name="id_karyawan">
-                    <?php 
-                   $cek_query=$this->karyawan->list();  
+                    <?php   
+                  
+                  $id = $this->input->get('id');
+
+                   $cek_query=$this->check_employe($id);
                     foreach ($cek_query->result_array() as $row) { ?>
                     <option> <?php echo $row['id_karyawan'] ?> </option>
                     <?php } ?>
                 </select>
                 <br>
                 
-                <label for="">Tanggal</label>
-                <input type="date" name="tanggal" class="form-control" required>
-
                 <label>Uang Bensin</label>
                 <input type="number" name="uang_bensin" class="form-control" placeholder="Input Uang Bensin" required>
 
@@ -126,9 +127,7 @@
                 </select>
                 <br>
 
-                <label for="">Tanggal</label>
-                <input type="date" name="tanggal" class="form-control" value="<?php echo $row['tanggal'] ?>" required>
-
+           
                 <label>Uang Bensin</label>
                 <input type="number" name="uang_bensin" class="form-control" value="<?php echo $row['uang_bensin'] ?>" placeholder="Input Uang Bensin" required>
 
