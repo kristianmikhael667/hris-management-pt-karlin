@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <!-- DataTables Example -->
         <button class="btn btn-sm btn-success mb-4 mt-4" data-toggle="modal" data-target="#tambahuang" name=""><i class="fas fa-plus fa-sm"></i> Input Uang Transportasi </button>
-
+        <button class="btn btn-sm btn-primary mb-4 mt-4" data-toggle="modal" data-target="#edit" name=""> Edit </button> 
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
@@ -16,7 +16,8 @@
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
-                  <tr>
+                  <tr class="text-center">
+                    <th>No</th>
                     <th>Id Karyawan</th>
                     <th>Uang Bensin</th>
                     <th>Uang Parkir</th>
@@ -28,19 +29,18 @@
                 <?php
 
                   $cek_query=$this->uang_transport->hitunguang(); 
-                  
+                  $no = 1;
                   foreach ($cek_query->result_array() as $row)
                   {       
                 ?>
-                  <tr>
+                  <tr class="text-center">
+                    <td><?php echo $no++ ?></td>
                     <td><?php echo $row['id_karyawan'] ; ?></td>
                     <td>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_bensin'])  ?></td>
                     <td>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_parkir'])  ?></td>
                     <td><?php echo $row['status'] ; ?></td>
                     <td>
-
-                      <a href="<?php echo base_url('hrd/dashboard_hrd/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-sm btn-danger mb-4 mt-4"> Hapus </a>
-                      <button class="btn btn-sm btn-primary mb-4 mt-4" data-toggle="modal" data-target="#edit" name=""> Edit </button>  
+                      <a href="<?php echo base_url('hrd/dashboard_hrd/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-sm btn-danger mb-4 mt-4 btn-block"> Hapus </a>
                     </td>
                   </tr>
                   <?php } ?>
