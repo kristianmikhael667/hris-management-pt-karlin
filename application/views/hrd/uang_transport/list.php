@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <!-- DataTables Example -->
         <button class="btn btn-sm btn-success mb-4 mt-4" data-toggle="modal" data-target="#tambahuang" name=""><i class="fas fa-plus fa-sm"></i> Input Uang Transportasi </button>
-        <button class="btn btn-sm btn-primary mb-4 mt-4" data-toggle="modal" data-target="#edit" name=""> Edit </button> 
+        <button class="btn btn-sm btn-primary mb-4 mt-4" data-toggle="modal" data-target="#edit" name=""><i class="fas fa-tools"></i> Edit Data Uang Transport</button> 
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
@@ -40,7 +40,7 @@
                     <td>Rp.<?php echo number_format($row['jumlah_hadir']*$row['uang_parkir'])  ?></td>
                     <td><?php echo $row['status'] ; ?></td>
                     <td>
-                      <a href="<?php echo base_url('hrd/dashboard_hrd/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-sm btn-danger mb-4 mt-4 btn-block"> Hapus </a>
+                      <a href="<?php echo base_url('hrd/uangtransport/delete?id=') . $row['id_karyawan']; ?>" class="btn btn-sm btn-danger mb-4 mt-4 btn-block"> Hapus </a>
                     </td>
                   </tr>
                   <?php } ?>

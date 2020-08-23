@@ -65,4 +65,13 @@ class Uangtransport extends CI_Controller{
 		$this->uang_transport->update_data($where,$data, 'tbl_transportasi');
 		redirect('hrd/uangtransport/index');
 	}
+
+	public function delete()
+	{
+		$id = $this->input->get('id');
+		$where = array('id_karyawan' => $id);
+		$this->uang_transport->delete($where);
+		$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);	
+		redirect('hrd/uangtransport/index');
+	}
 }
