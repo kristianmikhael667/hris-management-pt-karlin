@@ -37,10 +37,6 @@ class Medicalreimbust extends CI_Controller{
 	}
 
 	public function edit(){
-		$data = array('title' => 'Add Karyawan',
-					  'content' => 'hrd/medical_reimburstment/edit'
-		);
-		$this->load->view('tamplate_bootstrap_hrd/wrapper', $data, FALSE);
 		$id = $this->input->get('id');
 		
 
