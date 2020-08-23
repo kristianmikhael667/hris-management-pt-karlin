@@ -94,33 +94,36 @@ class Medicalreimbust extends CI_Controller{
 		}
 		else{
 			
-		$id_karyawan		= $this->input->post('id_karyawan');
-		$nama_karyawan		= $this->input->post('nama_karyawan');
-		$jenis_kelamin		= $this->input->post('jenis_kelamin');
-		$kode_bagian		= $this->input->post('kode_bagian');
-		$alamat				= $this->input->post('alamat');
-		$nomor_telepon		= $this->input->post('nomor_telepon');
-		$email				= $this->input->post('email');
-		$tanggal_lahir		= $this->input->post('tanggal_lahir');
-		$password			= sha1($this->input->post('password'));
-		$status				= $this->input->post('status');
-		$role_id			= $this->input->post('role_id');	
-			$data_user1 = array(
-				'nama_karyawan'		=> $nama_karyawan,
-				'jenis_kelamin'		=> $jenis_kelamin,
-				'kode_bagian'		=> $kode_bagian,
-				'alamat'			=> $alamat,
-				'nomor_telepon'		=> $nomor_telepon,
-				'email'				=> $email,
-				'tanggal_lahir'		=> $tanggal_lahir,
-				'password'			=> $password,
-				'status'			=> $status,
-				'role_id'			=> $role_id
+			$id_karyawan		= $this->input->post('id_karyawan');
+			$klaim_id			= $this->input->post('klaim_id');
+			$tanggal_pengajuan	= $this->input->post('tanggal_pengajuan');
+			$status_pengajuan	= $this->input->post('status_pengajuan');
+			$tanggal_disetujui	= $this->input->post('tanggal_disetujui');
+			$jumlah_diajukan	= $this->input->post('jumlah_diajukan');
+			$jumlah_disetujui	= $this->input->post('jumlah_disetujui');
+			$ket				= $this->input->post('ket');
+			
+			$config['image_library']='gd2';
+			$config['source_image']='./assets/images/'.$gbr['file_name'];
+			$config['new_image']= './assets/images/'.$gbr['file_name'];
+			$this->load->library('image_lib', $config);
+			$this->image_lib->resize();
+			$foto 					= $gbr['file_name'];
+			$data_medical_reimburstment = array(
+				'id_karyawan'		=> $id_karyawan,
+				'klaim_id'			=> $klaim_id,
+				'tanggal_pengajuan'	=> $tanggal_pengajuan,
+				'status_pengajuan'	=> $status_pengajuan,
+				'tanggal_disetujui'	=> $tanggal_disetujui,
+				'jumlah_diajukan'	=> $jumlah_diajukan,
+				'jumlah_disetujui'	=> $jumlah_disetujui,
+				'struck'			=> $foto,
+				'ket'				=> $ket
 			);
 			$where = array(
 				'id_karyawan' => $id_karyawan
 			);
-			$this->karyawan->edit($where, $data_user1);
+			$this->karyawan->edit($where, $data_medical_reimburstment);
 			//echo "<script>alert('Berhasil mengupload data')</script>";
 			
 		}
